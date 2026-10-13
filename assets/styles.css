@@ -327,3 +327,17 @@ textarea { resize: vertical; }
 /* Подсказка после нажатия на ссылку в Telegram */
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 50; width: min(520px, calc(100% - 32px)); padding: 14px 18px; background: var(--fg); color: var(--bg); font-size: 15px; box-shadow: 0 12px 32px rgba(0,0,0,.5); }
 .lead-text { margin: 0 0 14px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); font-family: var(--mono); font-size: 13px; color: var(--soft); white-space: pre-wrap; word-break: break-word; }
+
+/* Квиз: варианты — кресла в салоне самолёта. Подголовник сверху, номер места, подсветка при наведении */
+.seat-hint { margin: 8px 0 0; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); }
+.options.options { gap: 14px; background: none; border: 0; overflow: visible; }
+.options.options > .seat { border: 1.5px solid var(--line-strong); }
+.seat { position: relative; min-height: 104px; padding: 30px 18px 16px; border-radius: 22px 22px 8px 8px; background: linear-gradient(180deg, var(--panel-2), var(--panel)); box-shadow: inset 0 -4px 0 rgba(0,0,0,.35); transition: border-color .15s, transform .15s, background .15s; }
+.seat::before { content: ''; position: absolute; top: 9px; left: 50%; width: 46%; height: 8px; transform: translateX(-50%); border-radius: 6px; background: var(--line-strong); transition: background .15s; }
+.seat-no { position: absolute; top: 6px; right: 12px; font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+.seat b { font-size: 17px; }
+.options.options > .seat:hover, .options.options > .seat:focus-visible { border-color: var(--accent); transform: translateY(-3px); background: linear-gradient(180deg, #232832, var(--panel-2)); }
+.seat:hover::before, .seat:focus-visible::before { background: var(--accent); }
+.seat:hover .seat-no { color: var(--accent); }
+.seat:active { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .seat, .seat:hover { transition: none; transform: none; } }

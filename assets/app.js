@@ -125,7 +125,7 @@
     arab: { title: 'Оман и ОАЭ', price: 'от 300 000 ₽ за двоих', season: 'Комфортно с ноября по март.' },
     tr: { title: 'Турция', price: 'от 290 000 ₽ за двоих', season: 'Лучше всего — май–июнь и сентябрь–октябрь.' },
     cn: { title: 'Китай', price: 'от 210 000 ₽ за двоих', season: 'Весна и осень — самое комфортное время.' },
-    eu: { title: 'Европа: 4 страны', price: 'от 450 000 ₽ за двоих', season: 'Хороша с весны до поздней осени.' },
+    eu: { title: 'Европа', price: 'от 450 000 ₽ за двоих', season: 'Хороша с весны до поздней осени.' },
     lk: { title: 'Шри-Ланка', price: 'от 280 000 ₽ за двоих', season: 'Сезон на юго-западе — с декабря по апрель.' },
     bali: { title: 'Бали', price: 'от 320 000 ₽ за двоих', season: 'Сухой сезон — с мая по октябрь.' },
     jp: { title: 'Япония', price: 'от 400 000 ₽ за двоих', season: 'Сакура весной, красные клёны осенью.' },
@@ -164,12 +164,16 @@
       var q = Q[quiz.step];
       quizBody.appendChild(h('p', { class: 'eyebrow', style: 'margin:0 0 10px', text: 'Вопрос ' + (quiz.step + 1) + ' из ' + Q.length }));
       quizBody.appendChild(h('h3', { style: 'font-size:24px', text: q.title }));
-      quizBody.appendChild(h('div', { class: 'options ' + (q.options.length % 3 === 0 ? 'three' : 'two') }, q.options.map(function (o) {
-        return h('button', { type: 'button', class: 'option', onclick: function () {
+      quizBody.appendChild(h('p', { class: 'seat-hint', text: 'Выберите место — нажмите на вариант' }));
+      var cols = q.options.length % 3 === 0 ? 3 : 2;
+      quizBody.appendChild(h('div', { class: 'options ' + (cols === 3 ? 'three' : 'two') }, q.options.map(function (o, i) {
+        // Каждый вариант — кресло в салоне: ряд и буква места, как на посадочном
+        var seat = (Math.floor(i / cols) + 1) + 'ABC'[i % cols];
+        return h('button', { type: 'button', class: 'option seat', 'aria-label': o.label + ', ' + o.hint, onclick: function () {
           quiz.answers = quiz.answers.slice(0, quiz.step).concat([o.id]);
           quiz.step++;
           renderQuiz();
-        } }, [h('b', { text: o.label }), h('span', { text: o.hint })]);
+        } }, [h('i', { class: 'seat-no', 'aria-hidden': 'true', text: seat }), h('b', { text: o.label }), h('span', { text: o.hint })]);
       })));
       if (quiz.step > 0) quizBody.appendChild(h('button', { type: 'button', class: 'link-btn', text: '← Назад', onclick: function () { quiz.step--; renderQuiz(); } }));
       return;
