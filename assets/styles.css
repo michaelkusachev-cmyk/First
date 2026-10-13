@@ -287,3 +287,8 @@ textarea { resize: vertical; }
   .cols3, .options.two, .options.three { grid-template-columns: 1fr; }
   .reviews.cols3 > .review:last-child:nth-child(3n+2) { grid-column: auto; }
 }
+
+/* Табло: одинаковая высота строк, чтобы при перелистывании ничего не прыгало */
+#board .board-row { min-height: 54px; }
+#board .board-row .d, #board .board-row .c, #board .board-row .s, #board .board-row .p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 820px) { #board .board-row { min-height: 96px; align-content: center; } }

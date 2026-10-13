@@ -30,21 +30,68 @@
     if (e.target.closest('a') && nav.classList.contains('open')) menuBtn.click();
   });
 
-  /* ---------- Табло: буквы перебираются и встают на место ---------- */
-  if (!reduceMotion) {
-    var A = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789';
-    document.querySelectorAll('.flap').forEach(function (el, i) {
-      var t = el.textContent, f = 0, total = 14 + i * 2;
-      var id = setInterval(function () {
-        f++;
-        var settled = Math.floor(f / total * t.length);
-        el.textContent = t.split('').map(function (ch, k) {
-          return k < settled || ' ·—,₽'.indexOf(ch) !== -1 ? ch : A[(Math.random() * A.length) | 0];
-        }).join('');
-        if (f >= total) { el.textContent = t; clearInterval(id); }
-      }, 45);
+  /* ---------- Табло: 5 строк на экране, остальные направления перелистываются по кругу ---------- */
+  (function () {
+    var board = document.getElementById('board');
+    if (!board) return;
+    var rows = [].slice.call(board.querySelectorAll('.board-row'));
+    var PER = 5, PAUSE = 6000;
+    // Данные берём из строк в HTML: без JS посетитель видит все направления сразу
+    var items = rows.map(function (r) {
+      return {
+        href: r.getAttribute('href'),
+        d: r.querySelector('.d').textContent, c: r.querySelector('.c').textContent,
+        s: r.querySelector('.s').textContent, p: r.querySelector('.p').textContent
+      };
     });
-  }
+    if (items.length <= PER) return;
+    rows.slice(PER).forEach(function (r) { r.remove(); });
+    rows = rows.slice(0, PER);
+    // Сдвиг по кругу: каждая смена показывает следующие 5 направлений после текущих
+    var offset = 0;
+
+    var A = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789';
+    var KEEP = ' ·—,₽';
+    // Каждая буква «щёлкает» несколько раз и встаёт на место, слева направо, как на табло Solari
+    function flip(el, to, delay) {
+      if (reduceMotion) { el.textContent = to; return; }
+      var from = el.textContent, len = Math.max(from.length, to.length), f = 0, total = 16;
+      setTimeout(function () {
+        var id = setInterval(function () {
+          f++;
+          var out = '';
+          for (var k = 0; k < len; k++) {
+            var target = to[k] || '';
+            var settleAt = 4 + Math.floor(k / len * (total - 4));
+            if (f >= settleAt || KEEP.indexOf(target) !== -1) out += target;
+            else out += A[(Math.random() * A.length) | 0];
+          }
+          el.textContent = out;
+          if (f >= total) { el.textContent = to; clearInterval(id); }
+        }, 50);
+      }, delay);
+    }
+    function show(withFlip) {
+      rows.forEach(function (r, i) {
+        var it = items[(offset + i) % items.length];
+        var delay = i * 160;
+        r.setAttribute('href', it.href);
+        ['d', 'c', 's', 'p'].forEach(function (k) {
+          var el = r.querySelector('.' + k);
+          if (withFlip) flip(el, it[k], delay); else el.textContent = it[k];
+        });
+      });
+    }
+    show(true);
+    var timer = null, paused = false;
+    function next() { if (paused || document.hidden) return; offset = (offset + PER) % items.length; show(true); }
+    timer = setInterval(next, PAUSE);
+    // Пока посетитель держит курсор или палец на табло — не перелистываем
+    board.addEventListener('mouseenter', function () { paused = true; });
+    board.addEventListener('mouseleave', function () { paused = false; });
+    board.addEventListener('focusin', function () { paused = true; });
+    board.addEventListener('focusout', function () { paused = false; });
+  })();
 
   /* ---------- Квиз ---------- */
   var R = {
