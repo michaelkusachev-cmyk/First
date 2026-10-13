@@ -370,7 +370,48 @@
     if (!contact) { contactEl.focus(); return; }
     var text = 'Заявка с сайта\nИмя: ' + name + '\nКонтакт: ' + contact + (trip ? '\nПоездка: ' + trip : '');
     document.getElementById('lead-tg').href = TG + '?text=' + encodeURIComponent(text);
+    document.getElementById('lead-text').textContent = text;
     form.hidden = true;
     document.getElementById('lead-sent').hidden = false;
+  });
+
+  /* ---------- Telegram: в обычный чат ?text= не подставляется, поэтому копируем текст сами ---------- */
+  var toast = h('div', { class: 'toast', role: 'status', 'aria-live': 'polite' });
+  toast.hidden = true;
+  document.body.appendChild(toast);
+  var toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.hidden = true; }, 6000);
+  }
+  function copyText(text) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
+    } catch (e) {}
+    // Запасной путь для старых браузеров
+    return new Promise(function (resolve, reject) {
+      var ta = h('textarea', { style: 'position:fixed;opacity:0' });
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove();
+      ok ? resolve() : reject();
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="https://t.me/"]');
+    if (!a) return;
+    var m = a.getAttribute('href').match(/[?&]text=([^&]*)/);
+    if (!m) return;
+    var text = decodeURIComponent(m[1]);
+    copyText(text).then(function () {
+      showToast('Текст сообщения скопирован. В Telegram нажмите «Вставить» и отправьте.');
+    }, function () {
+      showToast('Не получилось скопировать автоматически. Напишите нам в Telegram: ' + text);
+    });
   });
 })();

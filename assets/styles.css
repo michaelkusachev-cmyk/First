@@ -19,6 +19,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
@@ -322,3 +323,7 @@ textarea { resize: vertical; }
   #board.solari .board-row { grid-template-columns: 1fr; gap: 8px; padding-block: 14px; padding-inline: 12px; }
   #board.solari .flaps.price { justify-self: start; }
 }
+
+/* Подсказка после нажатия на ссылку в Telegram */
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 50; width: min(520px, calc(100% - 32px)); padding: 14px 18px; background: var(--fg); color: var(--bg); font-size: 15px; box-shadow: 0 12px 32px rgba(0,0,0,.5); }
+.lead-text { margin: 0 0 14px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); font-family: var(--mono); font-size: 13px; color: var(--soft); white-space: pre-wrap; word-break: break-word; }
