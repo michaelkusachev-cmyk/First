@@ -300,10 +300,7 @@ textarea { resize: vertical; }
 .flap-tile b { position: relative; z-index: 1; font-weight: 500; transform-origin: 50% 50%; white-space: pre; }
 .flap-tile.go b { animation: flapdown .12s ease-in; }
 @keyframes flapdown { 0% { transform: rotateX(0); } 50% { transform: rotateX(85deg); } 100% { transform: rotateX(0); } }
-.price-plate { display: inline-flex; align-items: center; justify-content: flex-end; min-width: 10.5ch; height: calc(var(--tw) * 1.42); padding: 0 14px; background: #1E232B; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 1px 0 rgba(0,0,0,.6); font-family: var(--sans); font-weight: 600; font-size: calc(var(--tw) * .95); letter-spacing: .02em; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; perspective: 300px; }
-.price-plate b { font-weight: 600; transform-origin: 50% 50%; }
-.price-plate.go b { animation: platedown .36s ease-in-out; }
-@keyframes platedown { 0% { transform: rotateX(0); } 50% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+.flaps.price .flap-tile { color: var(--accent); }
 .solari .info { display: flex; flex-direction: column; gap: 2px; min-width: 0; transition: opacity .3s; }
 .solari .info.fade { opacity: 0; }
 .solari .info .c { font-size: 14px; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -313,5 +310,5 @@ textarea { resize: vertical; }
   #board.solari { --tw: clamp(11px, 4vw, 16px); --gap: 1px; }
   #board.solari .board-cols { display: none; }
   #board.solari .board-row { grid-template-columns: 1fr; gap: 8px; padding-block: 14px; padding-inline: 12px; }
-  #board.solari .price-plate { justify-self: start; }
+  #board.solari .flaps.price { justify-self: start; }
 }
