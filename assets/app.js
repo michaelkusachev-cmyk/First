@@ -45,7 +45,7 @@
         p: r.querySelector('.p').textContent.replace(/^от\s*/, '')
       };
     });
-    var PER = 5, NAME = 18, PRICE = 9, EVERY = 5500;
+    var PER = 5, NAME = 18, EVERY = 5500;
     var SPIN = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЭЮЯ0123456789-';
 
     board.classList.add('solari');
@@ -83,7 +83,7 @@
 
     var rows = [];
     for (var i = 0; i < PER; i++) {
-      var name = tiles(NAME, 'name'), price = tiles(PRICE, 'price');
+      var name = tiles(NAME, 'name'), price = h('span', { class: 'price-plate', 'aria-hidden': 'true' }, [h('b', { text: '' })]);
       var info = h('span', { class: 'info' }, [h('span', { class: 'c' }), h('span', { class: 's' })]);
       var label = h('span', { class: 'sr-only' });
       var row = h('a', { class: 'board-row', href: '#routes' }, [name, info, price, label]);
@@ -94,7 +94,12 @@
       r.el.setAttribute('href', it.href);
       r.label.textContent = it.d + ', ' + it.c + ', ' + it.s + ', от ' + it.p;
       setTiles(r.name, pad(it.d, NAME));
-      setTiles(r.price, pad(it.p, PRICE, true));
+      // Цена — на цельной плашке без разреза: при смене она перелистывается целиком
+      if (reduceMotion) r.price.firstChild.textContent = it.p;
+      else {
+        r.price.classList.remove('go'); void r.price.offsetWidth; r.price.classList.add('go');
+        setTimeout(function () { r.price.firstChild.textContent = it.p; }, 180);
+      }
       r.info.classList.add('fade');
       setTimeout(function () {
         r.info.firstChild.textContent = it.c;

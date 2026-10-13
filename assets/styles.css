@@ -292,15 +292,18 @@ textarea { resize: vertical; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #board.solari { --tw: clamp(13px, 1.75vw, 23px); }
 #board.solari { --gap: 2px; }
-#board.solari .board-cols, #board.solari .board-row { grid-template-columns: calc(var(--tw) * 18 + var(--gap) * 17) minmax(0, 1fr) calc(var(--tw) * 9 + var(--gap) * 8); gap: 12px 28px; align-items: center; }
+#board.solari .board-cols, #board.solari .board-row { grid-template-columns: calc(var(--tw) * 18 + var(--gap) * 17) minmax(0, 1fr) auto; gap: 12px 28px; align-items: center; }
 #board.solari .board-row { padding-block: 12px; }
 .flaps { display: inline-flex; gap: var(--gap); }
 .flap-tile { position: relative; width: var(--tw); height: calc(var(--tw) * 1.42); display: grid; place-items: center; background: linear-gradient(#1E232B 0 50%, #191D24 50% 100%); border-radius: 2px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 1px 0 rgba(0,0,0,.6); font-family: var(--mono); font-weight: 500; font-size: calc(var(--tw) * .74); line-height: 1; color: var(--fg); perspective: 200px; }
-.flap-tile::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #07080A; }
-.flap-tile b { font-weight: 500; transform-origin: 50% 50%; white-space: pre; }
+.flap-tile::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #07080A; z-index: 0; }
+.flap-tile b { position: relative; z-index: 1; font-weight: 500; transform-origin: 50% 50%; white-space: pre; }
 .flap-tile.go b { animation: flapdown .12s ease-in; }
 @keyframes flapdown { 0% { transform: rotateX(0); } 50% { transform: rotateX(85deg); } 100% { transform: rotateX(0); } }
-.flaps.price .flap-tile { color: var(--accent); }
+.price-plate { display: inline-flex; align-items: center; justify-content: flex-end; min-width: 10.5ch; height: calc(var(--tw) * 1.42); padding: 0 14px; background: #1E232B; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 1px 0 rgba(0,0,0,.6); font-family: var(--sans); font-weight: 600; font-size: calc(var(--tw) * .95); letter-spacing: .02em; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; perspective: 300px; }
+.price-plate b { font-weight: 600; transform-origin: 50% 50%; }
+.price-plate.go b { animation: platedown .36s ease-in-out; }
+@keyframes platedown { 0% { transform: rotateX(0); } 50% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
 .solari .info { display: flex; flex-direction: column; gap: 2px; min-width: 0; transition: opacity .3s; }
 .solari .info.fade { opacity: 0; }
 .solari .info .c { font-size: 14px; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -310,5 +313,5 @@ textarea { resize: vertical; }
   #board.solari { --tw: clamp(11px, 4vw, 16px); --gap: 1px; }
   #board.solari .board-cols { display: none; }
   #board.solari .board-row { grid-template-columns: 1fr; gap: 8px; padding-block: 14px; padding-inline: 12px; }
-  #board.solari .flaps.price { justify-self: start; }
+  #board.solari .price-plate { justify-self: start; }
 }
