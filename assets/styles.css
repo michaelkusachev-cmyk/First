@@ -343,3 +343,4 @@ textarea { resize: vertical; }
 @media (prefers-reduced-motion: reduce) { .seat, .seat:hover { transition: none; transform: none; } }
 .section.first { padding-block-start: 56px; }
 @media (max-width: 820px) { .section.first { padding-block-start: 32px; } }
+.about p.about-lead { color: var(--fg); font-weight: 500; }
