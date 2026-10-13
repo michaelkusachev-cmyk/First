@@ -30,63 +30,88 @@
     if (e.target.closest('a') && nav.classList.contains('open')) menuBtn.click();
   });
 
-  /* ---------- Табло: 5 строк на экране, остальные направления перелистываются по кругу ---------- */
+  /* ---------- Табло Solari: буквы на отдельных плашках, строки меняются по одной ---------- */
   (function () {
     var board = document.getElementById('board');
     if (!board) return;
-    var rows = [].slice.call(board.querySelectorAll('.board-row'));
-    var PER = 5, PAUSE = 6000;
-    // Данные берём из строк в HTML: без JS посетитель видит все направления сразу
-    var items = rows.map(function (r) {
+    var srcRows = [].slice.call(board.querySelectorAll('.board-row'));
+    // Данные берём из строк в HTML: без JS посетитель видит обычную таблицу со всеми направлениями
+    var items = srcRows.map(function (r) {
       return {
         href: r.getAttribute('href'),
-        d: r.querySelector('.d').textContent, c: r.querySelector('.c').textContent,
-        s: r.querySelector('.s').textContent, p: r.querySelector('.p').textContent
+        d: r.querySelector('.d').textContent.toUpperCase(),
+        c: r.querySelector('.c').textContent,
+        s: r.querySelector('.s').textContent,
+        p: r.querySelector('.p').textContent.replace(/^от\s*/, '')
       };
     });
-    if (items.length <= PER) return;
-    rows.slice(PER).forEach(function (r) { r.remove(); });
-    rows = rows.slice(0, PER);
-    // Сдвиг по кругу: каждая смена показывает следующие 5 направлений после текущих
-    var offset = 0;
+    var PER = 5, NAME = 18, PRICE = 9, EVERY = 5500;
+    var SPIN = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЭЮЯ0123456789-';
 
-    var A = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789';
-    var KEEP = ' ·—,₽';
-    // Каждая буква «щёлкает» несколько раз и встаёт на место, слева направо, как на табло Solari
-    function flip(el, to, delay) {
-      if (reduceMotion) { el.textContent = to; return; }
-      var from = el.textContent, len = Math.max(from.length, to.length), f = 0, total = 16;
-      setTimeout(function () {
-        var id = setInterval(function () {
-          f++;
-          var out = '';
-          for (var k = 0; k < len; k++) {
-            var target = to[k] || '';
-            var settleAt = 4 + Math.floor(k / len * (total - 4));
-            if (f >= settleAt || KEEP.indexOf(target) !== -1) out += target;
-            else out += A[(Math.random() * A.length) | 0];
-          }
-          el.textContent = out;
-          if (f >= total) { el.textContent = to; clearInterval(id); }
-        }, 50);
+    board.classList.add('solari');
+    srcRows.forEach(function (r) { r.remove(); });
+    var head = board.querySelector('.board-cols');
+    head.innerHTML = '<span><i class="dot"></i>Направление</span><span>Города · сезон</span><span class="r">За двоих, от</span>';
+
+    function pad(text, len, right) {
+      text = text.slice(0, len);
+      while (text.length < len) text = right ? ' ' + text : text + ' ';
+      return text;
+    }
+    function tiles(len, cls) {
+      var wrap = h('span', { class: 'flaps ' + cls, 'aria-hidden': 'true' });
+      for (var k = 0; k < len; k++) wrap.appendChild(h('span', { class: 'flap-tile' }, [h('b', { text: ' ' })]));
+      return wrap;
+    }
+    // Одна плашка: перещёлкивает несколько промежуточных символов и встаёт на нужный
+    function flipTile(tile, to, delay) {
+      var b = tile.firstChild;
+      if (b.textContent === to) return;
+      if (reduceMotion) { b.textContent = to; return; }
+      var steps = 3 + ((Math.random() * 5) | 0);
+      setTimeout(function step() {
+        tile.classList.remove('go'); void tile.offsetWidth; tile.classList.add('go');
+        setTimeout(function () {
+          b.textContent = steps > 0 ? SPIN[(Math.random() * SPIN.length) | 0] : to;
+          if (steps-- > 0) setTimeout(step, 70);
+        }, 55);
       }, delay);
     }
-    function show(withFlip) {
-      rows.forEach(function (r, i) {
-        var it = items[(offset + i) % items.length];
-        var delay = i * 160;
-        r.setAttribute('href', it.href);
-        ['d', 'c', 's', 'p'].forEach(function (k) {
-          var el = r.querySelector('.' + k);
-          if (withFlip) flip(el, it[k], delay); else el.textContent = it[k];
-        });
-      });
+    function setTiles(wrap, text) {
+      [].forEach.call(wrap.children, function (t, k) { flipTile(t, text[k], k * 45); });
     }
-    show(true);
-    var timer = null, paused = false;
-    function next() { if (paused || document.hidden) return; offset = (offset + PER) % items.length; show(true); }
-    timer = setInterval(next, PAUSE);
-    // Пока посетитель держит курсор или палец на табло — не перелистываем
+
+    var rows = [];
+    for (var i = 0; i < PER; i++) {
+      var name = tiles(NAME, 'name'), price = tiles(PRICE, 'price');
+      var info = h('span', { class: 'info' }, [h('span', { class: 'c' }), h('span', { class: 's' })]);
+      var label = h('span', { class: 'sr-only' });
+      var row = h('a', { class: 'board-row', href: '#routes' }, [name, info, price, label]);
+      board.insertBefore(row, board.querySelector('.panel-foot'));
+      rows.push({ el: row, name: name, price: price, info: info, label: label });
+    }
+    function put(r, it) {
+      r.el.setAttribute('href', it.href);
+      r.label.textContent = it.d + ', ' + it.c + ', ' + it.s + ', от ' + it.p;
+      setTiles(r.name, pad(it.d, NAME));
+      setTiles(r.price, pad(it.p, PRICE, true));
+      r.info.classList.add('fade');
+      setTimeout(function () {
+        r.info.firstChild.textContent = it.c;
+        r.info.lastChild.textContent = it.s;
+        r.info.classList.remove('fade');
+      }, reduceMotion ? 0 : 300);
+    }
+    rows.forEach(function (r, k) { setTimeout(function () { put(r, items[k]); }, k * 250); });
+
+    // Каждые 5,5 секунды меняется одна строка — по очереди сверху вниз — на следующее направление
+    var next = PER % items.length, turn = 0, paused = false;
+    setInterval(function () {
+      if (paused || document.hidden || items.length <= PER) return;
+      put(rows[turn], items[next]);
+      next = (next + 1) % items.length;
+      turn = (turn + 1) % PER;
+    }, EVERY);
     board.addEventListener('mouseenter', function () { paused = true; });
     board.addEventListener('mouseleave', function () { paused = false; });
     board.addEventListener('focusin', function () { paused = true; });
