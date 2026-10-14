@@ -346,3 +346,20 @@ textarea { resize: vertical; }
 .inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .inline-link:hover { color: var(--fg); }
 .deal-row .pr s { color: var(--muted); font-size: 13px; margin-right: 6px; }
+
+/* Телефон: кресла квиза в два ряда, сравнение с туром — компактнее */
+@media (max-width: 820px) {
+  .options.three, .options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seat { min-height: 96px; padding: 28px 12px 12px; }
+  .seat b { font-size: 15px; }
+  .seat span { font-size: 13px; }
+  .compare-row > div, .compare-cols span { padding: 14px 12px; }
+  .compare-row { font-size: 15px; }
+}
+@media (max-width: 340px) {
+  .options.three, .options.two { grid-template-columns: 1fr; }
+}
+.seat b, .seat span { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+/* Переход из меню: раздел не уезжает под липкую шапку */
+[id] { scroll-margin-top: 84px; }
+@media (max-width: 820px) { .quiz > div { padding: 24px 16px; } .options.options { gap: 10px; } }
