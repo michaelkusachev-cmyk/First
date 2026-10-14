@@ -42,3 +42,13 @@
 
 Старые A-записи и записи «парковки» регистратора для @ и www удалить.
 После того как домен откроется, в Settings → Pages включить «Enforce HTTPS».
+
+### Пока нет ключа Travelpayouts
+
+Билеты берутся со страницы aviasales.ru/hottickets/ovb:
+
+    NODE_PATH=$(npm root -g) node scripts/hot_aviasales.js > /tmp/hot.json
+    python3 scripts/pick_hot.py /tmp/hot.json
+
+Правила выбора: 2 билета за рубеж и 1 по России, до 20 000 ₽; страны (для России — города)
+последних двух дней по возможности не повторяются.
