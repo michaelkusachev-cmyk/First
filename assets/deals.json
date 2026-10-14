@@ -1,0 +1,8 @@
+{
+ "updated": "2026-10-14",
+ "origin": "Новосибирск",
+ "deals": [
+  {"city": "Анталья", "country": "TR", "iata": "AYT", "date": "2026-10-14", "price": 4900},
+  {"city": "Сиань", "country": "CN", "iata": "SIA", "date": "2026-11-08", "price": 9900}
+ ]
+}

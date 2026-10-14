@@ -379,6 +379,49 @@
     document.getElementById('lead-sent').hidden = false;
   });
 
+  /* ---------- Горящие билеты: берём из assets/deals.json (его каждый день обновляет робот) ---------- */
+  (function () {
+    var panel = document.querySelector('#hot .panel');
+    if (!panel) return;
+    var MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    function parse(d) { var p = d.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+    function human(d) { var x = parse(d); return x.getDate() + ' ' + MONTHS[x.getMonth()]; }
+    function money(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽'; }
+    function rows() { return [].slice.call(panel.querySelectorAll('.deal-row')); }
+    function empty() {
+      if (rows().length) return;
+      panel.appendChild(h('div', { class: 'deal-row' }, [
+        h('span', { class: 'type', text: 'Скоро' }),
+        h('span', { class: 't', text: 'Новые билеты появятся завтра' }),
+        h('span', { class: 'note', text: 'Напишите, куда хотите, — подберём сами' }),
+        h('span', { class: 'pr', text: '' }),
+        h('a', { class: 'btn solid', href: TG, target: '_blank', rel: 'noopener', text: 'Написать' })
+      ]));
+    }
+    // Прошедшие вылеты убираем сразу, даже если файл ещё не обновился
+    rows().forEach(function (r) { if (r.dataset.date && parse(r.dataset.date) < today) r.remove(); });
+    if (!window.fetch) { empty(); return; }
+    fetch('assets/deals.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+      var deals = data && (data.deals || []).filter(function (d) { return parse(d.date) >= today; });
+      if (!deals || !deals.length) { empty(); return; }
+      rows().forEach(function (r) { r.remove(); });
+      deals.forEach(function (d, i) {
+        var route = 'Новосибирск → ' + d.city;
+        var msg = 'Здравствуйте! Хочу забронировать горящий билет ' + route + ', ' + human(d.date) + ', ' + money(d.price) + '.';
+        panel.appendChild(h('div', { class: 'deal-row', 'data-date': d.date }, [
+          h('span', { class: 'type', text: 'Горящий билет' }),
+          h('span', { class: 't', text: route }),
+          h('span', { class: 'note', text: 'Вылет ' + human(d.date) + (d.transfers === 0 ? ' · прямой рейс' : '') }),
+          h('span', { class: 'pr', text: money(d.price) }),
+          h('a', { class: 'btn' + (i === 0 ? ' solid' : ''), href: TG + '?text=' + encodeURIComponent(msg), target: '_blank', rel: 'noopener', text: 'Забронировать' })
+        ]));
+      });
+      var upd = document.getElementById('deals-updated');
+      if (upd && data.updated) upd.textContent = 'Обновлено ' + human(data.updated);
+    }).catch(empty);
+  })();
+
   /* ---------- Telegram: в обычный чат ?text= не подставляется, поэтому копируем текст сами ---------- */
   var toast = h('div', { class: 'toast', role: 'status', 'aria-live': 'polite' });
   toast.hidden = true;
