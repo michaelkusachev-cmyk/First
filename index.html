@@ -32,6 +32,17 @@
       document.head.appendChild(script);
   })();
 </script>
+<!-- Яндекс.Метрика: заменить 00000000 на номер счётчика с metrika.yandex.ru и убрать комментарий вокруг блока -->
+<!--
+<script>
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+  ym(00000000, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+-->
 </head>
 <body>
 
@@ -373,8 +384,9 @@ Full Moon Party в Таиланде.</p><p class="text">Собираем пут�
 <label for="f-name">Как к вам обращаться<input id="f-name" type="text" name="name" autocomplete="name" required></label>
 <label for="f-contact">Телефон или ник в Telegram<input id="f-contact" type="text" name="contact" autocomplete="tel" required></label>
 <label for="f-trip">Куда, когда и сколько вас<textarea id="f-trip" name="trip" rows="4"></textarea></label>
+<label class="agree" for="f-agree"><input id="f-agree" type="checkbox" name="agree" required><span>Согласен на обработку персональных данных по <a href="privacy.html" target="_blank">политике конфиденциальности</a></span></label>
+<p class="consent" id="agree-error" hidden>Чтобы отправить заявку, отметьте согласие на обработку данных.</p>
 <button class="btn solid" type="submit" style="align-self:flex-start">Отправить заявку</button>
-<p class="consent">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
 </form>
 <div class="sent" id="lead-sent" hidden>
 <b>Заявка почти готова</b>
@@ -389,7 +401,7 @@ Full Moon Party в Таиланде.</p><p class="text">Собираем пут�
 </main>
 
 <footer class="site-footer">
-<div class="in"><span>© 2026 Travel.laboratory · ИП Бибишев И. С. · ИНН 541003058627</span><span>Новосибирск, ул. Гоголя, 51 · Индивидуальные путешествия · 50+ стран</span></div>
+<div class="in"><span>© 2026 Travel.laboratory · ИП Бибишев И. С. · ИНН 541003058627 · <a href="privacy.html">Политика конфиденциальности</a></span><span>Новосибирск, ул. Гоголя, 51 · Индивидуальные путешествия · 50+ стран</span></div>
 </footer>
 
 <script src="assets/app.js"></script>

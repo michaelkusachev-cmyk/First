@@ -363,3 +363,10 @@ textarea { resize: vertical; }
 /* Переход из меню: раздел не уезжает под липкую шапку */
 [id] { scroll-margin-top: 84px; }
 @media (max-width: 820px) { .quiz > div { padding: 24px 16px; } .options.options { gap: 10px; } }
+
+/* Согласие на обработку данных в форме заявки */
+.agree { flex-direction: row; align-items: flex-start; gap: 12px; font-family: var(--sans); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--soft); cursor: pointer; }
+.agree input { min-height: 0; width: 20px; height: 20px; margin: 1px 0 0; padding: 0; flex: none; accent-color: var(--accent); }
+.agree a { color: var(--accent); }
+#agree-error { color: var(--bad); }
+.site-footer a { color: inherit; }

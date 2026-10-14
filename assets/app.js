@@ -372,6 +372,9 @@
     var name = nameEl.value.trim(), contact = contactEl.value.trim(), trip = f.namedItem('trip').value.trim();
     if (!name) { nameEl.focus(); return; }
     if (!contact) { contactEl.focus(); return; }
+    var agree = f.namedItem('agree'), agreeErr = document.getElementById('agree-error');
+    if (agree && !agree.checked) { agreeErr.hidden = false; agree.focus(); return; }
+    if (agreeErr) agreeErr.hidden = true;
     var text = 'Заявка с сайта\nИмя: ' + name + '\nКонтакт: ' + contact + (trip ? '\nПоездка: ' + trip : '');
     document.getElementById('lead-tg').href = TG + '?text=' + encodeURIComponent(text);
     document.getElementById('lead-text').textContent = text;
