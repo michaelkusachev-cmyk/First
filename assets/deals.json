@@ -1,8 +1,9 @@
 {
  "updated": "2026-10-14",
  "origin": "Новосибирск",
+ "source": "aviasales.ru/hottickets/ovb",
  "deals": [
-  {"city": "Анталья", "country": "TR", "iata": "AYT", "date": "2026-10-14", "price": 4900},
-  {"city": "Сиань", "country": "CN", "iata": "SIA", "date": "2026-11-08", "price": 9900}
+  {"city": "Анталья", "country": "TR", "iata": "AYT", "date": "2026-10-17", "price": 6243, "old_price": 28450, "airline": "AZUR Air", "transfers": 0},
+  {"city": "Чэнду", "country": "CN", "iata": "TFU", "date": "2027-01-11", "price": 10631, "old_price": 15779, "airline": "S7 Airlines", "transfers": 0}
  ]
 }

@@ -412,8 +412,8 @@
         panel.appendChild(h('div', { class: 'deal-row', 'data-date': d.date }, [
           h('span', { class: 'type', text: 'Горящий билет' }),
           h('span', { class: 't', text: route }),
-          h('span', { class: 'note', text: 'Вылет ' + human(d.date) + (d.transfers === 0 ? ' · прямой рейс' : '') }),
-          h('span', { class: 'pr', text: money(d.price) }),
+          h('span', { class: 'note', text: 'Вылет ' + human(d.date) + (d.airline ? ' · ' + d.airline : '') + (d.transfers === 0 ? ' · прямой рейс' : '') }),
+          h('span', { class: 'pr' }, [d.old_price > d.price ? h('s', { text: money(d.old_price) }) : null, d.old_price > d.price ? ' ' : null, money(d.price)]),
           h('a', { class: 'btn' + (i === 0 ? ' solid' : ''), href: TG + '?text=' + encodeURIComponent(msg), target: '_blank', rel: 'noopener', text: 'Забронировать' })
         ]));
       });
