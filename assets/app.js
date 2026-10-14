@@ -118,6 +118,30 @@
     board.addEventListener('focusout', function () { paused = false; });
   })();
 
+  /* ---------- Видео из поездок: грузим, только когда видно; без автозапуска при экономии трафика и «меньше движения» ---------- */
+  (function () {
+    var vids = [].slice.call(document.querySelectorAll('video.bg-video'));
+    if (!vids.length) return;
+    var conn = navigator.connection || {};
+    var lite = reduceMotion || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    if (lite) return; // остаётся картинка-заставка
+    var small = window.matchMedia('(max-width: 820px)').matches;
+    // MP4 (H.264) понимают почти все; где нет — берём WebM с тем же именем
+    var mp4 = document.createElement('video').canPlayType('video/mp4; codecs="avc1.640028"');
+    function start(v) {
+      if (!v.src) {
+        var src = (small && v.dataset.srcSmall) || v.dataset.src;
+        v.src = mp4 ? src : src.replace(/\.mp4$/, '.webm');
+      }
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    }
+    if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) start(e.target); else if (e.target.src) e.target.pause(); });
+    }, { rootMargin: '200px' });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+
   /* ---------- Квиз ---------- */
   var R = {
     asia3: { title: 'Таиланд · Малайзия · Сингапур', price: 'от 350 000 ₽ за двоих', season: 'Лучший сезон — с ноября по март.' },
