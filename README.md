@@ -24,3 +24,21 @@
 2. В GitHub: Settings → Secrets and variables → Actions → New repository secret,
    имя `TRAVELPAYOUTS_TOKEN`, значение — токен.
 3. Робот работает только в основной ветке репозитория.
+
+## Домен nsktour.ru
+
+Сайт публикуется через GitHub Pages (Settings → Pages → ветка main, папка / root),
+файл `CNAME` в корне указывает домен nsktour.ru.
+
+Записи DNS у регистратора (reg.ru / nic.ru) для nsktour.ru:
+
+| Тип   | Имя (хост) | Значение                     |
+|-------|------------|------------------------------|
+| A     | @          | 185.199.108.153              |
+| A     | @          | 185.199.109.153              |
+| A     | @          | 185.199.110.153              |
+| A     | @          | 185.199.111.153              |
+| CNAME | www        | michaelkusachev-cmyk.github.io. |
+
+Старые A-записи и записи «парковки» регистратора для @ и www удалить.
+После того как домен откроется, в Settings → Pages включить «Enforce HTTPS».
