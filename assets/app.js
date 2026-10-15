@@ -142,6 +142,61 @@
     vids.forEach(function (v) { io.observe(v); });
   })();
 
+  /* ---------- Витрина направлений: при выборе меняется панель и видео-фон ---------- */
+  (function () {
+    var box = document.getElementById('showcase');
+    if (!box) return;
+    var video = box.querySelector('.sc-video');
+    var tabs = [].slice.call(box.querySelectorAll('.sc-tab'));
+    var conn = navigator.connection || {};
+    var lite = reduceMotion || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    var small = window.matchMedia('(max-width: 820px)').matches;
+    var mp4 = document.createElement('video').canPlayType('video/mp4; codecs="avc1.640028"');
+    var visible = false, current = null;
+    function srcFor(name) { return 'assets/video/' + name + (small ? '-small' : '') + (mp4 ? '.mp4' : '.webm'); }
+    function load(name) {
+      if (current === name) return;
+      current = name;
+      video.poster = 'assets/video/' + name + '.jpg';
+      if (lite || !visible) { video.removeAttribute('src'); video.load(); return; }
+      video.classList.add('fading');
+      setTimeout(function () {
+        video.src = srcFor(name);
+        var p = video.play(); if (p && p.catch) p.catch(function () {});
+      }, 250);
+    }
+    video.addEventListener('playing', function () { video.classList.remove('fading'); });
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+      load(tab.dataset.video);
+    }
+    tabs.forEach(function (t, i) {
+      t.tabIndex = i === 0 ? 0 : -1;
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); }
+      });
+    });
+    // Видео начинает грузиться, только когда витрина на экране
+    var first = tabs[0].dataset.video;
+    function onView(inView) {
+      visible = inView;
+      if (inView) { var c = current; current = null; load(c || first); }
+      else if (video.src) video.pause();
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { onView(es[0].isIntersecting); }, { rootMargin: '200px' }).observe(box);
+    } else onView(true);
+    current = first;
+  })();
+
   /* ---------- Квиз ---------- */
   var R = {
     asia3: { title: 'Таиланд · Малайзия · Сингапур', price: 'от 350 000 ₽ за двоих', season: 'Лучший сезон — с ноября по март.' },
