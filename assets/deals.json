@@ -1,36 +1,36 @@
 {
- "updated": "2026-10-14",
+ "updated": "2026-10-15",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Анталья",
-   "country": "TR",
-   "iata": "AYT",
-   "date": "2026-10-17",
-   "price": 6243,
-   "old_price": 28450,
-   "airline": "AZUR Air",
-   "transfers": 0
-  },
-  {
-   "city": "Чэнду",
-   "country": "CN",
-   "iata": "TFU",
-   "date": "2027-01-11",
-   "price": 10631,
-   "old_price": 15779,
+   "city": "Дубай",
+   "country": "AE",
+   "iata": "DXB",
+   "date": "2026-11-20",
+   "price": 18214,
+   "old_price": 33705,
    "airline": "S7 Airlines",
    "transfers": 0
   },
   {
-   "city": "Москва",
+   "city": "Ереван",
+   "country": "AM",
+   "iata": "EVN",
+   "date": "2026-10-19",
+   "price": 12427,
+   "old_price": 28939,
+   "airline": "Аэрофлот",
+   "transfers": null
+  },
+  {
+   "city": "Сочи",
    "country": "RU",
-   "iata": "VKO",
-   "date": "2026-10-17",
-   "price": 4992,
-   "old_price": 12758,
-   "airline": "Алроса",
+   "iata": "AER",
+   "date": "2026-10-20",
+   "price": 6309,
+   "old_price": 16393,
+   "airline": "Россия",
    "transfers": 0
   }
  ],
@@ -41,6 +41,14 @@
     "TR",
     "CN",
     "RU:Москва"
+   ]
+  },
+  {
+   "date": "2026-10-15",
+   "keys": [
+    "AE",
+    "AM",
+    "RU:Сочи"
    ]
   }
  ]
