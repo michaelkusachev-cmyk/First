@@ -399,33 +399,17 @@ textarea { resize: vertical; }
   .about-media::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(12,14,17,.78) 20%, rgba(12,14,17,.7) 100%); }
 }
 
-/* Витрина направлений: видео-фон меняется при выборе направления */
-.showcase { position: relative; overflow: hidden; margin-bottom: 56px; border: 1px solid var(--line); min-height: 520px; display: flex; background: var(--panel); }
-.sc-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: opacity .45s ease; }
-.sc-video.fading { opacity: 0; }
-.showcase::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,14,17,.92) 0%, rgba(12,14,17,.55) 45%, rgba(12,14,17,.25) 100%), linear-gradient(0deg, rgba(12,14,17,.85) 0%, rgba(12,14,17,0) 45%); }
-.sc-body { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); width: 100%; }
-.sc-tabs { display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,.08); background: rgba(12,14,17,.45); }
-.sc-tab { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; min-height: 64px; padding: 0 20px; background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.08); text-align: left; cursor: pointer; color: var(--soft); }
-.sc-tab .sc-name { font-family: var(--mono); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
-.sc-tab .sc-price { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
-.sc-tab:hover { color: var(--fg); background: rgba(255,255,255,.04); }
-.sc-tab[aria-selected="true"] { color: var(--bg); background: var(--accent); }
-.sc-tab[aria-selected="true"] .sc-price { color: var(--bg); }
-.sc-panels { display: flex; align-items: flex-end; padding: 40px; }
-.sc-panel { max-width: 560px; display: flex; flex-direction: column; gap: 12px; animation: scIn .5s ease both; }
-@keyframes scIn { from { opacity: 0; transform: translateY(12px); } }
-.sc-code { margin: 0; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--accent); }
-.sc-panel h3 { font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -.01em; }
-.sc-places { margin: 0; color: var(--soft); font-size: 15px; }
-.sc-lead { margin: 4px 0 8px; font-size: 18px; color: #DDE0E4; }
-@media (max-width: 820px) {
-  .showcase { min-height: 0; }
-  .sc-body { grid-template-columns: 1fr; }
-  .sc-tabs { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); scrollbar-width: none; }
-  .sc-tab { flex: 0 0 auto; min-height: 52px; padding: 0 16px; border-bottom: 0; border-right: 1px solid rgba(255,255,255,.08); }
-  .sc-tab .sc-price { display: none; }
-  .sc-panels { padding: 140px 16px 24px; }
-  .showcase::after { background: linear-gradient(0deg, rgba(12,14,17,.95) 0%, rgba(12,14,17,.7) 55%, rgba(12,14,17,.35) 100%); }
+
+/* Карточки направлений с видео из поездки фоном */
+.route.has-video { position: relative; overflow: hidden; padding: 56px 32px; margin-bottom: 16px; border: 1px solid var(--line); min-height: 380px; align-items: end; }
+.route.has-video + .route:not(.has-video) { margin-top: 24px; }
+.route.has-video > .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.route.has-video::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,14,17,.9) 0%, rgba(12,14,17,.7) 50%, rgba(12,14,17,.55) 100%), linear-gradient(0deg, rgba(12,14,17,.75) 0%, rgba(12,14,17,0) 50%); }
+.route.has-video > :not(video) { position: relative; z-index: 2; }
+@media (min-width: 901px) { .route.has-video { grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1.5fr); } }
+.route.has-video .places, .route.has-video .price span { color: var(--soft); }
+.route.has-video .text { color: #D4D7DC; }
+@media (max-width: 900px) {
+  .route.has-video { padding: 160px 20px 28px; min-height: 0; }
+  .route.has-video::after { background: linear-gradient(0deg, rgba(12,14,17,.95) 0%, rgba(12,14,17,.82) 55%, rgba(12,14,17,.35) 100%); }
 }
-@media (prefers-reduced-motion: reduce) { .sc-panel { animation: none; } .sc-video { transition: none; } }
