@@ -386,3 +386,4 @@ textarea { resize: vertical; }
   .hero-media::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(12,14,17,.7) 35%, rgba(12,14,17,.55) 100%); }
 }
 .route-video { margin-top: 20px; }
+.doc a { color: var(--accent); }
