@@ -405,9 +405,14 @@ textarea { resize: vertical; }
 .route.has-video + .route:not(.has-video) { margin-top: 24px; }
 .route:not(.has-video) + .route.has-video { margin-top: 24px; }
 .route.has-video > .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-.route.has-video::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,14,17,.9) 0%, rgba(12,14,17,.7) 50%, rgba(12,14,17,.55) 100%), linear-gradient(0deg, rgba(12,14,17,.75) 0%, rgba(12,14,17,0) 50%); }
+.route.has-video::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(12,14,17,.94) 0%, rgba(12,14,17,.86) 38%, rgba(12,14,17,.25) 62%, rgba(12,14,17,0) 100%); }
 .route.has-video > :not(video) { position: relative; z-index: 2; }
-@media (min-width: 901px) { .route.has-video { grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1.5fr); } }
+@media (min-width: 901px) {
+  /* текст в левой части, справа видео открыто */
+  .route.has-video { grid-template-columns: minmax(0, 480px); align-content: center; gap: 14px; min-height: 460px; padding: 48px 40px; }
+  .route.has-video .lead2 { font-size: 17px; }
+  .route.has-video .text { font-size: 15px; }
+}
 .route.has-video .places, .route.has-video .price span { color: var(--soft); }
 .route.has-video .text { color: #D4D7DC; }
 @media (max-width: 900px) {
