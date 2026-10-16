@@ -1,36 +1,36 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-16",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Дубай",
-   "country": "AE",
-   "iata": "DXB",
-   "date": "2026-11-20",
-   "price": 18214,
-   "old_price": 33705,
+   "city": "Тбилиси",
+   "country": "GE",
+   "iata": "TBS",
+   "date": "2026-10-20",
+   "price": 18146,
+   "old_price": 33970,
+   "airline": "Алроса",
+   "transfers": 0
+  },
+  {
+   "city": "Самарканд",
+   "country": "UZ",
+   "iata": "SKD",
+   "date": "2027-01-07",
+   "price": 8750,
+   "old_price": 18623,
    "airline": "S7 Airlines",
    "transfers": 0
   },
   {
-   "city": "Ереван",
-   "country": "AM",
-   "iata": "EVN",
-   "date": "2026-10-19",
-   "price": 12427,
-   "old_price": 28939,
-   "airline": "Аэрофлот",
-   "transfers": null
-  },
-  {
-   "city": "Сочи",
+   "city": "Санкт-Петербург",
    "country": "RU",
-   "iata": "AER",
-   "date": "2026-10-20",
-   "price": 6309,
-   "old_price": 16393,
-   "airline": "Россия",
+   "iata": "LED",
+   "date": "2026-10-19",
+   "price": 8003,
+   "old_price": 17280,
+   "airline": "Smartavia",
    "transfers": 0
   }
  ],
@@ -49,6 +49,14 @@
     "AE",
     "AM",
     "RU:Сочи"
+   ]
+  },
+  {
+   "date": "2026-10-16",
+   "keys": [
+    "GE",
+    "UZ",
+    "RU:Санкт-Петербург"
    ]
   }
  ]
