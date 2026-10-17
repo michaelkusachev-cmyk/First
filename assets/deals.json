@@ -1,36 +1,36 @@
 {
- "updated": "2026-10-16",
+ "updated": "2026-10-17",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Тбилиси",
-   "country": "GE",
-   "iata": "TBS",
-   "date": "2026-10-20",
-   "price": 18146,
-   "old_price": 33970,
-   "airline": "Алроса",
+   "city": "Анталья",
+   "country": "TR",
+   "iata": "AYT",
+   "date": "2026-11-04",
+   "price": 7329,
+   "old_price": 29665,
+   "airline": "Nordwind Airlines",
    "transfers": 0
   },
   {
-   "city": "Самарканд",
-   "country": "UZ",
-   "iata": "SKD",
-   "date": "2027-01-07",
-   "price": 8750,
-   "old_price": 18623,
+   "city": "Алматы",
+   "country": "KZ",
+   "iata": "ALA",
+   "date": "2026-11-09",
+   "price": 8123,
+   "old_price": 16527,
    "airline": "S7 Airlines",
    "transfers": 0
   },
   {
-   "city": "Санкт-Петербург",
+   "city": "Москва",
    "country": "RU",
-   "iata": "LED",
-   "date": "2026-10-19",
-   "price": 8003,
-   "old_price": 17280,
-   "airline": "Smartavia",
+   "iata": "SVO",
+   "date": "2026-10-20",
+   "price": 5198,
+   "old_price": 12395,
+   "airline": "Победа",
    "transfers": 0
   }
  ],
@@ -57,6 +57,14 @@
     "GE",
     "UZ",
     "RU:Санкт-Петербург"
+   ]
+  },
+  {
+   "date": "2026-10-17",
+   "keys": [
+    "TR",
+    "KZ",
+    "RU:Москва"
    ]
   }
  ]
