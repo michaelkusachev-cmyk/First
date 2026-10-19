@@ -1,36 +1,36 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-19",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Дубай",
-   "country": "AE",
-   "iata": "DXB",
-   "date": "2026-11-21",
-   "price": 18214,
-   "old_price": 38589,
+   "city": "Фергана",
+   "country": "UZ",
+   "iata": "FEG",
+   "date": "2027-01-16",
+   "price": 7820,
+   "old_price": 17547,
    "airline": "S7 Airlines",
    "transfers": 0
   },
   {
-   "city": "Пекин",
-   "country": "CN",
-   "iata": "PKX",
-   "date": "2026-11-22",
-   "price": 16594,
-   "old_price": 23385,
+   "city": "Ереван",
+   "country": "AM",
+   "iata": "EVN",
+   "date": "2026-11-16",
+   "price": 14524,
+   "old_price": 24632,
    "airline": "S7 Airlines",
    "transfers": 0
   },
   {
-   "city": "Сочи",
+   "city": "Санкт-Петербург",
    "country": "RU",
-   "iata": "AER",
-   "date": "2026-10-22",
-   "price": 7804,
-   "old_price": 13139,
-   "airline": "S7 Airlines",
+   "iata": "LED",
+   "date": "2026-10-21",
+   "price": 7376,
+   "old_price": 21932,
+   "airline": "Россия",
    "transfers": 0
   }
  ],
@@ -73,6 +73,14 @@
     "AE",
     "CN",
     "RU:Сочи"
+   ]
+  },
+  {
+   "date": "2026-10-19",
+   "keys": [
+    "UZ",
+    "AM",
+    "RU:Санкт-Петербург"
    ]
   }
  ]
