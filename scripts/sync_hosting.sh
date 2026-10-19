@@ -13,10 +13,13 @@ get() {
 
 # Сначала видео — чтобы новая страница не ссылалась на файлы, которых ещё нет
 mkdir -p "$D/assets/video"
-curl -fsS "$B/index.html" | grep -o 'assets/video/[A-Za-z0-9_-]*\.\(mp4\|jpg\)' | sort -u | while read -r f; do
+V=$(curl -fsS "$B/index.html" | grep -o 'assets/video/[A-Za-z0-9_-]*\.\(mp4\|jpg\)' | sort -u) || exit 1
+for f in $V; do
   case "$f" in *.mp4) set -- "$f" "${f%.mp4}.webm" ;; *) set -- "$f" ;; esac
   for v; do
     [ -s "$D/$v" ] || get "$v"
+    # Свежезалитый файл GitHub иногда отдаёт не сразу — тогда страницу не трогаем до следующего запуска
+    [ -s "$D/$v" ] || exit 1
   done
 done
 
