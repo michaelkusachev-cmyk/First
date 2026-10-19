@@ -393,14 +393,16 @@ textarea { resize: vertical; }
 .doc a { color: var(--accent); }
 
 /* «О нас» — нарезка из поездок на заднем фоне */
-.about-media { position: relative; overflow: hidden; }
+.about-media { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; min-height: min(calc(100svh - 68px), 860px); }
 .about-media > .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-.about-media::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(21, 16, 12,.9) 0%, rgba(21, 16, 12,.72) 60%, rgba(21, 16, 12,.55) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(21, 16, 12,0) 25%), linear-gradient(180deg, var(--bg) 0%, rgba(21, 16, 12,0) 15%); }
+/* Первый экран: лёгкое нейтральное затемнение (сильнее под текстом слева), чтобы видео оставалось ярким */
+.about-media::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.28) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(21, 16, 12,0) 14%); }
+.about-media .about h2, .about-media .about p, .about-media .figures { text-shadow: 0 1px 12px rgba(0,0,0,.45); }
 .about-media > .section { position: relative; z-index: 2; padding-block-end: 72px; }
 .about-media .about p { color: #E6DBCC; }
-.about-media .figures span { color: var(--soft); }
+.about-media .figures span { color: var(--fg); }
 @media (max-width: 820px) {
-  .about-media::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(21, 16, 12,.78) 20%, rgba(21, 16, 12,.7) 100%); }
+  .about-media::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(0,0,0,.5) 18%, rgba(0,0,0,.4) 100%); }
 }
 
 
