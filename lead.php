@@ -74,13 +74,35 @@ if (!empty($cfg['token']) && !empty($cfg['chat_id'])) {
     $errors[] = 'telegram: not configured';
 }
 
-// 2. Запасной путь — письмо
+// 2. Запасной путь — письмо. Через SMTP SpaceWeb с входом в ящик (так Mail.ru его принимает),
+//    а если пароль ящика не задан — обычной mail().
+function smtp_send($cfg, $from, $to, $subject, $body) {
+    $host = $cfg['smtp_host'] ?? 'smtp.spaceweb.ru';
+    $port = $cfg['smtp_port'] ?? 465;
+    $fp = @stream_socket_client(($cfg['smtp_scheme'] ?? 'ssl') . '://' . $host . ':' . $port, $no, $msg, 10);
+    if (!$fp) return "connect $host:$port: $msg";
+    stream_set_timeout($fp, 10);
+    $read = function () use ($fp) { $r = ''; while (($l = fgets($fp, 515)) !== false) { $r .= $l; if (isset($l[3]) && $l[3] === ' ') break; } return $r; };
+    $cmd = function ($c, $want) use ($fp, $read) { if ($c !== null) fwrite($fp, $c . "\r\n"); $r = $read(); return strpos($r, (string)$want) === 0 ? null : trim($r); };
+    $data = "From: Travel.laboratory <$from>\r\nTo: <$to>\r\nSubject: $subject\r\nDate: " . date('r') . "\r\n"
+          . "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+          . chunk_split(base64_encode($body)) . "\r\n.";
+    foreach ([[null, 220], ['EHLO travelaboratory.ru', 250], ['AUTH LOGIN', 334], [base64_encode($cfg['smtp_user'] ?? $from), 334],
+              [base64_encode($cfg['smtp_pass']), 235], ["MAIL FROM:<$from>", 250], ["RCPT TO:<$to>", 250], ['DATA', 354], [$data, 250]] as $step) {
+        if ($e = $cmd($step[0], $step[1])) { fclose($fp); return 'smtp: ' . $e; }
+    }
+    fwrite($fp, "QUIT\r\n"); fclose($fp);
+    return null;
+}
 $to = $cfg['email'] ?? 'travel.laboratory@mail.ru';
+$from = $cfg['from'] ?? 'noreply@travelaboratory.ru';   // ящик из «Хостинг → Почта»
 $subject = '=?UTF-8?B?' . base64_encode('Заявка с сайта: ' . $name) . '?=';
-$headers = "From: Travel.laboratory <noreply@travelaboratory.ru>\r\n"
-         . "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
-$from = $cfg['from'] ?? 'noreply@travelaboratory.ru';   // ящик должен существовать в «Хостинг → Почта», иначе Mail.ru отбросит письмо
-$headers = str_replace('noreply@travelaboratory.ru', $from, $headers);
-if (function_exists('mail') && @mail($to, $subject, $text, $headers, '-f' . $from)) reply(true, 200, implode('; ', $errors) . '; sent by email');
+if (!empty($cfg['smtp_pass'])) {
+    $e = smtp_send($cfg, $from, $to, $subject, $text);
+    if ($e === null) reply(true, 200, implode('; ', $errors) . '; sent by smtp');
+    $errors[] = $e;
+}
+$headers = "From: Travel.laboratory <$from>\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
+if (function_exists('mail') && @mail($to, $subject, $text, $headers, '-f' . $from)) reply(true, 200, implode('; ', $errors) . '; sent by mail()');
 $errors[] = 'email: not sent';
 reply(false, 502, implode('; ', $errors));
