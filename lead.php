@@ -7,18 +7,18 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 date_default_timezone_set('Asia/Novosibirsk');
 
-function reply($ok, $status = 200) {
+function reply($ok, $status = 200, $error = null) {
     http_response_code($status);
-    echo json_encode(['ok' => $ok]);
+    echo json_encode($error === null ? ['ok' => $ok] : ['ok' => $ok, 'error' => $error], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') reply(false, 405);
 
 $cfgFile = __DIR__ . '/../tg-config.php';
-if (!is_file($cfgFile)) reply(false, 503);
+if (!is_file($cfgFile)) reply(false, 503, 'no config');
 $cfg = require $cfgFile;
-if (empty($cfg['token']) || empty($cfg['chat_id'])) reply(false, 503);
+if (empty($cfg['token']) || empty($cfg['chat_id'])) reply(false, 503, 'empty token or chat_id');
 
 // Ловушка для ботов: это поле скрыто от людей, его заполняют только спам-роботы
 if (!empty($_POST['website'])) reply(true);
@@ -57,4 +57,6 @@ $ctx = stream_context_create(['http' => [
 ]]);
 $res = @file_get_contents($api . '/bot' . $cfg['token'] . '/sendMessage', false, $ctx);
 $data = $res ? json_decode($res, true) : null;
-reply(!empty($data['ok']), !empty($data['ok']) ? 200 : 502);
+if (!empty($data['ok'])) reply(true);
+// Текст ошибки Telegram (без токена) — чтобы было видно, что не так с настройкой
+reply(false, 502, $res === false ? 'no connection to Telegram' : ($data['description'] ?? 'bad response'));
