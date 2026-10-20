@@ -79,6 +79,8 @@ $to = $cfg['email'] ?? 'travel.laboratory@mail.ru';
 $subject = '=?UTF-8?B?' . base64_encode('Заявка с сайта: ' . $name) . '?=';
 $headers = "From: Travel.laboratory <noreply@travelaboratory.ru>\r\n"
          . "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
-if (function_exists('mail') && @mail($to, $subject, $text, $headers)) reply(true, 200, implode('; ', $errors) . '; sent by email');
+$from = $cfg['from'] ?? 'noreply@travelaboratory.ru';   // ящик должен существовать в «Хостинг → Почта», иначе Mail.ru отбросит письмо
+$headers = str_replace('noreply@travelaboratory.ru', $from, $headers);
+if (function_exists('mail') && @mail($to, $subject, $text, $headers, '-f' . $from)) reply(true, 200, implode('; ', $errors) . '; sent by email');
 $errors[] = 'email: not sent';
 reply(false, 502, implode('; ', $errors));
