@@ -48,15 +48,23 @@ $text = "Заявка с сайта travelaboratory.ru\n\n"
       . "\n" . date('d.m.Y H:i') . ' (Новосибирск)';
 
 $api = $cfg['api'] ?? 'https://api.telegram.org';
-$ctx = stream_context_create(['http' => [
-    'method' => 'POST',
-    'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
-    'content' => http_build_query(['chat_id' => $cfg['chat_id'], 'text' => $text, 'disable_web_page_preview' => 'true']),
-    'timeout' => 10,
-    'ignore_errors' => true,
-]]);
-$res = @file_get_contents($api . '/bot' . $cfg['token'] . '/sendMessage', false, $ctx);
+$url = $api . '/bot' . $cfg['token'] . '/sendMessage';
+$post = http_build_query(['chat_id' => $cfg['chat_id'], 'text' => $text, 'disable_web_page_preview' => 'true']);
+$res = false; $err = '';
+if (function_exists('curl_init')) {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_POSTFIELDS => $post, CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 8, CURLOPT_TIMEOUT => 12]);
+    $res = curl_exec($ch);
+    if ($res === false) $err = 'curl: ' . curl_error($ch);
+    curl_close($ch);
+} else {
+    $ctx = stream_context_create(['http' => ['method' => 'POST', 'timeout' => 12, 'ignore_errors' => true,
+        'header' => "Content-Type: application/x-www-form-urlencoded\r\n", 'content' => $post]]);
+    $res = @file_get_contents($url, false, $ctx);
+    if ($res === false) $err = 'fopen: ' . (error_get_last()['message'] ?? 'no connection') . '; allow_url_fopen=' . ini_get('allow_url_fopen');
+}
 $data = $res ? json_decode($res, true) : null;
 if (!empty($data['ok'])) reply(true);
-// Текст ошибки Telegram (без токена) — чтобы было видно, что не так с настройкой
-reply(false, 502, $res === false ? 'no connection to Telegram' : ($data['description'] ?? 'bad response'));
+// Текст ошибки (без токена) — чтобы было видно, что не так с настройкой или связью
+reply(false, 502, $res === false ? str_replace($cfg['token'], '***', $err) : ($data['description'] ?? 'bad response'));
