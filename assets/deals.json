@@ -1,36 +1,36 @@
 {
- "updated": "2026-10-19",
+ "updated": "2026-10-20",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Фергана",
-   "country": "UZ",
-   "iata": "FEG",
-   "date": "2027-01-16",
-   "price": 7820,
-   "old_price": 17547,
-   "airline": "S7 Airlines",
+   "city": "Анталья",
+   "country": "TR",
+   "iata": "AYT",
+   "date": "2026-10-24",
+   "price": 5174,
+   "old_price": 27722,
+   "airline": "AZUR Air",
    "transfers": 0
   },
   {
-   "city": "Ереван",
-   "country": "AM",
-   "iata": "EVN",
-   "date": "2026-11-16",
-   "price": 14524,
-   "old_price": 24632,
-   "airline": "S7 Airlines",
+   "city": "Нячанг",
+   "country": "VN",
+   "iata": "CXR",
+   "date": "2026-10-20",
+   "price": 18678,
+   "old_price": 47998,
+   "airline": "Аэрофлот",
    "transfers": 0
   },
   {
-   "city": "Санкт-Петербург",
+   "city": "Москва",
    "country": "RU",
-   "iata": "LED",
-   "date": "2026-10-21",
-   "price": 7376,
-   "old_price": 21932,
-   "airline": "Россия",
+   "iata": "VKO",
+   "date": "2026-10-22",
+   "price": 6326,
+   "old_price": 12413,
+   "airline": "Якутия",
    "transfers": 0
   }
  ],
@@ -81,6 +81,14 @@
     "UZ",
     "AM",
     "RU:Санкт-Петербург"
+   ]
+  },
+  {
+   "date": "2026-10-20",
+   "keys": [
+    "TR",
+    "VN",
+    "RU:Москва"
    ]
   }
  ]
