@@ -25,9 +25,12 @@ for f in $V; do
   done
 done
 
-for f in index.html privacy.html 404.html lead.php travelpayouts.html assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png; do
+for f in index.html privacy.html 404.html lead.php assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png; do
   get "$f"
 done
+
+# Служебная страница для Travelpayouts больше не нужна (владение сайтом подтверждено)
+rm -f "$D/travelpayouts.html"
 
 # Убираем ролики, на которые страница больше не ссылается (старые версии после замен)
 for p in "$D"/assets/video/*.mp4 "$D"/assets/video/*.webm "$D"/assets/video/*.jpg; do
