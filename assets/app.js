@@ -429,6 +429,8 @@
     function human(d) { var x = parse(d); return x.getDate() + ' ' + MONTHS[x.getMonth()]; }
     function money(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽'; }
     function rows() { return [].slice.call(panel.querySelectorAll('.deal-row')); }
+    // Поиск Aviasales на этот рейс: OVB + ДДММ + код города + 1 пассажир (партнёрскую метку добавляет Travelpayouts Drive)
+    function avia(d) { var p = d.date.split('-'); return 'https://www.aviasales.ru/search/OVB' + p[2] + p[1] + d.iata + '1'; }
     function empty() {
       if (rows().length) return;
       panel.appendChild(h('div', { class: 'deal-row' }, [
@@ -454,7 +456,10 @@
           h('span', { class: 't', text: route }),
           h('span', { class: 'note', text: 'Вылет ' + human(d.date) + (d.airline ? ' · ' + d.airline : '') + (d.transfers === 0 ? ' · прямой рейс' : '') }),
           h('span', { class: 'pr' }, [d.old_price > d.price ? h('s', { text: money(d.old_price) }) : null, d.old_price > d.price ? ' ' : null, money(d.price)]),
-          h('a', { class: 'btn' + (i === 0 ? ' solid' : ''), href: TG + '?text=' + encodeURIComponent(msg), target: '_blank', rel: 'noopener', text: 'Забронировать' })
+          h('span', { class: 'acts' }, [
+            h('a', { class: 'btn solid', href: avia(d), target: '_blank', rel: 'noopener', text: 'Купить' }),
+            h('a', { class: 'btn', href: TG + '?text=' + encodeURIComponent(msg), target: '_blank', rel: 'noopener', text: 'Написать' })
+          ])
         ]));
       });
       var upd = document.getElementById('deals-updated');

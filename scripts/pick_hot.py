@@ -72,6 +72,12 @@ def choose(cards, history, today):
     return abroad + russia, [key(c) for c in abroad + russia]
 
 
+def avia(d):
+    # Поиск Aviasales на этот рейс: OVB + ДДММ + код города + 1 пассажир (партнёрскую метку добавляет Travelpayouts Drive)
+    y, m, day = d['date'].split('-')
+    return 'https://www.aviasales.ru/search/OVB%s%s%s1' % (day, m, d['iata'])
+
+
 def static_rows(deals):
     rows = []
     for i, d in enumerate(deals):
@@ -82,8 +88,9 @@ def static_rows(deals):
         rows.append(
             '<div class="deal-row" data-date="%s"><span class="type">Горящий билет</span><span class="t">%s</span>'
             '<span class="note">%s</span><span class="pr">%s%s</span>'
-            '<a class="btn%s" href="%s?text=%s" target="_blank" rel="noopener">Забронировать</a></div>'
-            % (d['date'], route, note, old, money(d['price']), ' solid' if i == 0 else '', TG, urllib.parse.quote(msg)))
+            '<span class="acts"><a class="btn solid" href="%s" target="_blank" rel="noopener">Купить</a>'
+            '<a class="btn" href="%s?text=%s" target="_blank" rel="noopener">Написать</a></span></div>'
+            % (d['date'], route, note, old, money(d['price']), avia(d), TG, urllib.parse.quote(msg)))
     return '\n'.join(rows)
 
 

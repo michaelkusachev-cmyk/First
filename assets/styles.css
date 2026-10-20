@@ -215,14 +215,15 @@ h3 { font-size: 20px; line-height: 1.3; }
 @media (max-width: 720px) { .months { grid-template-columns: repeat(6, minmax(0, 1fr)); } .months button:nth-child(6) { border-right: 0; } .months button:nth-child(-n+6) { border-bottom: 1px solid var(--line); } }
 
 /* ---------- Горящее ---------- */
-.deal-row { display: grid; grid-template-columns: 140px minmax(0, 1.6fr) minmax(0, 1.8fr) 180px 150px; gap: 16px; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.deal-row { display: grid; grid-template-columns: 140px minmax(0, 1.4fr) minmax(0, 1.6fr) 170px auto; gap: 16px; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--line); }
 .deal-row:last-child { border-bottom: 0; }
 .deal-row .type { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
 .deal-row .t { font-weight: 500; font-size: 17px; }
 .deal-row .note { font-size: 14px; color: var(--muted); }
 .deal-row .pr { font-family: var(--mono); text-align: right; white-space: nowrap; }
 .deal-row .btn { min-height: 40px; padding: 0 16px; font-size: 14px; }
-@media (max-width: 900px) { .deal-row { grid-template-columns: 1fr auto; } .deal-row .t, .deal-row .note { grid-column: 1 / -1; } .deal-row .btn { grid-column: 1 / -1; justify-self: start; } }
+.deal-row .acts { display: flex; gap: 8px; }
+@media (max-width: 900px) { .deal-row { grid-template-columns: 1fr auto; } .deal-row .t, .deal-row .note { grid-column: 1 / -1; } .deal-row .acts { grid-column: 1 / -1; } }
 
 /* ---------- Игра ---------- */
 .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 28px; font-size: 14px; color: var(--soft); }
