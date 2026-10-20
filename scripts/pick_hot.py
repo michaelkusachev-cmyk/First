@@ -9,6 +9,10 @@
 Пишет assets/deals.json и обновляет запасные строки в index.html между
 метками <!-- deals:start --> и <!-- deals:end -->.
 
+Кнопка «Купить» ведёт на поиск Aviasales. Если задана переменная TRAVELPAYOUTS_TOKEN
+(API-токен из кабинета Travelpayouts → профиль), ссылка заменяется партнёрской —
+её выдаёт Travelpayouts, с маркером и рекламной меткой erid. Без токена — обычная ссылка.
+
 Запуск: python3 scripts/pick_hot.py /tmp/hot.json
 """
 import datetime as dt
@@ -29,6 +33,9 @@ HISTORY_DAYS = 2          # сколько прошлых дней учитыв�
 MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
           'августа', 'сентября', 'октября', 'ноября', 'декабря']
 TG = 'https://t.me/TraveLaboratory'
+TP_LINKS_URL = 'https://api.travelpayouts.com/links/v1/create'
+TP_TRS = 585539            # проект travelaboratory.ru в Travelpayouts
+TP_MARKER = 789950         # партнёрский маркер
 
 
 def countries():
@@ -73,9 +80,33 @@ def choose(cards, history, today):
 
 
 def avia(d):
-    # Поиск Aviasales на этот рейс: OVB + ДДММ + код города + 1 пассажир (партнёрскую метку добавляет Travelpayouts Drive)
+    # Поиск Aviasales на этот рейс: OVB + ДДММ + код города + 1 пассажир
     y, m, day = d['date'].split('-')
     return 'https://www.aviasales.ru/search/OVB%s%s%s1' % (day, m, d['iata'])
+
+
+def partner_links(urls):
+    """Партнёрские ссылки Travelpayouts для списка ссылок Aviasales: {обычная: партнёрская}."""
+    token = os.environ.get('TRAVELPAYOUTS_TOKEN')
+    if not token or not urls:
+        return {}
+    body = json.dumps({'trs': TP_TRS, 'marker': TP_MARKER, 'shorten': True,
+                       'links': [{'url': u, 'sub_id': 'hot'} for u in urls]}).encode()
+    req = urllib.request.Request(TP_LINKS_URL, data=body, method='POST',
+                                 headers={'X-Access-Token': token, 'Content-Type': 'application/json'})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            res = json.load(r)
+    except Exception as e:  # без партнёрских ссылок сайт всё равно обновится
+        print('Travelpayouts: не удалось получить партнёрские ссылки —', e, file=sys.stderr)
+        return {}
+    out = {}
+    for l in (res.get('result') or {}).get('links', []):
+        if l.get('partner_url') and l.get('code', 'success') == 'success':
+            out[l.get('url')] = l['partner_url']
+        else:
+            print('Travelpayouts: ссылка не создана —', l, file=sys.stderr)
+    return out
 
 
 def static_rows(deals):
@@ -90,7 +121,7 @@ def static_rows(deals):
             '<span class="note">%s</span><span class="pr">%s%s</span>'
             '<span class="acts"><a class="btn solid" href="%s" target="_blank" rel="noopener">Купить</a>'
             '<a class="btn" href="%s?text=%s" target="_blank" rel="noopener">Написать</a></span></div>'
-            % (d['date'], route, note, old, money(d['price']), avia(d), TG, urllib.parse.quote(msg)))
+            % (d['date'], route, note, old, money(d['price']), d.get('url') or avia(d), TG, urllib.parse.quote(msg)))
     return '\n'.join(rows)
 
 
@@ -107,6 +138,10 @@ def main():
         sys.exit('Подходящих билетов не нашлось — сайт не трогаю.')
     history.append({'date': today.isoformat(), 'keys': keys})
     deals = [{k: c.get(k) for k in ('city', 'country', 'iata', 'date', 'price', 'old_price', 'airline', 'transfers')} for c in picked]
+    links = partner_links([avia(d) for d in deals])
+    for d in deals:
+        if avia(d) in links:
+            d['url'] = links[avia(d)]
     with open(DEALS, 'w', encoding='utf-8') as f:
         json.dump({'updated': today.isoformat(), 'origin': 'Новосибирск', 'source': 'aviasales.ru/hottickets/ovb',
                    'deals': deals, 'history': history[-7:]}, f, ensure_ascii=False, indent=1)
