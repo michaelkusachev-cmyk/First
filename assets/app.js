@@ -30,6 +30,19 @@
     if (e.target.closest('a') && nav.classList.contains('open')) menuBtn.click();
   });
 
+  /* ---------- «Ещё» в меню на компьютере ---------- */
+  var more = document.getElementById('nav-more');
+  var moreBtn = document.getElementById('more-btn');
+  function setMore(open) {
+    more.classList.toggle('open', open);
+    moreBtn.setAttribute('aria-expanded', open);
+  }
+  moreBtn.addEventListener('click', function () { setMore(!more.classList.contains('open')); });
+  document.addEventListener('click', function (e) {
+    if (!more.contains(e.target) || e.target.closest('.nav-drop a')) setMore(false);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMore(false); });
+
   /* ---------- Табло Solari: буквы на отдельных плашках, строки меняются по одной ---------- */
   (function () {
     var board = document.getElementById('board');
