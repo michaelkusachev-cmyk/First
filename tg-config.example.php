@@ -6,4 +6,5 @@
 return [
     'token'   => '',   // токен бота из @BotFather, вида 1234567890:AAH...
     'chat_id' => '',   // кому слать заявки: ваш ID из @userinfobot (или ID группы, если бот в группе)
+    // 'email' => 'travel.laboratory@mail.ru',   // куда слать письмо, если Telegram недоступен (по умолчанию — этот адрес)
 ];
