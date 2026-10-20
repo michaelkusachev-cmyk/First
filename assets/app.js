@@ -135,6 +135,14 @@
   (function () {
     var vids = [].slice.call(document.querySelectorAll('video.bg-video'));
     if (!vids.length) return;
+    // Заставки (poster) тоже ставим, только когда видео близко к экрану: так страница открывается быстрее
+    function poster(v) { if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster; }
+    if ('IntersectionObserver' in window) {
+      var po = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { poster(e.target); po.unobserve(e.target); } });
+      }, { rootMargin: '800px' });
+      vids.forEach(function (v) { po.observe(v); });
+    } else vids.forEach(poster);
     var conn = navigator.connection || {};
     var lite = reduceMotion || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
     if (lite) return; // остаётся картинка-заставка
