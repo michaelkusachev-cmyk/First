@@ -223,6 +223,7 @@ h3 { font-size: 20px; line-height: 1.3; }
 .deal-row .pr { font-family: var(--mono); text-align: right; white-space: nowrap; }
 .deal-row .btn { min-height: 40px; padding: 0 16px; font-size: 14px; }
 .deal-row .acts { display: flex; gap: 8px; }
+.ad-note { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
 @media (max-width: 900px) { .deal-row { grid-template-columns: 1fr auto; } .deal-row .t, .deal-row .note { grid-column: 1 / -1; } .deal-row .acts { grid-column: 1 / -1; } }
 
 /* ---------- Игра ---------- */
