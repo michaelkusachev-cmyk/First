@@ -401,7 +401,7 @@
   }
   renderGame();
 
-  /* ---------- Заявка: пока без сервера — готовим текст и открываем Telegram ---------- */
+  /* ---------- Заявка: отправляем боту в Telegram (lead.php); если не вышло — готовим текст и открываем Telegram ---------- */
   var form = document.getElementById('lead-form');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -413,10 +413,25 @@
     if (agree && !agree.checked) { agreeErr.hidden = false; agree.focus(); return; }
     if (agreeErr) agreeErr.hidden = true;
     var text = 'Заявка с сайта\nИмя: ' + name + '\nКонтакт: ' + contact + (trip ? '\nПоездка: ' + trip : '');
-    document.getElementById('lead-tg').href = TG + '?text=' + encodeURIComponent(text);
-    document.getElementById('lead-text').textContent = text;
-    form.hidden = true;
-    document.getElementById('lead-sent').hidden = false;
+    var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+    function viaTelegram() {
+      document.getElementById('lead-tg').href = TG + '?text=' + encodeURIComponent(text);
+      document.getElementById('lead-text').textContent = text;
+      form.hidden = true;
+      document.getElementById('lead-sent').hidden = false;
+    }
+    if (!window.fetch || !window.URLSearchParams) { viaTelegram(); return; }
+    btn.disabled = true; btn.textContent = 'Отправляем…';
+    var body = new URLSearchParams({ name: name, contact: contact, trip: trip, agree: '1', website: f.namedItem('website').value });
+    var timer = new Promise(function (_, reject) { setTimeout(reject, 12000); });
+    Promise.race([fetch('lead.php', { method: 'POST', body: body }).then(function (r) { return r.json(); }), timer])
+      .then(function (r) {
+        if (!r || !r.ok) throw new Error('lead');
+        form.hidden = true;
+        document.getElementById('lead-done').hidden = false;
+      })
+      .catch(viaTelegram)
+      .then(function () { btn.disabled = false; btn.textContent = label; });
   });
 
   /* ---------- Горящие билеты: берём из assets/deals.json (его каждый день обновляет робот) ---------- */

@@ -25,7 +25,7 @@ for f in $V; do
   done
 done
 
-for f in index.html privacy.html 404.html assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png; do
+for f in index.html privacy.html 404.html lead.php assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png; do
   get "$f"
 done
 

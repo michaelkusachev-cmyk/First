@@ -628,10 +628,15 @@ Full Moon Party в Таиланде.</p><p class="text">Собираем пут�
 <label for="f-name">Как к вам обращаться<input id="f-name" type="text" name="name" autocomplete="name" required></label>
 <label for="f-contact">Телефон или ник в Telegram<input id="f-contact" type="text" name="contact" autocomplete="tel" required></label>
 <label for="f-trip">Куда, когда и сколько вас<textarea id="f-trip" name="trip" rows="4"></textarea></label>
+<label class="hp" aria-hidden="true">Не заполняйте это поле<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
 <label class="agree" for="f-agree"><input id="f-agree" type="checkbox" name="agree" required><span>Согласен на обработку персональных данных по <a href="privacy.html" target="_blank">политике конфиденциальности</a></span></label>
 <p class="consent" id="agree-error" hidden>Чтобы отправить заявку, отметьте согласие на обработку данных.</p>
 <button class="btn solid" type="submit" style="align-self:flex-start">Отправить заявку</button>
 </form>
+<div class="sent" id="lead-done" hidden>
+<b>Заявка отправлена</b>
+<p>Спасибо! Мы получили её и скоро ответим — по телефону или в Telegram, как вы указали.</p>
+</div>
 <div class="sent" id="lead-sent" hidden>
 <b>Заявка почти готова</b>
 <p>Нажмите кнопку: текст заявки скопируется, а Telegram откроется. В чате нажмите «Вставить» и отправьте.</p>
