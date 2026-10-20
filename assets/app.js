@@ -171,7 +171,7 @@
   };
   var Q = [
     { title: 'Что хочется почувствовать?', options: [
-      { id: 'relax', label: 'Перезагрузиться', hint: 'Море, тишина, красивые виды', w: { asia3: 3, arab: 3, sc: 3, lk: 2, tr: 2, ph: 2, bali: 2 }, why: 'Много моря и спокойных мест для перезагрузки.' },
+      { id: 'relax', label: 'Перезагрузиться', wrap: 'Перезагру\u00ADзиться', hint: 'Море, тишина, красивые виды', w: { asia3: 3, arab: 3, sc: 3, lk: 2, tr: 2, ph: 2, bali: 2 }, why: 'Много моря и спокойных мест для перезагрузки.' },
       { id: 'adv', label: 'Приключения', hint: 'Новое, необычное, яркое', w: { ph: 3, cn: 3, lk: 3, bali: 2, jp: 2, asia3: 2, tr: 1 }, why: 'Здесь хватит впечатлений на целый год.' },
       { id: 'party', label: 'Праздник', hint: 'Мальчишник, день рождения, свадьба', w: { asia3: 3, bali: 3, arab: 2, ph: 2, balk: 1 }, why: 'Идеальное место для праздника, который запомнится.' },
       { id: 'love', label: 'Романтику', hint: 'Красиво и вдвоём', w: { sc: 3, tr: 3, eu: 2, bali: 2, arab: 2, asia3: 1 }, why: 'Красивые места и уютные отели для двоих.' },
@@ -210,7 +210,7 @@
           quiz.answers = quiz.answers.slice(0, quiz.step).concat([o.id]);
           quiz.step++;
           renderQuiz();
-        } }, [h('i', { class: 'seat-no', 'aria-hidden': 'true', text: seat }), h('b', { text: o.label }), h('span', { text: o.hint })]);
+        } }, [h('i', { class: 'seat-no', 'aria-hidden': 'true', text: seat }), h('b', { text: o.wrap || o.label }), h('span', { text: o.hint })]);
       })));
       if (quiz.step > 0) quizBody.appendChild(h('button', { type: 'button', class: 'link-btn', text: '← Назад', onclick: function () { quiz.step--; renderQuiz(); } }));
       return;
