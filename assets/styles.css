@@ -75,6 +75,8 @@ button, input, textarea { font: inherit; color: inherit; }
 .btn.quiet { border-color: var(--line-strong); color: var(--soft); }
 .btn.quiet:hover { border-color: var(--fg); color: var(--bg); }
 .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Скруглённые кнопки (чтобы вернуть прямые углы — удалить эту строку) */
+.btn, .menu-btn, .chip { border-radius: 999px; }
 
 /* ---------- Типографика ---------- */
 .eyebrow { margin: 0 0 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
