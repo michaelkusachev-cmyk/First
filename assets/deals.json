@@ -1,48 +1,43 @@
 {
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Анталья",
-   "country": "TR",
-   "iata": "AYT",
-   "date": "2026-10-24",
-   "price": 5174,
-   "old_price": 27722,
-   "airline": "AZUR Air",
-   "transfers": 0
+   "city": "Дубай",
+   "country": "AE",
+   "iata": "DXB",
+   "date": "2026-11-21",
+   "price": 18120,
+   "old_price": 38006,
+   "airline": "S7 Airlines",
+   "transfers": 0,
+   "url": "https://aviasales.tpk.mx/hbB8vkxo?erid=2VtzqujsAy3"
   },
   {
-   "city": "Нячанг",
-   "country": "VN",
-   "iata": "CXR",
-   "date": "2026-10-20",
-   "price": 18678,
-   "old_price": 47998,
-   "airline": "Аэрофлот",
-   "transfers": 0
+   "city": "Алматы",
+   "country": "KZ",
+   "iata": "ALA",
+   "date": "2026-11-09",
+   "price": 8123,
+   "old_price": 16063,
+   "airline": "S7 Airlines",
+   "transfers": 0,
+   "url": "https://aviasales.tpk.mx/07XtDTXq?erid=2VtzqujsAy3"
   },
   {
-   "city": "Москва",
+   "city": "Сочи",
    "country": "RU",
-   "iata": "VKO",
-   "date": "2026-10-22",
-   "price": 6326,
-   "old_price": 12413,
-   "airline": "Якутия",
-   "transfers": 0
+   "iata": "AER",
+   "date": "2026-11-16",
+   "price": 9492,
+   "old_price": 13248,
+   "airline": "S7 Airlines",
+   "transfers": null,
+   "url": "https://aviasales.tpk.mx/v7LytCWT?erid=2VtzqujsAy3"
   }
  ],
  "history": [
-  {
-   "date": "2026-10-14",
-   "keys": [
-    "TR",
-    "CN",
-    "RU:Москва"
-   ]
-  },
   {
    "date": "2026-10-15",
    "keys": [
@@ -89,6 +84,14 @@
     "TR",
     "VN",
     "RU:Москва"
+   ]
+  },
+  {
+   "date": "2026-10-21",
+   "keys": [
+    "AE",
+    "KZ",
+    "RU:Сочи"
    ]
   }
  ]
