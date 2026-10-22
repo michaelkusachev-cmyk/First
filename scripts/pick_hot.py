@@ -113,7 +113,7 @@ def static_rows(deals):
     rows = []
     for i, d in enumerate(deals):
         route = 'Новосибирск → ' + d['city']
-        msg = 'Здравствуйте! Хочу забронировать горящий билет %s, %s, %s.' % (route, human(d['date']), money(d['price']))
+        msg = 'Здравствуйте! Хочу забронировать горящий билет:\n\n%s\nВылет: %s\nЦена: %s' % (route, human(d['date']), money(d['price']))
         note = 'Вылет ' + human(d['date']) + (' · ' + d['airline'] if d.get('airline') else '') + (' · прямой рейс' if d.get('transfers') == 0 else '')
         old = '<s>%s</s> ' % money(d['old_price']) if (d.get('old_price') or 0) > d['price'] else ''
         rows.append(

@@ -179,12 +179,12 @@
   };
   var Q = [
     { title: 'Что хочется почувствовать?', options: [
-      { id: 'relax', label: 'Перезагрузиться', wrap: 'Перезагру\u00ADзиться', hint: 'Море, тишина, красивые виды', w: { asia3: 3, arab: 3, sc: 3, lk: 2, tr: 2, ph: 2, bali: 2 }, why: 'Много моря и спокойных мест для перезагрузки.' },
-      { id: 'adv', label: 'Приключения', hint: 'Новое, необычное, яркое', w: { ph: 3, cn: 3, lk: 3, bali: 2, jp: 2, asia3: 2, tr: 1 }, why: 'Здесь хватит впечатлений на целый год.' },
-      { id: 'party', label: 'Праздник', hint: 'Мальчишник, день рождения, свадьба', w: { asia3: 3, bali: 3, arab: 2, ph: 2, balk: 1 }, why: 'Идеальное место для праздника, который запомнится.' },
-      { id: 'love', label: 'Романтику', hint: 'Красиво и вдвоём', w: { sc: 3, tr: 3, eu: 2, bali: 2, arab: 2, asia3: 1 }, why: 'Красивые места и уютные отели для двоих.' },
-      { id: 'culture', label: 'Культуру и города', hint: 'История, архитектура, еда', w: { cn: 3, eu: 3, jp: 3, arab: 2, tr: 1 }, why: 'История, архитектура и гастрономия в одной поездке.' },
-      { id: 'road', label: 'Свободу дороги', hint: 'Роуд-трип на машине', w: { balk: 3, tr: 3, eu: 2, arab: 2, lk: 1 }, why: 'Красивые дороги, короткие перегоны и места, куда не возят экскурсии.' }
+      { id: 'relax', say: 'перезагрузиться', label: 'Перезагрузиться', wrap: 'Перезагру\u00ADзиться', hint: 'Море, тишина, красивые виды', w: { asia3: 3, arab: 3, sc: 3, lk: 2, tr: 2, ph: 2, bali: 2 }, why: 'Много моря и спокойных мест для перезагрузки.' },
+      { id: 'adv', say: 'приключений', label: 'Приключения', hint: 'Новое, необычное, яркое', w: { ph: 3, cn: 3, lk: 3, bali: 2, jp: 2, asia3: 2, tr: 1 }, why: 'Здесь хватит впечатлений на целый год.' },
+      { id: 'party', say: 'праздника', label: 'Праздник', hint: 'Мальчишник, день рождения, свадьба', w: { asia3: 3, bali: 3, arab: 2, ph: 2, balk: 1 }, why: 'Идеальное место для праздника, который запомнится.' },
+      { id: 'love', say: 'романтики', label: 'Романтику', hint: 'Красиво и вдвоём', w: { sc: 3, tr: 3, eu: 2, bali: 2, arab: 2, asia3: 1 }, why: 'Красивые места и уютные отели для двоих.' },
+      { id: 'culture', say: 'культуры и городов', label: 'Культуру и города', hint: 'История, архитектура, еда', w: { cn: 3, eu: 3, jp: 3, arab: 2, tr: 1 }, why: 'История, архитектура и гастрономия в одной поездке.' },
+      { id: 'road', say: 'свободы дороги', label: 'Свободу дороги', hint: 'Роуд-трип на машине', w: { balk: 3, tr: 3, eu: 2, arab: 2, lk: 1 }, why: 'Красивые дороги, короткие перегоны и места, куда не возят экскурсии.' }
     ] },
     { title: 'Когда планируете поехать?', options: [
       { id: 'autumn', label: 'Осенью', hint: 'Сентябрь — ноябрь', w: { tr: 3, cn: 2, arab: 2, jp: 2, sc: 2, balk: 1, asia3: 1 } },
@@ -193,9 +193,9 @@
       { id: 'summer', label: 'Летом', hint: 'Июнь — август', w: { tr: 3, eu: 3, bali: 3, balk: 3 } }
     ] },
     { title: 'Сколько вас?', options: [
-      { id: 'two', label: 'Вдвоём', hint: 'Пара или друзья', w: {}, note: '' },
-      { id: 'family', label: 'Семья', hint: 'С детьми или родителями', w: {}, note: 'Подберём темп, отели и перелёты под всю семью.' },
-      { id: 'crew', label: 'Компания', hint: 'Друзья, коллеги, праздник', w: {}, note: 'Организуем поездку для компании любого размера.' }
+      { id: 'two', say: 'вдвоём', label: 'Вдвоём', hint: 'Пара или друзья', w: {}, note: '' },
+      { id: 'family', say: 'семьёй', label: 'Семья', hint: 'С детьми или родителями', w: {}, note: 'Подберём темп, отели и перелёты под всю семью.' },
+      { id: 'crew', say: 'компанией', label: 'Компания', hint: 'Друзья, коллеги, праздник', w: {}, note: 'Организуем поездку для компании любого размера.' }
     ] }
   ];
   var quiz = { step: 0, answers: [] };
@@ -228,7 +228,11 @@
     Object.keys(R).forEach(function (k) { score[k] = 0; });
     picked.forEach(function (o) { Object.keys(o.w).forEach(function (k) { score[k] += o.w[k]; }); });
     var top = Object.keys(R).sort(function (a, b) { return score[b] - score[a]; }).slice(0, 2);
-    var msg = 'Здравствуйте! Прошёл подбор на сайте. Хочется: ' + picked[0].label.toLowerCase() + ', когда: ' + picked[1].label.toLowerCase() + ', нас: ' + picked[2].label.toLowerCase() + '. Понравилось: ' + top.map(function (k) { return R[k].title; }).join(', ') + '.';
+    var msg = 'Здравствуйте! Хочу рассчитать поездку.\n\n'
+      + 'Что хочется: ' + picked[0].say + '\n'
+      + 'С кем: ' + picked[2].say + '\n'
+      + 'Когда: ' + picked[1].label.toLowerCase() + '\n\n'
+      + 'Подошли по подбору: ' + top.map(function (k) { return R[k].title; }).join('; ');
 
     quizBody.appendChild(h('p', { class: 'eyebrow', style: 'margin:0 0 10px', text: 'Результат' }));
     quizBody.appendChild(h('h3', { style: 'font-size:24px', text: 'Вам подойдёт' }));
@@ -419,7 +423,7 @@
       if (worst >= 0) {
         var v = verdicts[worst];
         routeEl.appendChild(h('div', { class: 'verdict', style: 'border-color:' + v[0] }, [h('b', { style: 'color:' + v[0], text: v[1] }), h('span', { text: v[2] })]));
-        var text = 'Здравствуйте! Собрал маршрут на сайте: ' + route.map(function (id) { return names[id]; }).join(' → ');
+        var text = 'Здравствуйте! Хочу рассчитать маршрут:\n\n' + route.map(function (id) { return names[id]; }).join(' → ');
         routeEl.appendChild(h('a', { class: 'btn solid', href: TG + '?text=' + encodeURIComponent(text), target: '_blank', rel: 'noopener', text: v[3] }));
       }
       routeEl.appendChild(h('div', { class: 'btns' }, [
@@ -442,7 +446,7 @@
     var agree = f.namedItem('agree'), agreeErr = document.getElementById('agree-error');
     if (agree && !agree.checked) { agreeErr.hidden = false; agree.focus(); return; }
     if (agreeErr) agreeErr.hidden = true;
-    var text = 'Заявка с сайта\nИмя: ' + name + '\nКонтакт: ' + contact + (trip ? '\nПоездка: ' + trip : '');
+    var text = 'Здравствуйте! Заявка с сайта.\n\nИмя: ' + name + '\nКонтакт: ' + contact + (trip ? '\nПоездка: ' + trip : '');
     var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
     function viaTelegram() {
       document.getElementById('lead-tg').href = TG + '?text=' + encodeURIComponent(text);
@@ -495,7 +499,7 @@
       rows().forEach(function (r) { r.remove(); });
       deals.forEach(function (d, i) {
         var route = 'Новосибирск → ' + d.city;
-        var msg = 'Здравствуйте! Хочу забронировать горящий билет ' + route + ', ' + human(d.date) + ', ' + money(d.price) + '.';
+        var msg = 'Здравствуйте! Хочу забронировать горящий билет:\n\n' + route + '\nВылет: ' + human(d.date) + '\nЦена: ' + money(d.price);
         panel.appendChild(h('div', { class: 'deal-row', 'data-date': d.date }, [
           h('span', { class: 'type', text: 'Горящий билет' }),
           h('span', { class: 't', text: route }),
