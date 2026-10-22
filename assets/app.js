@@ -229,7 +229,7 @@
     picked.forEach(function (o) { Object.keys(o.w).forEach(function (k) { score[k] += o.w[k]; }); });
     var top = Object.keys(R).sort(function (a, b) { return score[b] - score[a]; }).slice(0, 2);
     var msg = 'Здравствуйте! Хочу рассчитать поездку.\n\n'
-      + 'Что хочется: ' + picked[0].say + '\n'
+      + 'Чего хочется: ' + picked[0].say + '\n'
       + 'С кем: ' + picked[2].say + '\n'
       + 'Когда: ' + picked[1].label.toLowerCase() + '\n\n'
       + 'Подошли по подбору: ' + top.map(function (k) { return R[k].title; }).join('; ');
