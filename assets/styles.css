@@ -168,6 +168,8 @@ h3 { font-size: 20px; line-height: 1.3; }
 .route .places { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
 .route .price { margin: 16px 0 0; font-family: var(--mono); font-size: 16px; }
 .route .price span { color: var(--muted); font-size: 13px; }
+.route-cta { margin: 20px 0 0; }
+.route-cta .btn { min-height: 44px; padding: 0 20px; font-size: 14px; }
 .route .lead2 { margin: 0 0 14px; font-size: 18px; white-space: pre-line; }
 .route .text { margin: 0; color: var(--soft); }
 @media (max-width: 900px) { .route { grid-template-columns: 1fr; } .route .code { padding: 0; } }

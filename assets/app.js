@@ -50,8 +50,10 @@
     var srcRows = [].slice.call(board.querySelectorAll('.board-row'));
     // Данные берём из строк в HTML: без JS посетитель видит обычную таблицу со всеми направлениями
     var items = srcRows.map(function (r) {
+      var d = r.querySelector('.d').textContent, c = r.querySelector('.c').textContent;
       return {
-        href: r.getAttribute('href'),
+        // Строка табло сразу открывает Telegram с запросом на это направление
+        href: TG + '?text=' + encodeURIComponent('Здравствуйте! Хочу рассчитать поездку:\n\n' + d + '\n' + c),
         d: r.querySelector('.d').textContent.toUpperCase(),
         c: r.querySelector('.c').textContent,
         s: r.querySelector('.s').textContent,
@@ -99,7 +101,7 @@
       var name = tiles(NAME, 'name'), price = tiles(PRICE, 'price');
       var info = h('span', { class: 'info' }, [h('span', { class: 'c' }), h('span', { class: 's' })]);
       var label = h('span', { class: 'sr-only' });
-      var row = h('a', { class: 'board-row', href: '#routes' }, [name, info, price, label]);
+      var row = h('a', { class: 'board-row', href: '#routes', target: '_blank', rel: 'noopener' }, [name, info, price, label]);
       board.insertBefore(row, board.querySelector('.panel-foot'));
       rows.push({ el: row, name: name, price: price, info: info, label: label });
     }
@@ -130,6 +132,16 @@
     board.addEventListener('focusin', function () { paused = true; });
     board.addEventListener('focusout', function () { paused = false; });
   })();
+
+  /* ---------- Карточки направлений: кнопка «Рассчитать поездку» → Telegram ---------- */
+  [].forEach.call(document.querySelectorAll('#routes .route'), function (card) {
+    var title = card.querySelector('h3'), places = card.querySelector('.places'), price = card.querySelector('.price');
+    if (!title || !price) return;
+    var text = 'Здравствуйте! Хочу рассчитать поездку:\n\n' + title.textContent + (places ? '\n' + places.textContent : '');
+    price.parentNode.appendChild(h('p', { class: 'route-cta' }, [
+      h('a', { class: 'btn solid', href: TG + '?text=' + encodeURIComponent(text), target: '_blank', rel: 'noopener', text: 'Рассчитать поездку' })
+    ]));
+  });
 
   /* ---------- Видео из поездок: грузим, только когда видно; без автозапуска при экономии трафика и «меньше движения» ---------- */
   (function () {
