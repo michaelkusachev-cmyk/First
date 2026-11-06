@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цена коррупции — взятки и ущерб от чиновников в России</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Цена коррупции</h1>
+  <p class="sub">Размеры взяток и ущерба по делам чиновников в России — по открытым источникам</p>
+  <div class="total">
+    <span>Сумма по выбранным делам</span>
+    <strong id="total">0 ₽</strong>
+    <small id="count"></small>
+  </div>
+</header>
+
+<main>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Поиск: фамилия, должность, регион…">
+    <select id="status">
+      <option value="">Все статусы</option>
+      <option value="приговор">Приговор вступил в силу</option>
+      <option value="суд">Дело в суде</option>
+      <option value="обвинение">Обвинение / следствие</option>
+    </select>
+    <select id="type">
+      <option value="">Взятки и ущерб</option>
+      <option value="взятка">Только взятки</option>
+      <option value="ущерб">Только ущерб</option>
+      <option value="изъято">Изъятые средства</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="name">Чиновник</th>
+        <th data-sort="region">Регион</th>
+        <th data-sort="year">Год</th>
+        <th data-sort="type">Тип</th>
+        <th data-sort="amount" class="num">Сумма</th>
+        <th data-sort="status">Статус</th>
+        <th>Источник</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p id="empty" hidden>Ничего не найдено.</p>
+</main>
+
+<footer>
+  <p><b>Важно.</b> Пока приговор не вступил в силу, человек считается невиновным (ст. 49 Конституции РФ).
+  Статус каждого дела указан отдельно. Все данные взяты из открытых источников — ссылка у каждой записи.
+  Нашли ошибку? Напишите нам, исправим.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

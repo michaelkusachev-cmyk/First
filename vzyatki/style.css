@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1d1d1f; background: #f4f4f2; }
+header { background: #1d1d1f; color: #fff; padding: 32px 20px; text-align: center; }
+h1 { margin: 0; font-size: 2.2rem; }
+.sub { margin: 6px 0 20px; color: #bbb; }
+.total span { display: block; color: #bbb; font-size: .9rem; }
+.total strong { display: block; font-size: 2.6rem; color: #ff5a4e; }
+.total small { color: #bbb; }
+main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.controls input { flex: 1 1 260px; }
+input, select { padding: 10px 12px; font: inherit; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+th, td { padding: 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #eee; }
+th { background: #fafafa; font-size: .85rem; text-transform: uppercase; color: #666; cursor: pointer; user-select: none; white-space: nowrap; }
+th.asc::after { content: " ▲"; } th.desc::after { content: " ▼"; }
+.num { text-align: right; }
+td small { color: #777; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .8rem; font-weight: 600; }
+.badge.приговор { background: #fde2e0; color: #b3261e; }
+.badge.суд { background: #fff1d6; color: #8a5a00; }
+.badge.обвинение { background: #e6eefc; color: #2350a8; }
+a { color: #b3261e; }
+footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; color: #666; font-size: .9rem; }
+@media (max-width: 700px) {
+  thead { display: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tr { border-bottom: 6px solid #f4f4f2; }
+  td { border: 0; padding: 6px 12px; }
+  .num { text-align: left; }
+}
