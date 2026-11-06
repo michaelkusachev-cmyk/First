@@ -1,6 +1,7 @@
 (function () {
   var cases = window.CASES || [];
   var sortKey = "amount", sortDir = -1;
+  var mode = "team", year = "";
   var statusLabel = { "приговор": "Приговор", "суд": "В суде", "обвинение": "Обвинение" };
   var $ = function (id) { return document.getElementById(id); };
 
@@ -36,20 +37,33 @@
       '</svg>';
   }
 
-  function renderRating(list) {
-    var bySector = {};
+  function count(n) { return n + " " + plural(n, "дело", "дела", "дел"); }
+
+  // Командный зачёт — суммы по отраслям, индивидуальный — по чиновникам
+  function standings(list) {
+    var groups = {};
     list.forEach(function (c) {
-      var k = c.sector || "Без отрасли";
-      bySector[k] = bySector[k] || { name: k, sum: 0, n: 0, top: null };
-      bySector[k].sum += c.amount;
-      bySector[k].n++;
-      if (!bySector[k].top || c.amount > bySector[k].top.amount) bySector[k].top = c;
+      var k = mode === "team" ? (c.sector || "Без отрасли") : c.name;
+      var g = groups[k] = groups[k] || { name: k, sum: 0, n: 0, top: null };
+      g.sum += c.amount;
+      g.n++;
+      if (!g.top || c.amount > g.top.amount) g.top = c;
     });
-    var rank = Object.keys(bySector).map(function (k) { return bySector[k]; })
-      .sort(function (a, b) { return b.sum - a.sum; });
+    return Object.keys(groups).map(function (k) {
+      var g = groups[k];
+      g.info = mode === "team" ? count(g.n) + " · крупнейшее: " + g.top.name
+                               : g.top.position + (g.n > 1 ? " · " + count(g.n) : "");
+      return g;
+    }).sort(function (a, b) { return b.sum - a.sum; });
+  }
+
+  function renderRating(list) {
+    var rank = standings(list);
+    $("hint").textContent = (mode === "team" ? "Какие отрасли «обошлись» дороже всего" : "Чиновники с самыми крупными суммами") +
+      (year ? " в " + year + " году" : " за все годы");
 
     // На пьедестале порядок 2 — 1 — 3
-    $("podium").innerHTML = [1, 0, 2].map(function (i) {
+    $("podium").innerHTML = rank.length ? [1, 0, 2].map(function (i) {
       var r = rank[i], place = i + 1;
       if (!r) return '<div class="step-wrap empty"></div>';
       return '<div class="step-wrap p' + place + '">' +
@@ -57,13 +71,37 @@
         '<div class="step"><span class="place">' + place + '</span>' +
           '<b>' + esc(r.name) + '</b>' +
           '<span class="sum">' + money(r.sum) + '</span>' +
-          '<small>' + r.n + ' ' + plural(r.n, "дело", "дела", "дел") + ' · крупнейшее: ' + esc(r.top.name) + '</small>' +
+          '<small>' + esc(r.info) + '</small>' +
         '</div></div>';
-    }).join("");
+    }).join("") : '<p class="hint">За этот год дел нет.</p>';
 
     $("rest").innerHTML = rank.slice(3).map(function (r) {
-      return "<li><b>" + esc(r.name) + "</b> — " + money(r.sum) + " <small>(" + r.n + " " + plural(r.n, "дело", "дела", "дел") + ")</small></li>";
+      return "<li><b>" + esc(r.name) + "</b> — " + money(r.sum) + " <small>(" + esc(r.info) + ")</small></li>";
     }).join("");
+  }
+
+  // Таблица «отрасль × год»
+  function renderMatrix(list) {
+    var years = {}, rows = {};
+    list.forEach(function (c) {
+      var k = c.sector || "Без отрасли";
+      years[c.year] = 1;
+      rows[k] = rows[k] || { name: k, total: 0, y: {} };
+      rows[k].y[c.year] = (rows[k].y[c.year] || 0) + c.amount;
+      rows[k].total += c.amount;
+    });
+    var ys = Object.keys(years).sort();
+    var rs = Object.keys(rows).map(function (k) { return rows[k]; }).sort(function (a, b) { return b.total - a.total; });
+    var colSum = function (y) { return rs.reduce(function (s, r) { return s + (r.y[y] || 0); }, 0); };
+    $("matrix").innerHTML =
+      "<thead><tr><th>Отрасль</th>" + ys.map(function (y) { return "<th class='num'>" + y + "</th>"; }).join("") + "<th class='num'>Всего</th></tr></thead>" +
+      "<tbody>" + rs.map(function (r) {
+        return "<tr><td><b>" + esc(r.name) + "</b></td>" + ys.map(function (y) {
+          return "<td class='num" + (y === String(year) ? " hl" : "") + "'>" + (r.y[y] ? money(r.y[y]) : "—") + "</td>";
+        }).join("") + "<td class='num'><b>" + money(r.total) + "</b></td></tr>";
+      }).join("") + "</tbody>" +
+      "<tfoot><tr><td>Итого</td>" + ys.map(function (y) { return "<td class='num'>" + money(colSum(y)) + "</td>"; }).join("") +
+      "<td class='num'>" + money(rs.reduce(function (s, r) { return s + r.total; }, 0)) + "</td></tr></tfoot>";
   }
 
   function render() {
@@ -73,7 +111,9 @@
       if (tp && c.type !== tp) return false;
       return !q || [c.name, c.position, c.region, c.sector].join(" ").toLowerCase().indexOf(q) !== -1;
     });
-    renderRating(base); // рейтинг строится по всем отраслям, без фильтра по отрасли
+    renderMatrix(base); // таблица по годам — по всем годам и отраслям
+    base = base.filter(function (c) { return !year || String(c.year) === year; });
+    renderRating(base); // рейтинг — без фильтра по отрасли
     var list = base.filter(function (c) { return !sc || c.sector === sc; }).sort(function (a, b) {
       var x = a[sortKey], y = b[sortKey];
       return (typeof x === "number" ? x - y : String(x || "").localeCompare(String(y || ""), "ru")) * sortDir;
@@ -107,6 +147,22 @@
   Object.keys(sectors).sort(function (a, b) { return a.localeCompare(b, "ru"); }).forEach(function (s) {
     var o = document.createElement("option"); o.value = o.textContent = s; $("sector").appendChild(o);
   });
+
+  // Кнопки годов и переключатель зачёта
+  var allYears = {};
+  cases.forEach(function (c) { allYears[c.year] = 1; });
+  $("years").innerHTML = '<button data-year="" class="on">Все годы</button>' +
+    Object.keys(allYears).sort().reverse().map(function (y) { return '<button data-year="' + y + '">' + y + '</button>'; }).join("");
+  function tabs(id, set) {
+    $(id).addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      set(b);
+      this.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      render();
+    });
+  }
+  tabs("years", function (b) { year = b.dataset.year; });
+  tabs("mode", function (b) { mode = b.dataset.mode; });
 
   document.querySelectorAll("th[data-sort]").forEach(function (th) {
     th.addEventListener("click", function () {
