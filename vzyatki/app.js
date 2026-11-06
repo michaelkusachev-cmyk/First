@@ -2,7 +2,7 @@
   var cases = window.CASES || [];
   var sortKey = "amount", sortDir = -1;
   var mode = "team", year = "";
-  var statusLabel = { "приговор": "Приговор", "суд": "В суде", "обвинение": "Обвинение" };
+  var statusLabel = { "приговор": "Приговор", "суд": "В суде", "обвинение": "Обвинение", "иск": "Иск ГП" };
   var $ = function (id) { return document.getElementById(id); };
 
   function money(n) {
@@ -59,7 +59,7 @@
 
   function renderRating(list) {
     var rank = standings(list);
-    $("hint").textContent = (mode === "team" ? "Какие отрасли «обошлись» дороже всего" : "Чиновники с самыми крупными суммами") +
+    $("hint").textContent = (mode === "team" ? "10 отраслей, которые «обошлись» дороже всего," : "10 чиновников с самыми крупными суммами") +
       (year ? " в " + year + " году" : " за все годы");
 
     // На пьедестале порядок 2 — 1 — 3
@@ -75,7 +75,7 @@
         '</div></div>';
     }).join("") : '<p class="hint">За этот год дел нет.</p>';
 
-    $("rest").innerHTML = rank.slice(3).map(function (r) {
+    $("rest").innerHTML = rank.slice(3, 10).map(function (r) {
       return "<li><b>" + esc(r.name) + "</b> — " + money(r.sum) + " <small>(" + esc(r.info) + ")</small></li>";
     }).join("");
   }
@@ -108,7 +108,8 @@
     var q = $("q").value.trim().toLowerCase(), st = $("status").value, tp = $("type").value, sc = $("sector").value;
     var base = cases.filter(function (c) {
       if (st && c.status !== st) return false;
-      if (tp && c.type !== tp) return false;
+      if (tp === "" && c.type === "изъято") return false; // по умолчанию — только взятки и ущерб
+      if (tp && tp !== "все" && c.type !== tp) return false;
       return !q || [c.name, c.position, c.region, c.sector].join(" ").toLowerCase().indexOf(q) !== -1;
     });
     renderMatrix(base); // таблица по годам — по всем годам и отраслям
