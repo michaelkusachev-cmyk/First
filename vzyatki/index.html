@@ -18,6 +18,13 @@
 </header>
 
 <main>
+  <section class="rating">
+    <h2>Рейтинг отраслей</h2>
+    <p class="hint">Какие отрасли «обошлись» дороже всего — по сумме взяток и ущерба в выбранных делах</p>
+    <div class="podium" id="podium"></div>
+    <ol class="rest" id="rest" start="4"></ol>
+  </section>
+
   <div class="controls">
     <input id="q" type="search" placeholder="Поиск: фамилия, должность, регион…">
     <select id="status">
@@ -26,6 +33,7 @@
       <option value="суд">Дело в суде</option>
       <option value="обвинение">Обвинение / следствие</option>
     </select>
+    <select id="sector"><option value="">Все отрасли</option></select>
     <select id="type">
       <option value="">Взятки и ущерб</option>
       <option value="взятка">Только взятки</option>
@@ -38,6 +46,7 @@
     <thead>
       <tr>
         <th data-sort="name">Чиновник</th>
+        <th data-sort="sector">Отрасль</th>
         <th data-sort="region">Регион</th>
         <th data-sort="year">Год</th>
         <th data-sort="type">Тип</th>

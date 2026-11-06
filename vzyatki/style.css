@@ -29,3 +29,31 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; color: #666; f
   td { border: 0; padding: 6px 12px; }
   .num { text-align: left; }
 }
+
+/* Рейтинг отраслей — пьедестал */
+.rating { background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08); padding: 24px 20px 20px; margin-bottom: 24px; text-align: center; }
+.rating h2 { margin: 0; font-size: 1.6rem; }
+.rating .hint { margin: 4px 0 20px; color: #777; font-size: .9rem; }
+.podium { display: flex; justify-content: center; align-items: flex-end; gap: 8px; max-width: 760px; margin: 0 auto; }
+.step-wrap { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.who { width: 70%; max-width: 110px; animation: rise .6s ease-out both; }
+.p1 .who { max-width: 130px; animation-delay: .3s; } .p3 .who { animation-delay: .15s; }
+.man { display: block; width: 100%; height: auto; }
+.step { width: 100%; color: #fff; border-radius: 8px 8px 0 0; padding: 12px 8px 14px; display: flex; flex-direction: column; gap: 4px; }
+.step b { font-size: 1rem; line-height: 1.2; }
+.step .sum { font-size: 1.25rem; font-weight: 800; }
+.step small { opacity: .85; font-size: .75rem; }
+.place { font-size: 2.6rem; font-weight: 900; line-height: 1; opacity: .9; }
+.p1 .step { background: linear-gradient(#e6b422, #b8860b); min-height: 220px; }
+.p2 .step { background: linear-gradient(#b5bac0, #80868d); min-height: 170px; }
+.p3 .step { background: linear-gradient(#c98447, #8f5426); min-height: 130px; }
+.rest { text-align: left; max-width: 760px; margin: 16px auto 0; padding-left: 28px; }
+.rest li { padding: 4px 0; }
+.rest small { color: #777; }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .podium { gap: 4px; }
+  .step b { font-size: .8rem; } .step .sum { font-size: .95rem; } .step small { display: none; }
+  .place { font-size: 1.8rem; }
+  .p1 .step { min-height: 170px; } .p2 .step { min-height: 130px; } .p3 .step { min-height: 100px; }
+}
