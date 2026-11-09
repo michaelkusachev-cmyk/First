@@ -5,6 +5,10 @@
   var TG = 'https://t.me/TraveLaboratory';
   var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Акционная полоса пропадает сама, когда акция закончилась (дата — в data-until)
+  var promo = document.getElementById('promo');
+  if (promo && Date.now() >= Date.parse(promo.getAttribute('data-until'))) promo.remove();
+
   function h(tag, attrs, children) {
     var el = document.createElement(tag);
     if (attrs) Object.keys(attrs).forEach(function (k) {
