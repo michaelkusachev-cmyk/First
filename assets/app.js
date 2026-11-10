@@ -5,6 +5,17 @@
   var TG = 'https://t.me/TraveLaboratory';
   var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Цели Яндекс.Метрики (номер счётчика — в scripts/build_pages.py): telegram, phone, lead, buy
+  function goal(name) { try { if (window.ym) ym(114165958, 'reachGoal', name); } catch (e) {} }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (href.indexOf('t.me/') > -1) goal('telegram');
+    else if (href.indexOf('tel:') === 0) goal('phone');
+    else if (a.closest('.deal-row') && a.target === '_blank') goal('buy');
+  });
+
   // Акционная полоса пропадает сама, когда акция закончилась (дата — в data-until)
   var promo = document.getElementById('promo');
   if (promo && Date.now() >= Date.parse(promo.getAttribute('data-until'))) promo.remove();
@@ -479,6 +490,7 @@
     Promise.race([fetch('lead.php', { method: 'POST', body: body }).then(function (r) { return r.json(); }), timer])
       .then(function (r) {
         if (!r || !r.ok) throw new Error('lead');
+        goal('lead');
         form.hidden = true;
         document.getElementById('lead-done').hidden = false;
       })

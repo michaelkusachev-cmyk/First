@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://travelaboratory.ru'
 TG = 'https://t.me/TraveLaboratory'
 
-METRIKA_ID = ''          # номер счётчика Метрики, например '98765432'
+METRIKA_ID = '114165958'  # номер счётчика Метрики, например '98765432'
 YANDEX_VERIFICATION = ''  # код из Яндекс.Вебмастера (content у meta name="yandex-verification")
 GOOGLE_VERIFICATION = ''  # код из Google Search Console (content у meta name="google-site-verification")
 
@@ -339,6 +339,14 @@ def page(p, c, all_pages, all_cards):
 
 <div class="toast" id="toast" hidden role="status"></div>
 <script>
+// Цели Метрики: нажали Telegram или телефон
+document.addEventListener('click', function (e) {{
+  var a = e.target.closest('a[href]'), id = {metrika};
+  if (!a || !id || !window.ym) return;
+  var href = a.getAttribute('href');
+  if (href.indexOf('t.me/') > -1) ym(id, 'reachGoal', 'telegram');
+  else if (href.indexOf('tel:') === 0) ym(id, 'reachGoal', 'phone');
+}});
 // Telegram не всегда подставляет текст в чат — копируем его, чтобы осталось вставить
 document.addEventListener('click', function (e) {{
   var a = e.target.closest('a[href*="t.me/"][href*="text="]');
@@ -360,7 +368,7 @@ document.addEventListener('click', function (e) {{
         price_text=strip_tags(c['price_html']), tg=e(tg_link(msg)),
         lead='<br>'.join(e(x) for x in c['lead']), text=e(c['text']),
         stops='\n'.join('<li><b>%s</b><span>%s</span></li>' % (e(a), e(b)) for a, b in p['stops']),
-        season=e(p['season']), included='\n'.join('<li>%s</li>' % e(x) for x in INCLUDED), others=others)
+        season=e(p['season']), metrika=int(METRIKA_ID or 0), included='\n'.join('<li>%s</li>' % e(x) for x in INCLUDED), others=others)
 
 
 def main():
