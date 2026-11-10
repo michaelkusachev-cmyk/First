@@ -20,7 +20,7 @@ SITE = 'https://travelaboratory.ru'
 TG = 'https://t.me/TraveLaboratory'
 
 METRIKA_ID = '114165958'  # номер счётчика Метрики, например '98765432'
-YANDEX_VERIFICATION = ''  # код из Яндекс.Вебмастера (content у meta name="yandex-verification")
+YANDEX_VERIFICATION = '9cadb4f136af480e'  # код из Яндекс.Вебмастера (content у meta name="yandex-verification")
 GOOGLE_VERIFICATION = ''  # код из Google Search Console (content у meta name="google-site-verification")
 
 # Что добавляем к карточке с главной: свои заголовки для поиска, места маршрута и сезон.
