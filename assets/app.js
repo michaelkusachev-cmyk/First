@@ -142,9 +142,11 @@
     var title = card.querySelector('h3'), places = card.querySelector('.places'), price = card.querySelector('.price');
     if (!title || !price) return;
     var text = 'Здравствуйте! Хочу рассчитать поездку:\n\n' + title.textContent + (places ? '\n' + places.textContent : '');
-    price.parentNode.appendChild(h('p', { class: 'route-cta' }, [
-      h('a', { class: 'btn solid', href: TG + '?text=' + encodeURIComponent(text), target: '_blank', rel: 'noopener', text: 'Рассчитать поездку' })
-    ]));
+    var btn = h('a', { class: 'btn solid', href: TG + '?text=' + encodeURIComponent(text), target: '_blank', rel: 'noopener', text: 'Рассчитать поездку' });
+    // В разметке уже есть строка со ссылкой «Подробнее о маршруте» — ставим кнопку перед ней
+    var row = card.querySelector('.route-cta');
+    if (row) row.insertBefore(btn, row.firstChild);
+    else price.parentNode.appendChild(h('p', { class: 'route-cta' }, [btn]));
   });
 
   /* ---------- Видео из поездок: грузим, только когда видно; без автозапуска при экономии трафика и «меньше движения» ---------- */

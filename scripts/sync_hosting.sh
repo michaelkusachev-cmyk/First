@@ -25,7 +25,13 @@ for f in $V; do
   done
 done
 
-for f in index.html privacy.html 404.html lead.php assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png; do
+for f in index.html privacy.html 404.html lead.php assets/styles.css assets/app.js assets/deals.json assets/favicon.svg assets/og.png sitemap.xml robots.txt; do
+  get "$f"
+done
+
+# Страницы направлений — список берём из sitemap.xml (его собирает scripts/build_pages.py)
+mkdir -p "$D/tury"
+for f in $(grep -o 'travelaboratory.ru/tury/[a-z0-9-]*\.html' "$D/sitemap.xml" | sed 's|travelaboratory.ru/||'); do
   get "$f"
 done
 

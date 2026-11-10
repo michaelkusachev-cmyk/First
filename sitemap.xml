@@ -2,4 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://travelaboratory.ru/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://travelaboratory.ru/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/asia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/turkey.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/bali.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/japan.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/philippines.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/china.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/oman-oae.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/sri-lanka.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/balkans.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/europe.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelaboratory.ru/tury/seychelles.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
