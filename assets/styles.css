@@ -464,15 +464,13 @@ textarea { resize: vertical; }
   .route.has-video::after { background: linear-gradient(0deg, rgba(21, 16, 12,.95) 0%, rgba(21, 16, 12,.82) 55%, rgba(21, 16, 12,.35) 100%); }
 }
 
-/* Чёрная пятница — полоса над шапкой */
-.promo { display: block; background: #0A0806; border-bottom: 1px solid var(--accent); color: var(--fg); text-decoration: none; }
-.promo .in { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 18px; min-height: 48px; padding-block: 8px; font-size: 15px; text-align: center; }
-.promo-tag { font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: #0A0806; background: var(--accent); border-radius: 999px; padding: 4px 12px; }
-.promo-text b, .promo-text { color: var(--fg); }
-.promo-dates { color: var(--accent); white-space: nowrap; }
-.promo-btn { color: var(--accent); font-weight: 500; white-space: nowrap; }
-.promo:hover .promo-btn { text-decoration: underline; }
-@media (max-width: 560px) { .promo .in { font-size: 14px; gap: 4px 12px; } .promo-btn { flex-basis: 100%; } }
+/* Чёрная пятница — полоса над шапкой: один шрифт, один цвет */
+.promo { display: block; background: #0A0806; border-bottom: 1px solid var(--line); color: var(--fg); text-decoration: none; }
+.promo .in { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 20px; min-height: 44px; padding-block: 10px; font-size: 15px; text-align: center; }
+.promo b { font-weight: 600; }
+.promo-btn { white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+.promo:hover .promo-btn { text-decoration: none; }
+@media (max-width: 560px) { .promo .in { font-size: 14px; } }
 
 /* Страницы направлений (tury/*.html, собираются scripts/build_pages.py) */
 .dir-nav { display: flex; align-items: center; gap: 24px; font-size: 15px; }
