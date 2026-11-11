@@ -468,6 +468,7 @@ textarea { resize: vertical; }
 .promo { display: block; background: #0A0806; border-bottom: 1px solid var(--line); color: var(--fg); text-decoration: none; }
 .promo .in { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 20px; min-height: 44px; padding-block: 10px; font-size: 15px; text-align: center; }
 .promo b { font-weight: 600; }
+.promo-tag { background: var(--accent); color: #0A0806; border-radius: 999px; padding: 3px 12px; margin-right: 6px; white-space: nowrap; }
 .promo-btn { white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
 .promo:hover .promo-btn { text-decoration: none; }
 @media (max-width: 560px) { .promo .in { font-size: 14px; } }
