@@ -1,51 +1,43 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Ереван",
-   "country": "AM",
-   "iata": "EVN",
-   "date": "2026-11-23",
-   "price": 12724,
-   "old_price": 23788,
-   "airline": "Якутия",
-   "transfers": null,
-   "url": "https://aviasales.tpk.mx/Scwp2enK?erid=2VtzqujsAy3"
-  },
-  {
-   "city": "Ташкент",
-   "country": "UZ",
-   "iata": "TAS",
-   "date": "2026-12-17",
-   "price": 14353,
-   "old_price": 19796,
-   "airline": "Centrum Air",
+   "city": "Алматы",
+   "country": "KZ",
+   "iata": "ALA",
+   "date": "2026-12-07",
+   "price": 8000,
+   "old_price": 13540,
+   "airline": "S7 Airlines",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/gtr63Zv3?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/UpvTUpAQ?erid=2VtzqujsAy3"
   },
   {
-   "city": "Санкт-Петербург",
+   "city": "Пекин",
+   "country": "CN",
+   "iata": "PKX",
+   "date": "2026-11-18",
+   "price": 16332,
+   "old_price": 30984,
+   "airline": "S7 Airlines",
+   "transfers": 0,
+   "url": "https://aviasales.tpk.mx/QSROKpbo?erid=2VtzqujsAy3"
+  },
+  {
+   "city": "Сочи",
    "country": "RU",
-   "iata": "LED",
-   "date": "2026-11-11",
-   "price": 7354,
-   "old_price": 12810,
-   "airline": "Алроса",
-   "transfers": null,
-   "url": "https://aviasales.tpk.mx/bA7tTpFx?erid=2VtzqujsAy3"
+   "iata": "AER",
+   "date": "2026-11-13",
+   "price": 4282,
+   "old_price": 11050,
+   "airline": "Россия",
+   "transfers": 0,
+   "url": "https://aviasales.tpk.mx/u28DsGDY?erid=2VtzqujsAy3"
   }
  ],
  "history": [
-  {
-   "date": "2026-11-05",
-   "keys": [
-    "KZ",
-    "UZ",
-    "RU:Сочи"
-   ]
-  },
   {
    "date": "2026-11-06",
    "keys": [
@@ -92,6 +84,14 @@
     "AM",
     "UZ",
     "RU:Санкт-Петербург"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "keys": [
+    "KZ",
+    "CN",
+    "RU:Сочи"
    ]
   }
  ]
