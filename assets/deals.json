@@ -1,51 +1,43 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Дубай",
-   "country": "AE",
-   "iata": "DXB",
-   "date": "2026-12-09",
-   "price": 17924,
-   "old_price": 34368,
-   "airline": "S7 Airlines",
+   "city": "Стамбул",
+   "country": "TR",
+   "iata": "IST",
+   "date": "2026-11-20",
+   "price": 11132,
+   "old_price": 26015,
+   "airline": "AZUR Air",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/5DzsDKVk?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/WDyh3P7K?erid=2VtzqujsAy3"
   },
   {
-   "city": "Бишкек",
-   "country": "KG",
-   "iata": "BSZ",
-   "date": "2026-11-17",
-   "price": 9487,
-   "old_price": 16895,
-   "airline": "S7 Airlines",
+   "city": "Ереван",
+   "country": "AM",
+   "iata": "EVN",
+   "date": "2026-11-23",
+   "price": 12276,
+   "old_price": 23703,
+   "airline": "Якутия",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/zhRdAYfS?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/Scwp2enK?erid=2VtzqujsAy3"
   },
   {
-   "city": "Санкт-Петербург",
+   "city": "Мирный",
    "country": "RU",
-   "iata": "LED",
-   "date": "2026-12-05",
-   "price": 7838,
-   "old_price": 10601,
-   "airline": "Smartavia",
+   "iata": "MJZ",
+   "date": "2026-11-26",
+   "price": 7248,
+   "old_price": 22795,
+   "airline": "Алроса",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/CVtoJxcv?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/Sq6IVk2h?erid=2VtzqujsAy3"
   }
  ],
  "history": [
-  {
-   "date": "2026-11-10",
-   "keys": [
-    "TR",
-    "AE",
-    "RU:Москва"
-   ]
-  },
   {
    "date": "2026-11-11",
    "keys": [
@@ -92,6 +84,14 @@
     "AE",
     "KG",
     "RU:Санкт-Петербург"
+   ]
+  },
+  {
+   "date": "2026-11-17",
+   "keys": [
+    "TR",
+    "AM",
+    "RU:Мирный"
    ]
   }
  ]
