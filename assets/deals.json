@@ -1,51 +1,43 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "origin": "Новосибирск",
  "source": "aviasales.ru/hottickets/ovb",
  "deals": [
   {
-   "city": "Дубай",
-   "country": "AE",
-   "iata": "DXB",
-   "date": "2026-12-09",
-   "price": 17647,
-   "old_price": 34690,
-   "airline": "S7 Airlines",
+   "city": "Стамбул",
+   "country": "TR",
+   "iata": "IST",
+   "date": "2026-11-20",
+   "price": 14149,
+   "old_price": 18651,
+   "airline": "Аэрофлот",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/5DzsDKVk?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/WDyh3P7K?erid=2VtzqujsAy3"
   },
   {
-   "city": "Самарканд",
-   "country": "UZ",
-   "iata": "SKD",
-   "date": "2026-12-13",
-   "price": 18684,
-   "old_price": 29829,
+   "city": "Баку",
+   "country": "AZ",
+   "iata": "GYD",
+   "date": "2026-12-12",
+   "price": 14363,
+   "old_price": 23088,
    "airline": "S7 Airlines",
    "transfers": 0,
-   "url": "https://aviasales.tpk.mx/6Z2aenhD?erid=2VtzqujsAy3"
+   "url": "https://aviasales.tpk.mx/yK8jfJ4n?erid=2VtzqujsAy3"
   },
   {
-   "city": "Москва",
+   "city": "Санкт-Петербург",
    "country": "RU",
-   "iata": "VKO",
-   "date": "2026-11-19",
-   "price": 4159,
-   "old_price": 6922,
-   "airline": "Алроса",
-   "transfers": 0,
-   "url": "https://aviasales.tpk.mx/SminL2VH?erid=2VtzqujsAy3"
+   "iata": "LED",
+   "date": "2026-11-24",
+   "price": 6845,
+   "old_price": 10927,
+   "airline": "Победа",
+   "transfers": null,
+   "url": "https://aviasales.tpk.mx/u5HXCbFD?erid=2VtzqujsAy3"
   }
  ],
  "history": [
-  {
-   "date": "2026-11-13",
-   "keys": [
-    "AE",
-    "TJ",
-    "RU:Краснодар"
-   ]
-  },
   {
    "date": "2026-11-14",
    "keys": [
@@ -92,6 +84,14 @@
     "AE",
     "UZ",
     "RU:Москва"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "keys": [
+    "TR",
+    "AZ",
+    "RU:Санкт-Петербург"
    ]
   }
  ]
