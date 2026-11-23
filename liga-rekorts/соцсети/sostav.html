@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<!-- Пост «Состав дивизиона» 1080×1350. Дивизион — в адресе: sostav.html?div=pro (w, am, ma, pro, 40).
+     Составы берутся из ../assets/league.js — те же, что на сайте.
+     Рендер: chrome --headless --screenshot=out.png --window-size=1080,1350 --virtual-time-budget=6000 "file:///.../sostav.html?div=pro" -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{font-family:Montserrat,sans-serif;color:#fff;background:#a14228;position:relative}
+.bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 30% 15%,#ad4a2e 0%,#a14228 45%,#8a3620 100%)}
+.grain{position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply}
+.grain2{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen}
+.wrap{position:relative;padding:56px 72px 0}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:14px;font-size:46px;line-height:1;letter-spacing:-.5px;white-space:nowrap}
+.logo b{font-weight:900}
+.logo span{font-weight:500}
+.logo .re svg{height:.78em;width:auto;fill:#fff;display:block}
+.cup{font-size:26px;font-weight:700;letter-spacing:2px;color:#f3d9cf;text-align:right;line-height:1.25}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px}
+.pre{font-size:30px;font-weight:700;color:#f3d9cf;letter-spacing:1px}
+.name{font-size:104px;font-weight:900;color:#a7e0fb;line-height:.9;letter-spacing:-2px;margin-top:6px}
+.rng{text-align:right}
+.rng .d svg{height:58px;width:auto;fill:#fff;display:block;margin-left:auto}
+.rng p{margin-top:12px;font-size:24px;font-weight:600;color:#f3d9cf}
+.sub{margin-top:14px;font-size:28px;font-weight:700;white-space:nowrap}
+.sub b{color:#a7e0fb;font-weight:800}
+.spark{margin:16px -72px 0;height:44px;position:relative}
+.spark:before{content:"";position:absolute;left:0;right:0;top:21px;height:3px;background:#a7e0fb}
+.spark svg{position:absolute;top:0;width:44px;height:44px;fill:#a7e0fb}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin-top:16px}
+.card{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:16px;background:rgba(92,33,18,.78);border-radius:18px;padding:8px 18px;min-height:74px}
+.card .n{width:46px;height:46px;border-radius:50%;background:#a7e0fb;color:#3f160b;font-weight:900;font-size:21px;display:grid;place-items:center}
+.card p{font-size:25px;font-weight:800;line-height:1.24;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card.solo{grid-template-columns:46px minmax(0,1fr) 42px;gap:14px}
+.card.solo p{white-space:normal}
+.q{width:42px;height:42px;border-radius:50%;border:3px dashed #a7e0fb;color:#a7e0fb;font-weight:900;font-size:22px;display:grid;place-items:center}
+.sub .q{display:inline-grid;width:34px;height:34px;font-size:17px;border-width:2.5px;vertical-align:-3px;margin:0 6px 0 4px}
+.card.free{background:transparent;border:3px dashed rgba(167,224,251,.6)}
+.card.free .n{background:transparent;border:3px dashed #a7e0fb;color:#a7e0fb}
+.card.free p{color:#a7e0fb;font-weight:700}
+.cta{position:absolute;left:72px;right:72px;bottom:52px;background:#a7e0fb;color:#3f160b;border-radius:28px;padding:20px 34px;gap:24px;display:flex;justify-content:space-between;align-items:center}
+.cta h3{font-size:34px;font-weight:900;letter-spacing:.5px;line-height:1.05}
+.cta h3 small{display:block;font-size:21px;font-weight:600;letter-spacing:0;margin-top:6px;white-space:nowrap}
+.cta .c{text-align:right;font-size:34px;font-weight:800;line-height:1.1;white-space:nowrap}
+.cta .c span{display:block;font-size:24px;font-weight:600}
+.addr{position:absolute;left:72px;right:72px;bottom:16px;font-size:20px;font-weight:600;color:#f3d9cf;text-align:center;letter-spacing:.5px}
+</style></head><body>
+<div class="bg"></div>
+<svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .12  0 0 0 0 .05  0 0 0 1.4 -.35"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<svg class="grain2" width="1080" height="1350"><filter id="n2"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 .8  0 0 0 0 .7  0 0 0 1.2 -.5"/></filter><rect width="100%" height="100%" filter="url(#n2)"/></svg>
+
+<div class="wrap">
+  <div class="top">
+    <div class="logo"><b>ЛИГА</b><span class="re" data-d="РЕ:"></span><span style="margin-left:-6px">КОРТС</span></div>
+    <div class="cup">ЗИМНИЙ КУБОК<br>2026–2027</div>
+  </div>
+  <div class="head">
+    <div><div class="pre">Состав дивизиона</div><div class="name" id="name"></div></div>
+    <div class="rng"><div class="d" id="rng"></div><p id="rngcap"></p></div>
+  </div>
+  <div class="sub" id="sub"></div>
+  <div class="spark" id="spark"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="cta">
+  <h3 id="ctah">ИДЁТ ПРИЁМ ЗАЯВОК<small id="ctas"></small></h3>
+  <div class="c">8 913 741 8706<span>@KusachevM</span></div>
+</div>
+<div class="addr">Новосибирск, ул. Сухарная, 35, корпус 24 · старт 12 декабря</div>
+
+<script src="../assets/league.js"></script>
+<script>
+const G={
+ '0':['.###.','#...#','#...#','#...#','#...#','#...#','.###.'],
+ '1':['..#..','.##..','#.#..','..#..','..#..','..#..','#####'],
+ '2':['.###.','#...#','....#','...#.','..#..','.#...','#####'],
+ '3':['.###.','#...#','....#','..##.','....#','#...#','.###.'],
+ '4':['...#.','..##.','.#.#.','#..#.','#####','...#.','...#.'],
+ '5':['#####','#....','####.','....#','....#','#...#','.###.'],
+ '6':['..##.','.#...','#....','####.','#...#','#...#','.###.'],
+ '7':['#####','....#','...#.','..#..','.#...','.#...','.#...'],
+ '8':['.###.','#...#','#...#','.###.','#...#','#...#','.###.'],
+ '9':['.###.','#...#','#...#','.####','....#','...#.','.##..'],
+ '.':['.','.','.','.','.','.','#'],
+ ':':['.','.','#','.','#','.','.'],
+ '-':['...','...','...','###','...','...','...'],
+ '+':['.....','..#..','..#..','#####','..#..','..#..','.....'],
+ 'Р':['####.','#...#','#...#','####.','#....','#....','#....'],
+ 'Е':['#####','#....','#....','####.','#....','#....','#####'],
+ ' ':['..','..','..','..','..','..','..']
+};
+function dot(t){const C=10,R=4.2;let x=0,o='';const ch=[...t];
+ ch.forEach((c,i)=>{const g=G[c]||G[' '],w=g[0].length;
+  for(let r=0;r<7;r++)for(let k=0;k<w;k++)if(g[r][k]==='#')o+=`<circle cx="${x+k*C+C/2}" cy="${r*C+C/2}" r="${R}"/>`;
+  x+=w*C+(i<ch.length-1?C:0);});
+ return `<svg viewBox="-1 -1 ${x+2} ${7*C+2}">${o}</svg>`;}
+document.querySelectorAll('[data-d]').forEach(e=>e.innerHTML=dot(e.dataset.d));
+const star='<svg viewBox="0 0 60 60"><path d="M30 0 C33 20 40 27 60 30 C40 33 33 40 30 60 C27 40 20 33 0 30 C20 27 27 20 30 0Z"/></svg>';
+const sp=document.getElementById('spark');
+[0.1,0.3,0.5,0.7,0.9].forEach(p=>{sp.insertAdjacentHTML('beforeend',star);sp.lastChild.style.left=`calc(${p*100}% - 22px)`;});
+
+const id=new URLSearchParams(location.search).get('div')||'pro';
+const d=divById(id), list=PAIRS[id]||[], cap=capOf(id), free=Math.max(0,cap-list.length), sk=countSeekers(id);
+const plural=(n,a,b,c)=>{const m=n%10,h=n%100;return m===1&&h!==11?a:(m>=2&&m<=4&&(h<12||h>14)?b:c);};
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('name').textContent=d.name.toUpperCase();
+document.getElementById('rng').innerHTML=dot(d.min==null?'40+':d.min.toFixed(1)+'-'+d.max.toFixed(1));
+document.getElementById('rngcap').textContent=d.min==null?'игроки от 40 лет':'рейтинг игрока';
+document.getElementById('sub').innerHTML=`<b>${list.length} из ${cap}</b> пар`+
+  (free?` · <b>${free}</b> ${plural(free,'свободное место','свободных места','свободных мест')}`:'')+
+  (sk?` · <span class="q">?</span><b>${sk}</b> ${plural(sk,'ищет','ищут','ищут')} пару`:'');
+// карточки: все пары, свободные места — пунктиром (если помещаются в сетку до 16)
+// у игрока без пары вместо подписи — пунктирный кружок «?» (место для партнёра)
+const cards=list.map((p,i)=>p.b?`<div class="card"><span class="n">${i+1}</span><div><p>${e(p.a)}</p><p>${e(p.b)}</p></div></div>`
+  :`<div class="card solo"><span class="n">${i+1}</span><div><p>${e(p.a)}</p></div><span class="q">?</span></div>`);
+const room=Math.max(0,16-list.length);
+for(let k=0;k<Math.min(free,room);k++) cards.push(`<div class="card free"><span class="n">${list.length+k+1}</span><div><p>Свободное место</p></div></div>`);
+document.getElementById('grid').innerHTML=cards.join('');
+const parts=[]; if(free) parts.push(`${free} ${plural(free,'свободное место','свободных места','свободных мест')}`); if(sk) parts.push('без пары — подберём партнёра');
+document.getElementById('ctas').textContent=parts.length?parts.join(' · '):'лист ожидания';
+if(!free&&!sk) document.getElementById('ctah').firstChild.textContent='СОСТАВ НАБРАН';
+</script>
+</body></html>

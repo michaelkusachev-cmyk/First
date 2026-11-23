@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Игроки — Лига РЕ:КОРТС, Зимний кубок 2026–27</title>
+<meta name="description" content="Составы пар пяти дивизионов падел-лиги РЕ:КОРТС: Женский, Любитель, Мастер, Профи, 40+. По 16 пар в дивизионе, в Мастере — 20.">
+<meta property="og:title" content="Игроки — Лига РЕ:КОРТС, Зимний кубок 2026–27">
+<meta property="og:description" content="Составы пар пяти дивизионов падел-лиги РЕ:КОРТС: Женский, Любитель, Мастер, Профи, 40+. По 16 пар в дивизионе, в Мастере — 20.">
+<meta property="og:image" content="img/poster.jpg">
+<meta name="theme-color" content="#a14228">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body data-page="players">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="-1 -1 2 2"><path d="M0-1C.09-.2.2-.09 1 0 .2.09.09.2 0 1-.09.2-.2.09-1 0-.2-.09-.09-.2 0-1Z"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="index.html" aria-label="Лига РЕ:КОРТС, на главную"><span>ЛИГА</span><span class="wm" aria-hidden="true"><span data-dots="РЕ:"></span><span class="wm-t">КОРТС</span></span></a>
+<!--nav-->
+    <nav aria-label="Разделы"><ul class="nav">
+      <li><a href="index.html#divisions">Дивизионы</a></li>
+      <li><a href="igroki.html">Игроки</a></li>
+      <li><a href="raspisanie.html">Расписание</a></li>
+      <li><a href="rezultaty.html">Результаты</a></li>
+      <li><a href="foto.html">Фото и видео</a></li>
+    </ul></nav>
+    <!--/nav-->
+    <a class="btn btn-sky" href="index.html#apply">Подать заявку</a>
+    <button class="menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false"><i></i>Меню</button>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"><i></i><svg><use href="#spark"/></svg></div>
+</header>
+<!--menu-->
+<dialog class="menu" id="menu" aria-label="Меню сайта">
+  <div class="menu-top"><a class="mark" href="index.html" aria-label="Лига РЕ:КОРТС, на главную"><span>ЛИГА</span><span class="wm" aria-hidden="true"><span data-dots="РЕ:"></span><span class="wm-t">КОРТС</span></span></a><button class="menu-close" type="button">Закрыть</button></div>
+  <nav aria-label="Все страницы"><ul class="menu-list">
+    <li><a href="index.html"><svg aria-hidden="true"><use href="#spark"/></svg>Главная</a></li>
+    <li><a href="index.html#divisions"><svg aria-hidden="true"><use href="#spark"/></svg>Дивизионы</a></li>
+    <li><a href="igroki.html"><svg aria-hidden="true"><use href="#spark"/></svg>Игроки</a></li>
+    <li><a href="raspisanie.html"><svg aria-hidden="true"><use href="#spark"/></svg>Расписание</a></li>
+    <li><a href="rezultaty.html"><svg aria-hidden="true"><use href="#spark"/></svg>Результаты</a></li>
+    <li><a href="foto.html"><svg aria-hidden="true"><use href="#spark"/></svg>Фото и видео</a></li>
+    <li><a href="index.html#season"><svg aria-hidden="true"><use href="#spark"/></svg>Сезон</a></li>
+    <li><a href="index.html#club"><svg aria-hidden="true"><use href="#spark"/></svg>Клуб</a></li>
+    <li><a href="index.html#partners"><svg aria-hidden="true"><use href="#spark"/></svg>Партнёрам</a></li>
+  </ul></nav>
+  <a class="btn btn-sky" href="index.html#apply">Подать заявку</a>
+</dialog>
+<!--/menu-->
+<main id="top">
+<section class="phero clay" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="phero-grid">
+      <div>
+        <h1 id="h1" class="rise">Игроки<span>лиги</span></h1>
+        <p class="lead rise" style="--i:1">Пары всех пяти дивизионов Зимнего кубка. Составы пополняются, как только заявка подтверждена.</p>
+      </div>
+      <ul class="dfacts rise" style="--i:2">
+        <li><span id="c-pairs" aria-hidden="true"></span><span>пар заявлено</span></li>
+        <li><span id="c-free" aria-hidden="true"></span><span>мест свободно</span></li>
+        <li><span class="sr">5</span><span data-dots="5" data-lazy aria-hidden="true"></span><span>дивизионов</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="pfilter" role="search">
+  <div class="wrap">
+    <div class="chips" aria-label="Дивизион">
+        <button class="chip" type="button" data-f="all" aria-pressed="true">Все</button>
+        <button class="chip" type="button" data-f="w" aria-pressed="false">Женский</button>
+        <button class="chip" type="button" data-f="am" aria-pressed="false">Любитель</button>
+        <button class="chip" type="button" data-f="ma" aria-pressed="false">Мастер</button>
+        <button class="chip" type="button" data-f="pro" aria-pressed="false">Профи</button>
+        <button class="chip" type="button" data-f="40" aria-pressed="false">40+</button>
+    </div>
+    <div class="search"><label for="q">Найти игрока</label><input id="q" type="search" placeholder="Имя или фамилия" autocomplete="off"></div>
+  </div>
+</div>
+
+<section class="pbody clay" aria-label="Составы дивизионов" data-hide-dock>
+  <div class="wrap">
+    <div id="rosters"></div>
+    <p class="empty" id="empty" hidden>Никого не нашли. Составы пополняются по мере заявок — возможно, игрок ещё не заявился.</p>
+  </div>
+</section>
+
+<section class="dcta clay-deep" aria-labelledby="h-dcta">
+  <div class="wrap">
+    <div>
+      <h2 id="h-dcta" class="display rise">Хотите в состав?</h2>
+      <p class="lead rise">В дивизионах по 16 пар, в Мастере — 20. Соберите пару или заявляйтесь один — подберём партнёра. После подтверждения пара появится здесь.</p>
+      <div class="acts rise">
+        <a class="btn btn-sky" href="index.html#apply">Подать заявку</a>
+        <a class="btn btn-ghost" href="index.html#divisions">Выбрать дивизион</a>
+      </div>
+    </div>
+    <div class="rise" style="--i:1">
+      <p class="who">Заявки</p>
+      <a class="phone" href="tel:+79137418706">8 913 741 8706</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot clay-night" aria-labelledby="h-where">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2 id="h-where" class="display rise">До встречи на корте</h2>
+        <p class="addr rise">Новосибирск, ул. Сухарная, 35, корпус 24</p>
+        <div class="acts rise">
+          <a class="btn btn-sky" href="https://yandex.ru/maps/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%A1%D1%83%D1%85%D0%B0%D1%80%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2035%D0%BA24" target="_blank" rel="noopener">Яндекс Карты</a>
+          <a class="btn btn-ghost" href="https://2gis.ru/novosibirsk/search/%D0%A1%D1%83%D1%85%D0%B0%D1%80%D0%BD%D0%B0%D1%8F%2035%D0%BA24" target="_blank" rel="noopener">2ГИС</a>
+        </div>
+      </div>
+      <p class="bye rise">Пусть счёт будет в вашу пользу, а эмоции — только положительными.</p>
+    </div>
+    <div class="giant" aria-hidden="true"><span class="wm"><span data-dots="РЕ:" data-lazy></span><span class="wm-t">КОРТС</span></span></div>
+    <!--footnav-->
+    <ul class="foot-nav"><li><a href="index.html">Главная</a></li><li><a href="index.html#divisions">Дивизионы</a></li><li><a href="igroki.html">Игроки</a></li><li><a href="raspisanie.html">Расписание</a></li><li><a href="rezultaty.html">Результаты</a></li><li><a href="foto.html">Фото и видео</a></li><li><a href="index.html#season">Сезон</a></li><li><a href="index.html#club">Клуб</a></li><li><a href="index.html#partners">Партнёрам</a></li></ul>
+    <!--/footnav-->
+    <div class="small"><span>Лига РЕ:КОРТС · Зимний кубок 2026–2027</span><span>Заявки: 8 913 741 8706 · Партнёрам: 8 995 011 67 60</span></div>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="btn btn-sky" href="index.html#apply">Подать заявку</a>
+  <a class="btn btn-chalk" href="index.html#divisions">Дивизионы</a>
+</div>
+
+<script src="assets/common.js"></script>
+<script src="assets/league.js"></script>
+<script src="assets/pages.js"></script>
+</body>
+</html>

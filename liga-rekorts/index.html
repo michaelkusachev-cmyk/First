@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лига РЕ:КОРТС — Зимний кубок по паделу, 12.12.26–21.02.27</title>
+<meta name="description" content="Первая падел-лига РЕ:КОРТС в Новосибирске: 5 дивизионов, чемпионат и плей-офф с 12 декабря по 21 февраля. Сухарная, 35, корпус 24. Заявки: 8 913 741 8706.">
+<meta property="og:title" content="Лига РЕ:КОРТС — Зимний кубок">
+<meta property="og:description" content="5 дивизионов, чемпионат и плей-офф. 12 декабря — 21 февраля, Новосибирск, Сухарная, 35к24.">
+<meta property="og:image" content="img/poster.jpg">
+<meta name="theme-color" content="#a14228">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="-1 -1 2 2"><path d="M0-1C.09-.2.2-.09 1 0 .2.09.09.2 0 1-.09.2-.2.09-1 0-.2-.09-.09-.2 0-1Z"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Лига РЕ:КОРТС, наверх"><span>ЛИГА</span><span class="wm" aria-hidden="true"><span data-dots="РЕ:"></span><span class="wm-t">КОРТС</span></span></a>
+    <!--nav-->
+    <nav aria-label="Разделы"><ul class="nav">
+      <li><a href="index.html#divisions">Дивизионы</a></li>
+      <li><a href="igroki.html">Игроки</a></li>
+      <li><a href="raspisanie.html">Расписание</a></li>
+      <li><a href="rezultaty.html">Результаты</a></li>
+      <li><a href="foto.html">Фото и видео</a></li>
+    </ul></nav>
+    <!--/nav-->
+    <a class="btn btn-sky" href="#apply">Подать заявку</a>
+    <button class="menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false"><i></i>Меню</button>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"><i></i><svg><use href="#spark"/></svg></div>
+</header>
+<!--menu-->
+<dialog class="menu" id="menu" aria-label="Меню сайта">
+  <div class="menu-top"><a class="mark" href="index.html" aria-label="Лига РЕ:КОРТС, на главную"><span>ЛИГА</span><span class="wm" aria-hidden="true"><span data-dots="РЕ:"></span><span class="wm-t">КОРТС</span></span></a><button class="menu-close" type="button">Закрыть</button></div>
+  <nav aria-label="Все страницы"><ul class="menu-list">
+    <li><a href="index.html"><svg aria-hidden="true"><use href="#spark"/></svg>Главная</a></li>
+    <li><a href="index.html#divisions"><svg aria-hidden="true"><use href="#spark"/></svg>Дивизионы</a></li>
+    <li><a href="igroki.html"><svg aria-hidden="true"><use href="#spark"/></svg>Игроки</a></li>
+    <li><a href="raspisanie.html"><svg aria-hidden="true"><use href="#spark"/></svg>Расписание</a></li>
+    <li><a href="rezultaty.html"><svg aria-hidden="true"><use href="#spark"/></svg>Результаты</a></li>
+    <li><a href="foto.html"><svg aria-hidden="true"><use href="#spark"/></svg>Фото и видео</a></li>
+    <li><a href="index.html#season"><svg aria-hidden="true"><use href="#spark"/></svg>Сезон</a></li>
+    <li><a href="index.html#club"><svg aria-hidden="true"><use href="#spark"/></svg>Клуб</a></li>
+    <li><a href="index.html#partners"><svg aria-hidden="true"><use href="#spark"/></svg>Партнёрам</a></li>
+  </ul></nav>
+  <a class="btn btn-sky" href="index.html#apply">Подать заявку</a>
+</dialog>
+<!--/menu-->
+
+<main id="top">
+<section class="hero clay" aria-labelledby="h1">
+  <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+  
+  <div class="wrap">
+    <div>
+      <h1 id="h1" class="rise">
+        <span class="l1"><span>Лига</span><span class="sr">РЕ:КОРТС</span><span class="wm" aria-hidden="true"><span data-dots="РЕ:"></span><span class="wm-t">КОРТС</span></span></span>
+        <span class="l2">Зимний кубок</span>
+      </h1>
+      <p class="dates rise" style="--i:1"><span class="sr">12 декабря 2026 — 21 февраля 2027</span><span data-dots="12.12.26-" data-lazy aria-hidden="true"></span><span data-dots="21.02.27" data-lazy aria-hidden="true"></span></p>
+      <p class="lead rise" style="--i:2">Первая падел-лига клуба: пять дивизионов, чемпионат и плей-офф с призами, финальная вечеринка.</p>
+      <p class="where rise" style="--i:2">Новосибирск, ул. Сухарная, 35, корпус 24</p>
+      <div class="acts rise" style="--i:3">
+        <a class="btn btn-sky" href="#apply">Подать заявку</a>
+        <a class="btn btn-ghost" href="#divisions">Выбрать дивизион</a>
+      </div>
+    </div>
+    <div class="shot-col">
+      <div class="stage" id="stage">
+        <img class="fallback" src="img/racket.png" alt="" width="326" height="600">
+        <button class="hit" id="hit" type="button" aria-label="Ударить по мячу"></button>
+      </div>
+      
+      <ul class="facts rise" style="--i:3">
+        <li><span class="sr">5</span><span data-dots="5" data-lazy aria-hidden="true"></span><span>дивизионов</span></li>
+        <li><span class="sr">84</span><span data-dots="84" data-lazy aria-hidden="true"></span><span>пары в лиге</span></li>
+        <li><span class="sr">6</span><span data-dots="6" data-lazy aria-hidden="true"></span><span>кортов в клубе</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="tapes" aria-hidden="true">
+  <div class="tape a"><div class="run" id="run-a"></div></div>
+</div>
+
+<section class="divs clay" id="divisions" aria-labelledby="h-div">
+  <div class="wrap">
+    <h2 id="h-div" class="plate rise"><b>5</b> дивизионов</h2>
+    <ul class="rail rise" style="--i:1" aria-label="Дивизионы лиги">
+      <li><button class="div-btn" type="button" data-div="w" aria-pressed="false"><span class="name">Женский</span><svg class="star" aria-hidden="true"><use href="#spark"/></svg></button></li>
+      <li><button class="div-btn" type="button" data-div="am" aria-pressed="true"><span class="name">Любитель</span><svg class="star" aria-hidden="true"><use href="#spark"/></svg></button></li>
+      <li><button class="div-btn" type="button" data-div="ma" aria-pressed="false"><span class="name">Мастер</span><svg class="star" aria-hidden="true"><use href="#spark"/></svg></button></li>
+      <li><button class="div-btn" type="button" data-div="pro" aria-pressed="false"><span class="name">Профи</span><svg class="star" aria-hidden="true"><use href="#spark"/></svg></button></li>
+      <li><button class="div-btn" type="button" data-div="40" aria-pressed="false"><span class="name">40+</span><svg class="star" aria-hidden="true"><use href="#spark"/></svg></button></li>
+    </ul>
+
+    <div class="div-body">
+      <div class="div-card rise" aria-live="polite">
+        <h3 id="dc-name">Любитель</h3>
+        <div class="rng"><span class="sr" id="dc-rng-sr">рейтинг 1.3–2.5</span><span id="dc-rng" aria-hidden="true"></span><small id="dc-rng-cap">рейтинг игрока</small></div>
+        <p id="dc-text">Для тех, кто уже уверенно держит розыгрыш и хочет регулярных игр с соперниками своего уровня.</p>
+        <div class="pairs" id="pairs" aria-hidden="true"></div>
+        <p class="pairs-cap" id="dc-cap">16 пар, 32 игрока в дивизионе — места ограничены, заявляйтесь заранее.</p>
+        <a class="btn btn-sky div-link" id="dc-link" href="lyubitel.html">Страница дивизиона Любитель</a>
+      </div>
+
+      <div class="finder rise" style="--i:1">
+        <h3>Какой дивизион ваш</h3>
+        <p class="note">Укажите рейтинг — звёзды на линии покажут, куда можно заявиться.</p>
+        <div class="val"><label for="r">Ваш рейтинг</label><output for="r" id="r-out"><span class="sr" id="r-sr">2.0</span><span id="r-dots" aria-hidden="true"></span></output></div>
+        <input type="range" id="r" min="1" max="5" step="0.1" value="2">
+        <div class="scale" aria-hidden="true"><span>1.0</span><span>2.0</span><span>3.0</span><span>4.0</span><span>5.0</span></div>
+        <div class="toggles">
+          <label class="tog"><input type="checkbox" id="t-w"><span>Играю в женском</span></label>
+          <label class="tog"><input type="checkbox" id="t-40"><span>Мне 40+</span></label>
+        </div>
+        <p class="verdict" id="verdict" aria-live="polite">Вам подходит: <b>Любитель</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="season sky" id="season" aria-labelledby="h-season">
+  <div class="wrap">
+    <div class="season-top">
+      <div>
+        <h2 id="h-season" class="display rise">Десять недель зимы</h2>
+        <p class="lead rise" style="--i:1">С 12 декабря по 21 февраля. Расписание всех игр сезона выдаём заранее — можно спокойно планировать зиму.</p>
+      </div>
+      <div class="rise" style="--i:2">
+        <p class="count-label" id="count-label">До первой игры сезона</p>
+        <div class="count" id="count" role="timer" aria-live="off">
+          <div><span class="sr" id="c-d-sr"></span><span id="c-d" aria-hidden="true"></span><span class="lbl">дней</span></div>
+          <div><span id="c-h" aria-hidden="true"></span><span class="lbl">часов</span></div>
+          <div><span id="c-m" aria-hidden="true"></span><span class="lbl">минут</span></div>
+          <div><span id="c-s" aria-hidden="true"></span><span class="lbl">секунд</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal rise" id="cal" aria-label="Календарь сезона: каждый кружок — день"></div>
+    <div class="legend rise">
+      <span><i></i>игровой день чемпионата</span>
+      <span><i class="po"></i>плей-офф</span>
+      <span><svg aria-hidden="true"><use href="#spark"/></svg>старт и финал</span>
+    </div>
+  </div>
+</section>
+
+<section class="perks clay" aria-labelledby="h-perks">
+  <div class="wrap">
+    <div>
+      <h2 id="h-perks" class="display rise">Что ждёт игроков</h2>
+      <ul class="perk-list">
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><div><h3>Нешуточные баталии</h3><p>Чемпионат и плей-офф сразу в пяти дивизионах по 16–20 пар: соперники вашего уровня всю зиму.</p></div></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><div><h3>Крутые призы</h3><p>Победителей сезона награждаем на финале.</p></div></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><div><h3>Фото и видео</h3><p>Снимаем игры и выкладываем отчёты — ваши лучшие розыгрыши останутся в кадре.</p></div></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><div><h3>Расписание на сезон</h3><p>Даты всех игр известны заранее, без переносов в последний момент.</p></div></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><div><h3>Финальная вечеринка</h3><p>Закрываем первую зимнюю лигу вместе со всеми участниками.</p></div></li>
+      </ul>
+    </div>
+    
+  </div>
+</section>
+
+<section class="club clay-deep" id="club" aria-labelledby="h-club">
+  <div class="wrap">
+    <figure class="plan rise">
+      <svg viewBox="0 0 640 410" role="img" aria-labelledby="plan-t">
+        <title id="plan-t">Шесть падел-кортов клуба, один из них Ultra Panoramic</title>
+        <g id="courts"></g>
+      </svg>
+      <figcaption>Шесть кортов с профессиональным покрытием. В центре — Ultra Panoramic.</figcaption>
+    </figure>
+    <div>
+      <h2 id="h-club" class="display rise">6 кортов и&nbsp;не&nbsp;только</h2>
+      <ul class="club-list">
+        <li class="rise">Ultra Panoramic <span>корт с потрясающим обзором</span></li>
+        <li class="rise">Сауна <span>после игры</span></li>
+        <li class="rise">Кафе <span>для игроков и болельщиков</span></li>
+        <li class="rise">Коворкинг <span>поработать до матча</span></li>
+        <li class="rise">Детская игровая <span>пока родители на корте</span></li>
+      </ul>
+      <p class="lead rise">Приходите всей семьёй: здесь комфортно и на корте, и за его пределами.</p>
+    </div>
+  </div>
+</section>
+
+<section class="apply clay" id="apply" aria-labelledby="h-apply">
+  <div class="wrap">
+    <div>
+      <h2 id="h-apply" class="display rise">Подать заявку</h2>
+      <a class="phone rise" href="tel:+79137418706">8 913 741 8706</a>
+      <p class="who-name rise">Михаил</p>
+      <div class="acts rise">
+        <a class="btn btn-sky" href="https://t.me/KusachevM" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="tel:+79137418706">Позвонить</a>
+      </div>
+      <ul class="steps">
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Соберите пару и выберите дивизион по рейтингу. Нет пары — заявляйтесь один: подберём партнёра, в составах есть игроки, которые его ищут.</span></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Отправьте заявку в Telegram или позвоните.</span></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Получите расписание сезона и выходите на корт 12 декабря.</span></li>
+      </ul>
+    </div>
+
+    <form class="builder rise" id="builder" novalidate>
+      <h3>Заявка за минуту</h3>
+      <p class="note">Заполните поля — соберём текст, вы отправите его в Telegram.</p>
+      <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" name="name" autocomplete="name" placeholder="Анна Смирнова"></div>
+      <div class="two">
+        <div class="field"><label for="f-partner">Партнёр по паре</label><input id="f-partner" name="partner" placeholder="Если нет — подберём"></div>
+        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="8 900 000 00 00"></div>
+      </div>
+      <div class="field"><label for="f-div">Дивизион</label>
+        <select id="f-div" name="div">
+          <option value="w">Женский · 1.3–2.5</option>
+          <option value="am" selected>Любитель · 1.3–2.5</option>
+          <option value="ma">Мастер · 2.5–3.5</option>
+          <option value="pro">Профи · 3.5–4.8</option>
+          <option value="40">40+</option>
+        </select>
+      </div>
+      <div class="field"><span id="pv-l" style="font-weight:700;font-size:16px">Текст заявки</span><div class="preview" id="preview" aria-labelledby="pv-l"></div></div>
+      <a class="btn btn-sky" id="send" href="https://t.me/KusachevM" target="_blank" rel="noopener">Скопировать и открыть Telegram</a>
+      <p class="status" id="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="partners sky" id="partners" aria-labelledby="h-partners">
+  <div class="wrap">
+    <div>
+      <h2 id="h-partners" class="display rise">Партнёрам лиги</h2>
+      <p class="lead rise">Хотите стать партнёром первой зимней лиги? Мы открыты к сотрудничеству.</p>
+      <ul class="offer">
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Бренд на афишах сезона и в фото- и видеоотчётах</span></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Призы от вашей компании победителям дивизионов</span></li>
+        <li class="rise"><svg aria-hidden="true"><use href="#spark"/></svg><span>Присутствие на финальной вечеринке 21 февраля</span></li>
+      </ul>
+    </div>
+    <div class="contact-card rise" style="--i:1">
+      <p class="who">Екатерина Подолякина</p>
+      <p class="note">Партнёрства и спонсорство</p>
+      <a class="phone" href="tel:+79950116760">8 995 011 67 60</a>
+      <div class="acts" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+        <a class="btn btn-ink" href="https://t.me/keit_thrin" target="_blank" rel="noopener">Telegram @keit_thrin</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot clay-night" id="where" aria-labelledby="h-where">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2 id="h-where" class="display rise">До встречи на корте</h2>
+        <p class="addr rise">Новосибирск, ул. Сухарная, 35, корпус 24</p>
+        <div class="acts rise">
+          <a class="btn btn-sky" href="https://yandex.ru/maps/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%A1%D1%83%D1%85%D0%B0%D1%80%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2035%D0%BA24" target="_blank" rel="noopener">Яндекс Карты</a>
+          <a class="btn btn-ghost" href="https://2gis.ru/novosibirsk/search/%D0%A1%D1%83%D1%85%D0%B0%D1%80%D0%BD%D0%B0%D1%8F%2035%D0%BA24" target="_blank" rel="noopener">2ГИС</a>
+        </div>
+      </div>
+      <p class="bye rise">Пусть счёт будет в вашу пользу, а эмоции — только положительными.</p>
+    </div>
+    <div class="giant" aria-hidden="true"><span class="wm"><span data-dots="РЕ:" data-lazy></span><span class="wm-t">КОРТС</span></span></div>
+    <!--footnav-->
+    <ul class="foot-nav"><li><a href="index.html">Главная</a></li><li><a href="index.html#divisions">Дивизионы</a></li><li><a href="igroki.html">Игроки</a></li><li><a href="raspisanie.html">Расписание</a></li><li><a href="rezultaty.html">Результаты</a></li><li><a href="foto.html">Фото и видео</a></li><li><a href="index.html#season">Сезон</a></li><li><a href="index.html#club">Клуб</a></li><li><a href="index.html#partners">Партнёрам</a></li></ul>
+    <!--/footnav-->
+    <div class="small"><span>Лига РЕ:КОРТС · Зимний кубок 2026–2027</span><span>Заявки: 8 913 741 8706 · Партнёрам: 8 995 011 67 60</span></div>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="btn btn-sky" href="#apply">Подать заявку</a>
+  <a class="btn btn-chalk" href="#divisions">Мой дивизион</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/common.js"></script>
+<script>
+const fName=document.getElementById('f-name'), fPartner=document.getElementById('f-partner'), fPhone=document.getElementById('f-phone');
+let joinTo=''; // игрок из состава без пары, к которому хотят встать в пару
+
+/* ---------- дивизионы ---------- */
+const DIV={
+ w:{name:'Женский',min:1.3,max:2.5,cap:'рейтинг игрока',text:'Дивизион для женских пар. Уровень — от уверенного новичка до крепкого любителя.'},
+ am:{name:'Любитель',min:1.3,max:2.5,cap:'рейтинг игрока',text:'Для тех, кто уже уверенно держит розыгрыш и хочет регулярных игр с соперниками своего уровня.'},
+ ma:{name:'Мастер',min:2.5,max:3.5,cap:'рейтинг игрока',text:'Стабильная игра у сетки, работа со стеклом и тактика пары. Здесь матчи уже на характер.'},
+ pro:{name:'Профи',min:3.5,max:4.8,cap:'рейтинг игрока',text:'Самый сильный дивизион лиги: быстрые розыгрыши, смэши за пределы корта и плотная борьба за каждый мяч.'},
+ '40':{name:'40+',min:null,max:null,cap:'возрастной дивизион',text:'Для игроков от 40 лет. Уровень пары подскажем при заявке — напишите, подберём соперников по силам.'}
+};
+const SLUG={w:'zhenskiy',am:'lyubitel',ma:'master',pro:'profi','40':'40-plus'};
+const btns=[...document.querySelectorAll('.div-btn')];
+const sel=document.getElementById('f-div');
+const pairsEl=document.getElementById('pairs');
+const CAP={ma:20}; // пар в дивизионе: по умолчанию 16
+function drawPairs(k){
+  const n=CAP[k]||16, cols=n>16?10:8;
+  pairsEl.style.gridTemplateColumns=`repeat(${cols},minmax(0,1fr))`; pairsEl.style.maxWidth=(cols*55)+'px';
+  pairsEl.innerHTML=Array.from({length:n},(_,i)=>`<b style="--n:${i}"><i></i><i></i></b>`).join('');
+  document.getElementById('dc-cap').textContent=`${n} пар, ${2*n} ${2*n%10>=2&&2*n%10<=4&&(2*n%100<12||2*n%100>14)?'игрока':'игроков'} в дивизионе — места ограничены, заявляйтесь заранее.`;
+}
+const card=document.querySelector('.div-card');
+let curDiv=null;
+function replay(el,cls){el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);}
+function showDiv(k){
+  const d=DIV[k];
+  btns.forEach(b=>b.setAttribute('aria-pressed', b.dataset.div===k?'true':'false'));
+  if(curDiv!==null && curDiv!==k && !RM){replay(card,'swap'); replay(pairsEl,'go');}
+  curDiv=k; drawPairs(k);
+  document.getElementById('dc-name').textContent=d.name;
+  const rng=document.getElementById('dc-rng');
+  if(d.min!=null){setDots(rng, d.min.toFixed(1)+'-'+d.max.toFixed(1),true); document.getElementById('dc-rng-sr').textContent='рейтинг '+d.min+'–'+d.max;}
+  else{setDots(rng,'40+',true); document.getElementById('dc-rng-sr').textContent='игроки от 40 лет';}
+  document.getElementById('dc-rng-cap').textContent=d.cap;
+  document.getElementById('dc-text').textContent=d.text;
+  sel.value=k; buildText();
+  const dl=document.getElementById('dc-link'); if(dl){dl.href=SLUG[k]+'.html'; dl.textContent='Страница дивизиона '+d.name;}
+}
+btns.forEach(b=>b.addEventListener('click',()=>showDiv(b.dataset.div)));
+
+const r=document.getElementById('r'), tw=document.getElementById('t-w'), t40=document.getElementById('t-40');
+function judge(){
+  const v=Math.round(parseFloat(r.value)*10)/10;
+  setDots(document.getElementById('r-dots'), v.toFixed(1));
+  document.getElementById('r-sr').textContent=v.toFixed(1);
+  const fit=[];
+  if(tw.checked && v>=1.3 && v<=2.5) fit.push('w');
+  if(v>=1.3 && v<=2.5) fit.push('am');
+  if(v>=2.5 && v<=3.5) fit.push('ma');
+  if(v>=3.5 && v<=4.8) fit.push('pro');
+  if(t40.checked) fit.push('40');
+  btns.forEach(b=>{b.classList.toggle('fit',fit.includes(b.dataset.div)); b.classList.toggle('unfit',!fit.includes(b.dataset.div));});
+  const out=document.getElementById('verdict');
+  if(fit.length){
+    const names=fit.map(k=>'<b>'+DIV[k].name+'</b>').join(', ');
+    out.innerHTML=(fit.length>1?'Вам подходят: ':'Вам подходит: ')+names+'.';
+    if(!fit.includes(sel.value)) showDiv(fit[0]);
+  } else if(v<1.3){
+    out.innerHTML='Рейтинг ниже порога лиги. Напишите нам — подскажем, как подтянуть уровень к старту.';
+  } else {
+    out.innerHTML='Рейтинг выше 4.8 — обсудим участие с организатором лично.';
+  }
+}
+[r,tw,t40].forEach(el=>el.addEventListener('input',judge));
+showDiv('am'); judge();
+// пришли со страницы дивизиона по кнопке «Подать заявку»
+try{const d=sessionStorage.getItem('applyDiv'); if(d&&DIV[d]){sessionStorage.removeItem('applyDiv'); if(DIV[d].min!=null){r.value=((DIV[d].min+DIV[d].max)/2).toFixed(1); judge();} showDiv(d);}
+  const to=sessionStorage.getItem('applyTo'); if(to){sessionStorage.removeItem('applyTo'); joinTo=to; fPartner.value=to; buildText();}}catch(e){}
+
+/* ---------- отсчёт и календарь ---------- */
+const START=new Date('2026-12-12T00:00:00+07:00'), END=new Date('2027-02-21T23:59:59+07:00');
+const pad=n=>String(n).padStart(2,'0');
+function tick(){
+  const now=new Date(); let target=START, label='До первой игры сезона';
+  if(now>=START && now<=END){target=END; label='До финала сезона';}
+  if(now>END){document.getElementById('count-label').textContent='Сезон завершён. До встречи в следующей лиге!';document.getElementById('count').hidden=true;return;}
+  document.getElementById('count-label').textContent=label;
+  let s=Math.max(0,Math.floor((target-now)/1000));
+  const d=Math.floor(s/86400); s-=d*86400; const h=Math.floor(s/3600); s-=h*3600; const m=Math.floor(s/60); s-=m*60;
+  setDots(document.getElementById('c-d'),String(d),true); setDots(document.getElementById('c-h'),pad(h),true);
+  setDots(document.getElementById('c-m'),pad(m),true); setDots(document.getElementById('c-s'),pad(s),true);
+  document.getElementById('c-d-sr').textContent=`${d} дн. ${h} ч ${m} мин`;
+}
+tick(); setInterval(tick,1000);
+
+(function cal(){
+  const months=[['Декабрь',2026,11,31],['Январь',2027,0,31],['Февраль',2027,1,28]];
+  const nowN=new Date(); const todayKey=nowN.toLocaleDateString('sv-SE',{timeZone:'Asia/Novosibirsk'});
+  const box=document.getElementById('cal'); let html='', n=0;
+  months.forEach(([name,y,mo,len])=>{
+    html+=`<div class="month"><b>${name}</b><div class="days">`;
+    for(let d=1;d<=31;d++){
+      if(d>len){html+='<span class="day" aria-hidden="true"></span>';continue;}
+      const key=`${y}-${pad(mo+1)}-${pad(d)}`;
+      const inSeason=(mo===11&&d>=12)||mo===0||(mo===1&&d<=21);
+      let cls='day', inner='<i></i>', lbl=`${d} ${['декабря','января','февраля'][[11,0,1].indexOf(mo)]}`;
+      if(inSeason){cls+=' on'; if(mo===1) cls+=' po';}
+      if((mo===11&&d===12)||(mo===1&&d===21)){cls+=' mark'; inner='<i></i><svg aria-hidden="true"><use href="#spark"/></svg>'; lbl+=mo===11?' — старт':' — финал';}
+      if(key<todayKey && inSeason) cls+=' past';
+      if(key===todayKey) {cls+=' today'; lbl+=' — сегодня';}
+      html+=`<span class="${cls}" title="${lbl}" style="--n:${n++}">${inner}</span>`;
+    }
+    html+='</div></div>';
+  });
+  box.innerHTML=html;
+})();
+
+/* ---------- корты ---------- */
+(function courts(){
+  const g=document.getElementById('courts'); const W=190,H=95,gx=25,gy=95;
+  // Ultra Panoramic в центре нижнего ряда, обычные корты вокруг него
+  const pos=[[10,10],[225,10],[440,10],[10,205],[225,205],[440,205]], UP=4;
+  let s='';
+  pos.forEach(([x,y],i)=>{
+    const up=i===UP, num=i<UP?i+1:i;
+    const fill=up?'#a7e0fb':'#a14228', line=up?'#3f160b':'#ffffff', wall=up?'#ffffff':'#5c2112';
+    const sv=H*0+W*3/20; // линия подачи в 3 м от стены
+    s+=`<g class="court"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="4" fill="${fill}"/>`+
+      `<rect x="${x}" y="${y}" width="${W}" height="${H}" rx="4" fill="none" stroke="${wall}" stroke-width="${up?5:7}"/>`+
+      `<line x1="${x+sv}" y1="${y}" x2="${x+sv}" y2="${y+H}" stroke="${line}" stroke-width="2.5"/>`+
+      `<line x1="${x+W-sv}" y1="${y}" x2="${x+W-sv}" y2="${y+H}" stroke="${line}" stroke-width="2.5"/>`+
+      `<line x1="${x+sv}" y1="${y+H/2}" x2="${x+W-sv}" y2="${y+H/2}" stroke="${line}" stroke-width="2.5"/>`+
+      `<line x1="${x+W/2}" y1="${y-6}" x2="${x+W/2}" y2="${y+H+6}" stroke="${up?'#3f160b':'#f6e7df'}" stroke-width="4"/>`+
+      `<text x="${x}" y="${y+H+38}" fill="${up?'#a7e0fb':'#f6e7df'}" font-family="Montserrat,sans-serif" font-weight="${up?800:600}" font-size="${up?20:24}">${up?'Ultra Panoramic':'Корт '+num}</text>`;
+    if(!RM){
+      // мяч ходит через сетку: подача, отскок, ответ
+      const dur=(1.7+((i*37)%9)/10).toFixed(2), y1=y+H*(.25+((i*13)%5)/10), y2=y+H*(.75-((i*7)%4)/10);
+      const path=`M${x+22},${y1} Q${x+W/2},${y-26} ${x+W-30},${y2} Q${x+W/2},${y+H+10} ${x+22},${y1}`;
+      s+=`<circle r="7" fill="${up?'#3f160b':'#a7e0fb'}"><animateMotion dur="${dur}s" repeatCount="indefinite" path="${path}" begin="${(i*.31).toFixed(2)}s"/></circle>`;
+    }
+    s+=`</g>`;
+  });
+  g.innerHTML=s;
+})();
+
+/* ---------- заявка ---------- */
+function buildText(){
+  const d=DIV[sel.value];
+  const t=`Здравствуйте! Хочу заявиться в Зимний кубок лиги РЕ:КОРТС.\n`+
+    `Дивизион: ${d.name}${d.min!=null?` (${d.min}–${d.max})`:''}\n`+
+    `Игрок: ${fName.value.trim()||'—'}\n`+
+    (joinTo&&fPartner.value.trim()===joinTo?`Хочу в пару к: ${joinTo} (есть в составе, ищет партнёра)\n`:
+    `Партнёр: ${fPartner.value.trim()||'пока нет, помогите подобрать'}\n`)+
+    `Телефон: ${fPhone.value.trim()||'—'}`;
+  document.getElementById('preview').textContent=t; return t;
+}
+[fName,fPartner,fPhone].forEach(el=>el.addEventListener('input',buildText));
+sel.addEventListener('change',()=>showDiv(sel.value));
+document.getElementById('builder').addEventListener('submit',e=>e.preventDefault());
+document.getElementById('send').addEventListener('click',async()=>{
+  const st=document.getElementById('status'); const t=buildText();
+  try{await navigator.clipboard.writeText(t); st.textContent='Текст скопирован — вставьте его в чат Telegram.';}
+  catch(err){st.textContent='Скопируйте текст заявки выше и отправьте в Telegram или позвоните: 8 913 741 8706.';}
+});
+buildText();
+
+/* ---------- 3D: ракетка и мяч на первом экране ---------- */
+(function hero3d(){
+  const cv=document.getElementById('gl'), hero=cv.parentElement, stage=document.getElementById('stage');
+  if(!window.THREE){hero.classList.add('no-gl'); return;}
+  let renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'high-performance'});}
+  catch(e){hero.classList.add('no-gl'); return;}
+  hero.classList.add('gl-on');
+  renderer.setPixelRatio(Math.min(2,devicePixelRatio||1));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=.95;
+  renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(26,1,.1,200);
+  const camBase=new THREE.Vector3(0,3.2,24), look=new THREE.Vector3(0,1.2,0);
+  cam.position.copy(camBase); cam.lookAt(look);
+
+  /* студийный свет для отражений: софтбоксы вокруг */
+  const pm=new THREE.PMREMGenerator(renderer);
+  const env=new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.BoxGeometry(40,40,40),new THREE.MeshBasicMaterial({color:0x3a1810,side:THREE.BackSide})));
+  const soft=(w,h,pos,rot,col,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(col).multiplyScalar(k),side:THREE.DoubleSide}));m.position.set(...pos);m.rotation.set(...rot);env.add(m);};
+  soft(16,8,[0,15,0],[Math.PI/2,0,0],0xffffff,1.5);
+  soft(9,14,[-16,3,6],[0,Math.PI/2,0],0xffe6d6,1.3);
+  soft(6,14,[16,3,-4],[0,-Math.PI/2,0],0xa7e0fb,2.2);
+  soft(18,5,[0,1,17],[0,Math.PI,0],0xffffff,.45);
+  scene.environment=pm.fromScene(env,.04).texture;
+
+  const key=new THREE.DirectionalLight(0xfff0e4,2.0); key.position.set(-7,12,9); key.castShadow=true;
+  key.shadow.mapSize.set(2048,2048); Object.assign(key.shadow.camera,{left:-9,right:9,top:9,bottom:-9,near:1,far:40});
+  key.shadow.camera.updateProjectionMatrix(); key.shadow.bias=-.0004; key.shadow.radius=7; scene.add(key);
+  const rim=new THREE.DirectionalLight(0xa7e0fb,1.8); rim.position.set(9,5,-7); scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xffffff,0x6b2414,.45));
+
+  /* корт ловит только тени — сам грунт рисует страница */
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.ShadowMaterial({opacity:.32}));
+  ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
+
+  /* ---- ракетка (единица = 1 дм) ---- */
+  const HC=3.25, RX=1.3, RY=1.42;
+  const frameMat=new THREE.MeshPhysicalMaterial({color:0x1f8fd8,roughness:.3,metalness:0,clearcoat:.6,clearcoatRoughness:.18,side:THREE.DoubleSide});
+  // фактура карбона на поверхности
+  const weave=document.createElement('canvas'); weave.width=weave.height=256; {const c=weave.getContext('2d'); c.fillStyle='#f4f4f2'; c.fillRect(0,0,256,256);
+    for(let y=0;y<256;y+=8) for(let x=0;x<256;x+=8){c.fillStyle=((x+y)/8)%2?'#e6e7e8':'#fbfbfb'; c.fillRect(x,y,8,8);} }
+  const weaveTex=new THREE.CanvasTexture(weave); weaveTex.wrapS=weaveTex.wrapT=THREE.RepeatWrapping; weaveTex.repeat.set(1.6,1.6); weaveTex.encoding=THREE.sRGBEncoding;
+  const faceMat=new THREE.MeshPhysicalMaterial({color:0xeef1f3,map:weaveTex,roughness:.38,clearcoat:.7,clearcoatRoughness:.25,bumpMap:weaveTex,bumpScale:.004,side:THREE.DoubleSide});
+  const faceSide=new THREE.MeshStandardMaterial({color:0xd9dfe3,roughness:.6,side:THREE.DoubleSide});
+
+  const face=new THREE.Shape(); face.absellipse(0,HC,RX-.08,RY-.08,0,Math.PI*2,false,0);
+  for(let y=HC-1.02,row=0;y<=HC+1.02;y+=.215,row++) for(let x=-1.02+(row%2?.1075:0);x<=1.02;x+=.215){
+    if((x/1.0)**2+((y-HC)/1.1)**2>1) continue;
+    if(Math.hypot(x,y-(HC+1.08))<.24) continue;
+    const h=new THREE.Path(); h.absarc(x,y,.07,0,Math.PI*2,true); face.holes.push(h);
+  }
+  const faceGeo=new THREE.ExtrudeGeometry(face,{depth:.3,bevelEnabled:true,bevelThickness:.02,bevelSize:.02,bevelSegments:2,curveSegments:40});
+  faceGeo.translate(0,0,-.15);
+  // UV для фактуры: по координатам XY
+  {const pos=faceGeo.attributes.position, uv=faceGeo.attributes.uv; for(let i=0;i<pos.count;i++) uv.setXY(i,pos.getX(i)*.4,pos.getY(i)*.4);}
+
+  const ring=new THREE.Shape(); ring.absellipse(0,HC,RX+.07,RY+.07,0,Math.PI*2,false,0);
+  const rh=new THREE.Path(); rh.absellipse(0,HC,RX-.13,RY-.13,0,Math.PI*2,true,0); ring.holes.push(rh);
+  const ringGeo=new THREE.ExtrudeGeometry(ring,{depth:.28,bevelEnabled:true,bevelThickness:.04,bevelSize:.05,bevelSegments:5,curveSegments:120}); ringGeo.translate(0,0,-.14);
+
+  const th=new THREE.Shape();
+  th.moveTo(-.21,1.08); th.quadraticCurveTo(-.36,1.6,-1.0,2.2); th.lineTo(1.0,2.2); th.quadraticCurveTo(.36,1.6,.21,1.08); th.lineTo(-.21,1.08);
+  const thh=new THREE.Path(); thh.moveTo(0,1.42); thh.quadraticCurveTo(.2,1.7,.72,2.12); thh.lineTo(-.72,2.12); thh.quadraticCurveTo(-.2,1.7,0,1.42); th.holes.push(thh);
+  const thGeo=new THREE.ExtrudeGeometry(th,{depth:.26,bevelEnabled:true,bevelThickness:.06,bevelSize:.05,bevelSegments:5,curveSegments:32}); thGeo.translate(0,0,-.13);
+
+  // обмотка ручки — спираль
+  const gc=document.createElement('canvas'); gc.width=256; gc.height=512; {const c=gc.getContext('2d'); c.fillStyle='#3a2116'; c.fillRect(0,0,256,512);
+    c.strokeStyle='#24130c'; c.lineWidth=10; for(let y=-512;y<1024;y+=46){c.beginPath(); c.moveTo(0,y); c.lineTo(256,y+60); c.stroke();}
+    for(let i=0;i<4000;i++){c.fillStyle=`rgba(255,255,255,${Math.random()*.05})`; c.fillRect(Math.random()*256,Math.random()*512,2,2);} }
+  const gripTex=new THREE.CanvasTexture(gc); gripTex.encoding=THREE.sRGBEncoding;
+  const gripMat=new THREE.MeshStandardMaterial({map:gripTex,bumpMap:gripTex,bumpScale:.02,roughness:.8});
+
+  const racket=new THREE.Group();
+  const mk=(geo,mat)=>{const m=new THREE.Mesh(geo,mat); m.castShadow=true; m.receiveShadow=true; racket.add(m); return m;};
+  mk(faceGeo,[faceMat,faceSide]); mk(ringGeo,frameMat); mk(thGeo,frameMat);
+  const grip=mk(new THREE.CylinderGeometry(.21,.2,1.18,8,1),gripMat); grip.position.y=.62;
+  const cap=mk(new THREE.CylinderGeometry(.24,.24,.1,24),frameMat); cap.position.y=.03;
+  const collar=mk(new THREE.CylinderGeometry(.24,.22,.14,24),frameMat); collar.position.y=1.2;
+  // звезда-логотип
+  const st=new THREE.Shape(); st.moveTo(0,1); st.bezierCurveTo(.09,.2,.2,.09,1,0); st.bezierCurveTo(.2,-.09,.09,-.2,0,-1); st.bezierCurveTo(-.09,-.2,-.2,-.09,-1,0); st.bezierCurveTo(-.2,.09,-.09,.2,0,1);
+  const star=new THREE.Mesh(new THREE.ExtrudeGeometry(st,{depth:.04,bevelEnabled:false,curveSegments:16}),frameMat);
+  star.scale.setScalar(.17); star.position.set(0,HC+1.08,.16); racket.add(star);
+  const star2=star.clone(); star2.position.z=-.2; racket.add(star2);
+
+  const pivot=new THREE.Group(); pivot.add(racket); scene.add(pivot);
+
+  /* ---- мяч: жёлтый войлок и белый шов ---- */
+  const bc=document.createElement('canvas'); bc.width=1024; bc.height=512; {const c=bc.getContext('2d');
+    c.fillStyle='#d4ec34'; c.fillRect(0,0,1024,512);
+    for(let i=0;i<26000;i++){const l=Math.random(); c.strokeStyle=l>.5?`rgba(245,255,150,${.25*Math.random()})`:`rgba(120,140,10,${.22*Math.random()})`;
+      const x=Math.random()*1024,y=Math.random()*512,a=Math.random()*6.28,r=2+Math.random()*5; c.lineWidth=1; c.beginPath(); c.moveTo(x,y); c.lineTo(x+Math.cos(a)*r,y+Math.sin(a)*r); c.stroke();}
+    c.strokeStyle='#f3f4e6'; c.lineWidth=22; c.lineCap='round'; c.beginPath();
+    for(let x=0;x<=1024;x+=4){const y=256+150*Math.sin(x/1024*Math.PI*4); x?c.lineTo(x,y):c.moveTo(x,y);} c.stroke(); }
+  const ballTex=new THREE.CanvasTexture(bc); ballTex.encoding=THREE.sRGBEncoding; ballTex.anisotropy=8;
+  const ball=new THREE.Mesh(new THREE.SphereGeometry(.33,64,48),new THREE.MeshStandardMaterial({map:ballTex,bumpMap:ballTex,bumpScale:.012,roughness:.95}));
+  ball.castShadow=true; scene.add(ball);
+  // шлейф скорости: полупрозрачные копии мяча
+  const trailB=[.34,.22,.13,.07].map(o=>{const m=new THREE.Mesh(ball.geometry,new THREE.MeshStandardMaterial({map:ballTex,roughness:1,transparent:true,opacity:o,depthWrite:false})); m.visible=false; scene.add(m); return m;});
+  const bHist=[];
+
+  /* ---- раскладка: ракетка стоит в правой колонке ---- */
+  const ray=new THREE.Raycaster(), plane=new THREE.Plane(new THREE.Vector3(0,0,1),0), tmp=new THREE.Vector3();
+  let S=1, base=new THREE.Vector3(), floorY=0, W=0, H=0;
+  function toWorld(px,py){const ndc=new THREE.Vector2(px/W*2-1,-(py/H)*2+1); ray.setFromCamera(ndc,cam); const v=new THREE.Vector3(); ray.ray.intersectPlane(plane,v); return v;}
+  function layout(){
+    W=hero.clientWidth; H=hero.clientHeight; renderer.setSize(W,H,false); cam.aspect=W/H; cam.updateProjectionMatrix(); cam.lookAt(look); cam.updateMatrixWorld();
+    const hb=hero.getBoundingClientRect(), sb=stage.getBoundingClientRect();
+    const cx=sb.left-hb.left+sb.width*.58, top=toWorld(cx,sb.top-hb.top+sb.height*.04), bot=toWorld(cx,sb.top-hb.top+sb.height*.96);
+    S=(top.y-bot.y)/5.3; base.copy(bot); floorY=bot.y; ground.position.y=floorY;
+    ball.scale.setScalar(S);
+  }
+
+  /* ---- хореография ---- */
+  const T=.78, Td=.6;
+  let tc=0, ti=Td+1.5*T, last=performance.now(), mx=0, my=0, shake=0, launched=false;
+  const easeO=t=>1-Math.pow(1-t,3), back=t=>{const c=1.6;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2);};
+  const lerp=(a,b,k)=>a+(b-a)*k;
+  // поза ракетки: x — наклон к/от зрителя, y — поворот, z — крен
+  function pose(t){
+    const idle={x:-.05+Math.sin(t*1.3)*.04,y:-.32+Math.sin(t*.7)*.22,z:.16+Math.sin(t*.9)*.04,lift:.35+Math.sin(t*1.6)*.06};
+    if(t<ti-.68) return idle;
+    const ready={x:-.95,y:-.05,z:.05,lift:.3};
+    if(t<ti-.2){const k=easeO((t-(ti-.68))/.48); return {x:lerp(idle.x,ready.x,k),y:lerp(idle.y,ready.y,k),z:lerp(idle.z,ready.z,k),lift:lerp(idle.lift,ready.lift,k)};}
+    // подход к мячу с постоянной скоростью — без рывка в момент контакта
+    if(t<ti){const k=(t-(ti-.2))/.2; return {x:lerp(ready.x,.22,k),y:ready.y,z:ready.z,lift:ready.lift};}
+    // проводка: ракетка тормозит, мяч уходит быстрее её
+    if(t<ti+.284){const k=(t-ti)/.284; return {x:.22+.83*(1-(1-k)*(1-k)),y:lerp(ready.y,.25,k),z:ready.z,lift:ready.lift};}
+    if(t<ti+.5) return {x:1.05,y:.25,z:.05,lift:.3};
+    const k=Math.min(1,(t-(ti+.5))/1.2), b=back(k), i2={x:-.05+Math.sin(t*1.3)*.04,y:-.32+Math.sin(t*.7)*.22,z:.16+Math.sin(t*.9)*.04,lift:.35+Math.sin(t*1.6)*.06};
+    return {x:lerp(1.05,i2.x,b),y:lerp(.25,i2.y,b),z:lerp(.05,i2.z,b),lift:lerp(.3,i2.lift,b)};
+  }
+  function applyPose(p){pivot.position.set(base.x,base.y+p.lift*S,base.z); pivot.rotation.set(p.x,p.y,p.z,'YXZ'); pivot.scale.setScalar(S); pivot.updateMatrixWorld(true);}
+  // точка удара — центр поверхности в позе удара
+  function impactPoint(){const save={...pivot.rotation}; const p=pose(ti); applyPose(p); const v=racket.localToWorld(new THREE.Vector3(0,HC,.54)); return v;}
+  let P=new THREE.Vector3(), vel=new THREE.Vector3(), launchAt=0;
+  function ballAt(t){
+    const r=.33*S, g=floorY+r;
+    if(t<Td){const k=t/Td; ball.position.set(P.x,lerp(P.y+6*S,g,k*k),P.z); ball.scale.set(S,S,S); return;}
+    if(t<ti){const tau=t-Td, ph=(tau%T)/T, hh=1-(2*ph-1)**2; ball.position.set(P.x,g+(P.y-g)*hh,P.z);
+      const sq=ph<.04||ph>.96; ball.scale.set(S*(sq?1.12:1),S*(sq?.86:1),S*(sq?1.12:1)); ball.rotation.x+=.02; return;}
+    const f=t-ti;
+    // мяч уходит сразу и быстрее поверхности ракетки; первые мгновения он сплющен ударом
+    ball.position.set(P.x+vel.x*f,P.y+vel.y*f-4.5*S*f*f,P.z+vel.z*f);
+    if(f<.06){const k=1-f/.06; ball.scale.set(S*(1+.2*k),S*(1+.2*k),S*(1-.3*k));} else ball.scale.setScalar(S); ball.rotation.x-=.35; ball.rotation.z+=.12;
+  }
+  function restart(){tc=0; ti=Td+1.5*T; launched=false;}
+
+  function frame(now){
+    const dt=Math.min(.05,(now-last)/1000); last=now;
+    // замедление в момент удара
+    let scale=1; if(tc>ti-.06&&tc<ti+.14) scale=RM?1:.22;
+    tc+=dt*scale;
+    if(tc>ti+2.4) restart();
+    if(!launched&&tc>=ti){launched=true; shake=1; vel.set(-3.2*S,5.2*S,Math.max(40,34*S));}
+    // камера: лёгкий параллакс и дрожь при ударе
+    shake*=.9;
+    cam.position.set(camBase.x+mx*1.4+(Math.random()-.5)*shake*.25, camBase.y-my*.8+(Math.random()-.5)*shake*.2, camBase.z);
+    cam.lookAt(look);
+    applyPose(pose(tc));
+    if(!launched||tc<ti) P.copy(impactPoint()), applyPose(pose(tc));
+    ballAt(tc);
+    if(launched&&tc>ti+.05){bHist.unshift(ball.position.clone()); bHist.length=Math.min(bHist.length,9); trailB.forEach((m,i)=>{const h=bHist[(i+1)*2]; m.visible=!!h; if(h){m.position.copy(h); m.scale.copy(ball.scale); m.rotation.copy(ball.rotation);}});}
+    else {bHist.length=0; trailB.forEach(m=>m.visible=false);}
+    renderer.render(scene,cam);
+  }
+
+  let vis=true, raf=0;
+  function loop(now){ if(!vis) return; frame(now); raf=requestAnimationFrame(loop); }
+  layout(); P.copy(impactPoint());
+  addEventListener('resize',()=>{layout();});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(layout);
+  hero.addEventListener('pointermove',e=>{const b=hero.getBoundingClientRect(); mx=(e.clientX-b.left)/b.width-.5; my=(e.clientY-b.top)/b.height-.5;});
+  if(RM){ tc=.2; ti=99; frame(performance.now()); setTimeout(()=>{layout(); frame(performance.now());},600); return; }
+  new IntersectionObserver(es=>{const was=vis; vis=es[0].isIntersecting; if(vis&&!was){last=performance.now(); raf=requestAnimationFrame(loop);}}).observe(hero);
+  raf=requestAnimationFrame(loop);
+  // клик — удар на ближайшем отскоке
+  document.getElementById('hit').addEventListener('click',()=>{
+    if(tc>=Td&&tc<ti-.62){const tau=tc-Td, k=Math.ceil((tau+.65-T/2)/T), nt=Td+T/2+k*T; if(nt<ti) ti=nt;}
+    else if(tc>ti+.9) restart();
+  });
+  // ресайз героя (шрифты, появление блоков)
+  new ResizeObserver(layout).observe(hero);
+})();
+
+/* ---------- порядковые задержки и пары при появлении карточки ---------- */
+btns.forEach((b,i)=>b.style.setProperty('--k',i));
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){if(!RM) replay(pairsEl,'go'); o.disconnect();}}),{threshold:.3}).observe(pairsEl);
+</script>
+</body>
+</html>
