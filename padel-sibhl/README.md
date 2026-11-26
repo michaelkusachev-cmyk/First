@@ -6,5 +6,9 @@
 Правки вносятся прямо в сборку: копия текущего `index-*.js` с новым именем (JS кэшируется браузером на год)
 и замена ссылки в `index.html`. На хостинг заливать только изменённые файлы.
 
+## Выкладка
+
+После пуша изменений в `padel-sibhl/` (ветка `claude/youthful-goldberg-ogf99b`) GitHub Actions сам заливает изменённые файлы на sweb по FTP — `.github/workflows/padel-deploy.yml`. Секреты: `SWEB_FTP_HOST`, `SWEB_FTP_USER`, `SWEB_FTP_PASSWORD`, `SWEB_FTP_DIR`.
+
 ## Журнал
 - 26.11.2026 — 40+: убрана Екатерина Арзамасцева; Женский: Елизавета Суслова → Елизавета Загрядская. Новая сборка `assets/index-R26nov26.js`.

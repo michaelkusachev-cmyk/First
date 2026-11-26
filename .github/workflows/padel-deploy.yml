@@ -1,0 +1,37 @@
+# Выкладывает сайт падел-лиги (папка padel-sibhl) на sweb → sibhl.ru/padel по FTP.
+# Запускается сам после каждого изменения в padel-sibhl/ в этой ветке.
+# Нужны секреты репозитория (Settings → Secrets and variables → Actions):
+#   SWEB_FTP_HOST      — адрес FTP-сервера из панели sweb
+#   SWEB_FTP_USER      — логин FTP
+#   SWEB_FTP_PASSWORD  — пароль FTP
+#   SWEB_FTP_DIR       — путь к папке padel от корня FTP, со слешем в конце, например sibhl.ru/public_html/padel/
+# Заливаются только изменённые файлы; на сервере ничего не удаляется.
+name: Падел-лига → sibhl.ru/padel
+
+on:
+  push:
+    branches: [claude/youthful-goldberg-ogf99b]
+    paths: ['padel-sibhl/**']
+  workflow_dispatch:
+
+concurrency:
+  group: padel-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Залить на sweb
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SWEB_FTP_HOST }}
+          username: ${{ secrets.SWEB_FTP_USER }}
+          password: ${{ secrets.SWEB_FTP_PASSWORD }}
+          server-dir: ${{ secrets.SWEB_FTP_DIR }}
+          local-dir: ./padel-sibhl/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
