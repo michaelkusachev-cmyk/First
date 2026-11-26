@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -36,7 +37,7 @@ BG_EDGE = (166, 176, 192)    # края фона
 HEAD_SHARE = 0.62            # высота головы (макушка..подбородок) / сторона квадрата
 MAX_HEAD_SHARE = 0.80        # крупнее этого не приближать, даже если исходник тесный
 TOP_MARGIN = 0.10            # отступ над макушкой (доля стороны)
-REMBG_MODEL = "u2net_human_seg"
+REMBG_MODEL = os.environ.get("PADEL_REMBG_MODEL", "birefnet-portrait")
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_OUT = HERE.parent.parent / "padel-sibhl" / "img"
@@ -88,8 +89,16 @@ def remove_bg(img: Image.Image) -> Image.Image:
     from rembg import new_session, remove
 
     session = new_session(REMBG_MODEL)
-    cut = remove(img, session=session, post_process_mask=True)
-    return cut.convert("RGBA")
+    cut = remove(img, session=session, post_process_mask=True).convert("RGBA")
+    # Подчистить край: сузить маску на пару пикселей и смягчить —
+    # убирает светлый/цветной ореол от старого фона вокруг волос.
+    a = cut.getchannel("A")
+    n = max(1, round(min(img.size) / 500))
+    for _ in range(n):
+        a = a.filter(ImageFilter.MinFilter(3))
+    a = a.filter(ImageFilter.GaussianBlur(n * 0.8))
+    cut.putalpha(a)
+    return cut
 
 
 def background(size: int) -> Image.Image:
