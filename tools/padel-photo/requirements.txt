@@ -1,0 +1,5 @@
+rembg[cpu]
+opencv-python-headless<5
+pillow
+pillow-heif
+numpy
