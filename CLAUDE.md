@@ -56,6 +56,8 @@ git add padel-sibhl tools && git commit -m "padel-sibhl: <что сделано>
 
 Проверка: `curl -s "https://sibhl.ru/padel/?nc=$RANDOM" | grep -o 'index-R[^"]*\.js'` — должна быть новая сборка; фото — `curl -sI https://sibhl.ru/padel/img/<slug>.jpg`. Страницы: `/padel/`, `/padel/igroki`, дивизионы `/padel/zhenskiy`, `/lyubitel`, `/master`, `/profi`, `/40-plus`.
 
+FTP: отдельный аккаунт sweb `hockeydrea_padel` (папка `sibhl/padel/`), секреты GitHub `SWEB_FTP_USER=hockeydrea_padel`, `SWEB_FTP_HOST=77.222.40.45`, `SWEB_FTP_DIR=./`. Ошибка `530 Login authentication failed` = в sweb сменили пароль этого аккаунта: владелец задаёт новый в панели sweb («FTP-аккаунты» → «Изменить пароль») и вписывает его в секрет `SWEB_FTP_PASSWORD`, потом Re-run упавшего запуска. Пароли сам не вводи.
+
 Если хостинг недоступен из окружения — проверь, что workflow в GitHub Actions прошёл зелёным, и скажи владельцу открыть сайт.
 
 ## Мелочи
