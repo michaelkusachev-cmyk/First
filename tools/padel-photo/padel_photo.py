@@ -129,9 +129,10 @@ def tone(person: Image.Image) -> Image.Image:
     return res
 
 
-def process(src: Path, size: int = 240) -> tuple[Image.Image, bool]:
+def process(src: Path, size: int = 240, face_box: tuple[int, int, int, int] | None = None,
+            head_share: float = HEAD_SHARE, loose: bool = False) -> tuple[Image.Image, bool]:
     img = load(src)
-    face = detect_face(img)
+    face = face_box or detect_face(img)
     cut = tone(remove_bg(img))
     found = face is not None
     if face is None:
@@ -148,11 +149,13 @@ def process(src: Path, size: int = 240) -> tuple[Image.Image, bool]:
     chin = y + h * 1.08
     head_h = chin - head_top
 
-    side = head_h / HEAD_SHARE
+    side = head_h / head_share
     # Не выходить за низ и бока исходника, иначе тело «обрывается»
-    # посреди кадра — лучше чуть крупнее план.
-    side = min(side, (img.height - head_top) / (1 - TOP_MARGIN), 2 * cx, 2 * (img.width - cx))
-    side = max(side, head_h / MAX_HEAD_SHARE)
+    # посреди кадра — лучше чуть крупнее план. --loose отключает (крупный план,
+    # лицо у края кадра): по бокам тогда просто фон.
+    if not loose:
+        side = min(side, (img.height - head_top) / (1 - TOP_MARGIN), 2 * cx, 2 * (img.width - cx))
+        side = max(side, head_h / MAX_HEAD_SHARE)
     left = cx - side / 2
     top = head_top - side * TOP_MARGIN
 
@@ -173,9 +176,16 @@ def main() -> int:
     ap.add_argument("slug", help="имя файла без расширения, латиницей: ivanov")
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--size", type=int, default=240)
+    ap.add_argument("--face", type=int, nargs=4, metavar=("X", "Y", "W", "H"),
+                    help="рамка лица вручную (пиксели исходника, от бровей до подбородка), если автопоиск ошибся")
+    ap.add_argument("--head-share", type=float, default=HEAD_SHARE,
+                    help=f"доля головы в высоте кадра, по умолчанию {HEAD_SHARE}")
+    ap.add_argument("--loose", action="store_true",
+                    help="не ограничивать кадр краями исходника (крупный план, лицо у края фото)")
     args = ap.parse_args()
 
-    out, found = process(args.src, args.size)
+    out, found = process(args.src, args.size, tuple(args.face) if args.face else None,
+                         args.head_share, args.loose)
     args.out.mkdir(parents=True, exist_ok=True)
     dst = args.out / f"{args.slug}.jpg"
     out.save(dst, "JPEG", quality=88, optimize=True, progressive=True)
